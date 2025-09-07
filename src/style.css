@@ -1,0 +1,337 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-gray-200;
+  }
+  
+  body {
+    @apply text-gray-900 font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.4) 0%, transparent 60%),
+      radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.4) 0%, transparent 60%),
+      radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.3) 0%, transparent 60%),
+      radial-gradient(circle at 60% 60%, rgba(168, 85, 247, 0.2) 0%, transparent 50%),
+      linear-gradient(135deg, #0d1117 0%, #161b22 30%, #21262d 70%, #30363d 100%);
+    min-height: 100vh;
+    position: relative;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 10% 20%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold text-gray-900;
+  }
+}
+
+@layer components {
+  .bento-grid {
+    @apply grid gap-4 md:gap-5;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-auto-rows: 180px;
+  }
+  
+  .bento-card {
+    @apply rounded-3xl p-5;
+    @apply transition-all duration-500 ease-out;
+    @apply hover:-translate-y-3 hover:scale-105;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      0 4px 16px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .bento-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  }
+  
+  .bento-card-large {
+    @apply col-span-1 md:col-span-2;
+    grid-row: span 1;
+  }
+  
+  .bento-card-tall {
+    @apply row-span-1;
+    grid-row: span 1;
+  }
+  
+  .bento-card-featured {
+    @apply col-span-1 md:col-span-2 lg:col-span-3;
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(168, 85, 247, 0.05) 100%);
+    border: 1px solid rgba(124, 58, 237, 0.2);
+  }
+  
+  .tool-card {
+    @apply bento-card cursor-pointer;
+    @apply hover:border-purple-400/40;
+    @apply hover:shadow-2xl hover:shadow-purple-500/30;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .tool-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s ease;
+  }
+  
+  .tool-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-12px) scale(1.03);
+    border-color: rgba(124, 58, 237, 0.4);
+    box-shadow: 
+      0 20px 40px rgba(0, 0, 0, 0.5),
+      0 8px 20px rgba(124, 58, 237, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+  }
+  
+  .tool-card:hover::after {
+    left: 100%;
+  }
+  
+  .tool-card:hover::before {
+    background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.3), transparent);
+  }
+  
+  .btn-primary {
+    @apply text-white px-6 py-3 rounded-xl font-medium;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:scale-105 hover:shadow-lg;
+    background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #c084fc 100%);
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+    border: 1px solid rgba(124, 58, 237, 0.3);
+  }
+  
+  .btn-primary:hover {
+    box-shadow: 0 8px 25px rgba(124, 58, 237, 0.6);
+    transform: translateY(-2px);
+  }
+  
+  .btn-secondary {
+    @apply text-gray-300 px-6 py-3 rounded-xl font-medium;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:scale-105;
+    background: rgba(22, 27, 34, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(240, 246, 252, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn-secondary:hover {
+    background: rgba(22, 27, 34, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border-color: rgba(120, 119, 198, 0.3);
+  }
+  
+  .input-field {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg;
+    @apply focus:ring-2 focus:ring-primary-500 focus:border-primary-500;
+    @apply transition-colors duration-200;
+  }
+  
+  .code-block {
+    @apply bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm;
+    @apply overflow-x-auto;
+  }
+  
+  .gradient-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-sm border border-white/20;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #c084fc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+  }
+  
+  .glass-effect {
+    background: rgba(22, 27, 34, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(240, 246, 252, 0.1);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(240, 246, 252, 0.1);
+  }
+  
+  .hero-section {
+    background: linear-gradient(135deg, rgba(120, 119, 198, 0.1) 0%, rgba(255, 119, 198, 0.05) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(120, 119, 198, 0.2);
+    border-radius: 2rem;
+    padding: 3rem;
+    margin: 2rem 0;
+  }
+  
+  .category-pill {
+    @apply px-4 py-2 rounded-full text-sm font-medium;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:scale-105 hover:shadow-lg;
+    background: rgba(22, 27, 34, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(240, 246, 252, 0.1);
+    color: #f0f6fc;
+  }
+  
+  .category-pill.active {
+    background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+    color: white;
+    border-color: rgba(124, 58, 237, 0.3);
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  .animate-bounce-subtle {
+    animation: bounceSubtle 0.6s ease-in-out;
+  }
+}
+
+/* 动画关键帧 */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(102, 126, 234, 0.6);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400;
+}
+
+/* 代码高亮样式 */
+.hljs {
+  @apply bg-gray-900 text-gray-100;
+}
+
+/* 响应式网格调整 */
+@media (max-width: 640px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .bento-card {
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .bento-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+  }
+}
