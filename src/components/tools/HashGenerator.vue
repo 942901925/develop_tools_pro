@@ -141,7 +141,7 @@
             class="w-full p-3 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500"
           />
           <button
-            @click="verifyHash"
+            @click="verifyHashFunction"
             class="mt-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
           >
             验证哈希
@@ -255,7 +255,7 @@ const generateBatchHash = () => {
   })
 }
 
-const verifyHash = () => {
+const verifyHashFunction = () => {
   if (!verifyText.value || !verifyHash.value) return
   
   let hash = ''

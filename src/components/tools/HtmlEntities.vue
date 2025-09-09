@@ -191,10 +191,10 @@ const commonEntities = ref([
   { entity: '&hellip;', character: '…', description: '省略号' },
   { entity: '&ndash;', character: '–', description: '短横线' },
   { entity: '&mdash;', character: '—', description: '长横线' },
-  { entity: '&lsquo;', character: ''', description: '左单引号' },
-  { entity: '&rsquo;', character: ''', description: '右单引号' },
-  { entity: '&ldquo;', character: '"', description: '左双引号' },
-  { entity: '&rdquo;', character: '"', description: '右双引号' }
+  { entity: '&lsquo;', character: '\u2018', description: '左单引号' },
+  { entity: '&rsquo;', character: '\u2019', description: '右单引号' },
+  { entity: '&ldquo;', character: '\u201C', description: '左双引号' },
+  { entity: '&rdquo;', character: '\u201D', description: '右双引号' }
 ])
 
 const examples = ref([
@@ -216,7 +216,7 @@ const examples = ref([
   {
     name: '引号文本',
     description: '包含各种引号的文本',
-    text: '他说："这是一个'测试'文本，包含'单引号'和"双引号"。'
+    text: '他说："这是一个测试文本，包含单引号和双引号。"'
   }
 ])
 
@@ -284,10 +284,10 @@ const decodeHtml = () => {
       '&hellip;': '…',
       '&ndash;': '–',
       '&mdash;': '—',
-      '&lsquo;': ''',
-      '&rsquo;': ''',
-      '&ldquo;': '"',
-      '&rdquo;': '"'
+      '&lsquo;': '\u2018',
+      '&rsquo;': '\u2019',
+      '&ldquo;': '\u201C',
+      '&rdquo;': '\u201D'
     }
     
     // 替换命名实体

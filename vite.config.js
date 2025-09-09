@@ -18,13 +18,21 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: false,
+    minify: 'terser',
     rollupOptions: {
       output: {
         manualChunks: {
           vendor: ['vue', 'vue-router'],
-          utils: ['dayjs', 'js-yaml', 'crypto-js']
+          utils: ['dayjs', 'js-yaml', 'highlight.js', 'html2canvas'],
+          ui: ['lucide-vue-next'],
+          crypto: ['crypto-js', 'qrcode']
         }
       }
     }
+  },
+  // Vercel 优化配置
+  define: {
+    __VUE_OPTIONS_API__: true,
+    __VUE_PROD_DEVTOOLS__: false
   }
 })

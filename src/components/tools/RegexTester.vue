@@ -64,7 +64,7 @@
               class="w-full p-3 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
             />
             <button
-              @click="replaceText"
+              @click="replaceTextFunction"
               class="mt-2 px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
             >
               替换
@@ -275,8 +275,8 @@ const testRegex = () => {
   }
 }
 
-const replaceText = () => {
-  if (!regexPattern.value || !testText.value || !replaceText.value) return
+  const replaceTextFunction = () => {
+    if (!regexPattern.value || !testText.value || !replaceText.value) return
   
   try {
     const flagString = Object.entries(flags.value)
