@@ -1,7 +1,7 @@
 <template>
   <div v-if="tool" class="max-w-4xl mx-auto">
     <!-- 工具头部 -->
-    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-6">
       <div class="flex items-center space-x-4">
         <div :class="[
           'w-16 h-16 rounded-xl flex items-center justify-center',
@@ -10,13 +10,14 @@
           <component :is="getIconComponent(tool.icon)" class="w-8 h-8" />
         </div>
         <div class="flex-1">
-          <h1 class="text-3xl font-bold text-gray-900">{{ $t(`tools.${tool.id}.name`) || tool.name }}</h1>
-          <p class="text-lg text-gray-600 mt-1">{{ $t(`tools.${tool.id}.description`) || tool.description }}</p>
+          <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">{{ $t(`tools.${tool.id}.name`) || tool.name }}</h1>
+          <p class="text-lg text-gray-600 dark:text-gray-300 mt-1">{{ $t(`tools.${tool.id}.description`) || tool.description }}</p>
           <div class="flex items-center space-x-4 mt-3">
-            <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
+            <span class="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">
               {{ $t(`tools.categories.${tool.category}`) || tool.category }}
             </span>
             <button
+            
               @click="copyToClipboard"
               class="text-sm text-primary-600 hover:text-primary-700 font-medium"
             >
@@ -28,16 +29,16 @@
     </div>
     
     <!-- 工具内容区域 -->
-    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
       <!-- 动态加载工具组件 -->
       <component 
-        :is="getToolComponent(tool.id)" 
+        :is="toolComponent" 
         v-if="toolComponent"
       />
       <div v-else class="text-center py-12">
-        <component :is="getIconComponent(tool.icon)" class="w-16 h-16 text-gray-300 mx-auto mb-4" />
-        <h3 class="text-lg font-medium text-gray-900 mb-2">{{ $t('toolDetail.underDevelopment') }}</h3>
-        <p class="text-gray-500">{{ $t('toolDetail.underDevelopmentDesc') }}</p>
+        <component :is="getIconComponent(tool.icon)" class="w-16 h-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
+        <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">{{ $t('toolDetail.underDevelopment') }}</h3>
+        <p class="text-gray-500 dark:text-gray-400">{{ $t('toolDetail.underDevelopmentDesc') }}</p>
       </div>
     </div>
     
@@ -119,7 +120,13 @@ const getToolComponent = async (toolId) => {
     'number-base-converter': () => import('../components/tools/NumberBaseConverter.vue'),
     'css-formatter': () => import('../components/tools/CssFormatter.vue'),
     'sql-formatter': () => import('../components/tools/SqlFormatter.vue'),
-    'code-highlighter': () => import('../components/tools/CodeHighlighter.vue')
+    'code-highlighter': () => import('../components/tools/CodeHighlighter.vue'),
+    'image-compressor': () => import('../components/tools/ImageCompressor.vue'),
+    'image-converter': () => import('../components/tools/ImageConverter.vue'),
+    'qr-code-generator': () => import('../components/tools/QrCodeGenerator.vue'),
+    'ip-lookup': () => import('../components/tools/IpLookup.vue'),
+    'user-agent-parser': () => import('../components/tools/UserAgentParser.vue'),
+    'http-status-codes': () => import('../components/tools/HttpStatusCodes.vue')
   }
   
   const componentLoader = toolComponentMap[toolId]
