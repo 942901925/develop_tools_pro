@@ -85,3 +85,16 @@ public
 
 # TernJS port file
 .tern-port
+
+# IDE files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VSCode
+.vscode/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
