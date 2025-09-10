@@ -171,6 +171,8 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { Globe, AlertCircle } from 'lucide-vue-next'
+import logger from '../../utils/logger.js'
+import { apiRequest } from '../../utils/requestManager.js'
 
 const ipAddress = ref('')
 const ipInfo = ref(null)
@@ -190,11 +192,12 @@ const getMyIP = async () => {
   error.value = ''
   
   try {
-    const response = await fetch('https://api.ipify.org?format=json')
+    const response = await apiRequest('https://api.ipify.org?format=json')
     const data = await response.json()
     ipAddress.value = data.ip
   } catch (err) {
     error.value = '获取本机 IP 失败'
+    logger.error('获取IP失败:', err)
   } finally {
     isLoading.value = false
   }
@@ -210,7 +213,7 @@ const lookupIP = async () => {
   
   try {
     // 使用 ipapi.co 服务
-    const response = await fetch(`https://ipapi.co/${ipAddress.value}/json/`)
+    const response = await apiRequest(`https://ipapi.co/${ipAddress.value}/json/`)
     const data = await response.json()
     
     if (data.error) {
@@ -227,6 +230,7 @@ const lookupIP = async () => {
     
   } catch (err) {
     error.value = err.message || '查询 IP 信息失败'
+    logger.error('IP查询失败:', err)
   } finally {
     isLoading.value = false
   }
@@ -292,7 +296,7 @@ const loadHistory = () => {
       searchHistory.value = JSON.parse(saved)
     }
   } catch (err) {
-    console.warn('加载历史记录失败:', err)
+    logger.warn('加载历史记录失败:', err)
   }
 }
 
