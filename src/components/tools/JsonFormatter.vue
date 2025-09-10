@@ -1,59 +1,70 @@
 <template>
-  <div class="space-y-6">
+  <div class="space-y-2">
     <!-- 示例数据 -->
-    <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-4">
-      <h4 class="font-medium text-blue-900 dark:text-blue-100 mb-2">示例数据</h4>
-      <div class="flex flex-wrap gap-2">
+    <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-1">
+      <h4 class="font-medium text-blue-900 dark:text-blue-100 mb-1">示例数据</h4>
+      <div class="flex flex-wrap gap-1">
         <button
           v-for="example in examples"
           :key="example.name"
           @click="loadExample(example.data)"
-          class="px-3 py-1 bg-blue-100 dark:bg-blue-800 hover:bg-blue-200 dark:hover:bg-blue-700 text-blue-800 dark:text-blue-100 rounded text-sm transition-colors"
+          class="px-2 py-1 bg-blue-100 dark:bg-blue-800 hover:bg-blue-200 dark:hover:bg-blue-700 text-blue-800 dark:text-blue-100 rounded text-xs transition-colors"
         >
           {{ example.name }}
         </button>
       </div>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- 操作按钮区域 -->
+    <div class="flex flex-wrap gap-2 justify-center mb-1">
+      <button
+        @click="formatJson"
+        :disabled="!inputJson.trim()"
+        class="px-3 py-1.5 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+      >
+        格式化
+      </button>
+      <button
+        @click="minifyJson"
+        :disabled="!inputJson.trim()"
+        class="px-3 py-1.5 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+      >
+        压缩
+      </button>
+      <button
+        @click="validateJson"
+        :disabled="!inputJson.trim()"
+        class="px-3 py-1.5 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+      >
+        验证
+      </button>
+      <button
+        @click="clearInput"
+        class="px-3 py-1.5 bg-gray-500 text-white rounded-md hover:bg-gray-600 transition-colors text-sm"
+      >
+        清空
+      </button>
+    </div>
+
+    <div class="grid grid-cols-1 xl:grid-cols-2 gap-2">
       <!-- 输入区域 -->
-      <div class="space-y-4">
+      <div class="space-y-1">
         <div class="flex items-center justify-between">
           <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">JSON 输入</h3>
           <div class="flex space-x-2">
             <button
-              @click="formatJson"
+              @click="copyInput"
               :disabled="!inputJson.trim()"
-              class="btn-primary"
+              class="px-2 py-1 bg-gray-500 text-white rounded text-xs hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              格式化
-            </button>
-            <button
-              @click="minifyJson"
-              :disabled="!inputJson.trim()"
-              class="btn-secondary"
-            >
-              压缩
-            </button>
-            <button
-              @click="validateJson"
-              :disabled="!inputJson.trim()"
-              class="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              验证
-            </button>
-            <button
-              @click="clearInput"
-              class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
-            >
-              清空
+              复制
             </button>
           </div>
         </div>
         <textarea
           v-model="inputJson"
           placeholder="请输入JSON数据，或点击上方示例按钮加载示例数据..."
-          class="w-full h-64 p-4 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg font-mono text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
+          class="w-full h-96 p-1 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg font-mono text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
         ></textarea>
         <div v-if="error" class="bg-red-50 border border-red-200 rounded-lg p-3">
           <div class="flex items-center">
@@ -70,28 +81,28 @@
       </div>
 
       <!-- 输出区域 -->
-      <div class="space-y-4">
+      <div class="space-y-1">
         <div class="flex items-center justify-between">
           <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">格式化结果</h3>
           <div class="flex space-x-2">
             <button
               @click="copyResult"
               :disabled="!formattedJson"
-              class="btn-primary"
+              class="px-2 py-1 bg-blue-500 text-white rounded text-xs hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               复制结果
             </button>
             <button
               @click="downloadJson"
               :disabled="!formattedJson"
-              class="btn-secondary"
+              class="px-2 py-1 bg-green-500 text-white rounded text-xs hover:bg-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               下载
             </button>
           </div>
         </div>
         <div class="relative">
-          <pre class="w-full h-64 p-4 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-lg overflow-auto text-sm font-mono">{{ formattedJson || '格式化结果将显示在这里...' }}</pre>
+          <pre class="w-full h-96 p-1 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-lg overflow-auto text-sm font-mono">{{ formattedJson || '格式化结果将显示在这里...' }}</pre>
           <div v-if="!formattedJson" class="absolute inset-0 flex items-center justify-center text-gray-400 dark:text-gray-500">
             暂无结果
           </div>
@@ -100,20 +111,20 @@
     </div>
 
     <!-- 统计信息 -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-1">
+      <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
         <div class="text-sm text-gray-600 dark:text-gray-400">字符数</div>
         <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">{{ inputJson.length }}</div>
       </div>
-      <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg">
+      <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
         <div class="text-sm text-gray-600 dark:text-gray-400">行数</div>
         <div class="text-2xl font-bold text-green-600 dark:text-green-400">{{ inputJson.split('\n').length }}</div>
       </div>
-      <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg">
+      <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
         <div class="text-sm text-gray-600 dark:text-gray-400">对象数</div>
         <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">{{ objectCount }}</div>
       </div>
-      <div class="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-lg">
+      <div class="bg-orange-50 dark:bg-orange-900/20 p-2 rounded-lg">
         <div class="text-sm text-gray-600 dark:text-gray-400">数组数</div>
         <div class="text-2xl font-bold text-orange-600 dark:text-orange-400">{{ arrayCount }}</div>
       </div>
@@ -260,6 +271,17 @@ const clearInput = () => {
   formattedJson.value = ''
   error.value = ''
   successMessage.value = ''
+}
+
+// 复制输入内容
+const copyInput = async () => {
+  try {
+    await navigator.clipboard.writeText(inputJson.value)
+    successMessage.value = '输入内容已复制到剪贴板！'
+    setTimeout(() => { successMessage.value = '' }, 3000)
+  } catch (e) {
+    error.value = '复制失败: ' + e.message
+  }
 }
 
 // 复制结果

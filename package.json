@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "vercel-build": "vite build"
+    "vercel-build": "vite build",
+    "setup-analytics": "node setup-analytics.js"
   },
   "dependencies": {
     "crypto-js": "^4.2.0",
