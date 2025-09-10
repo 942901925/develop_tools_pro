@@ -6,7 +6,7 @@
 
 ## 📁 已创建的配置文件
 
-- ✅ `vercel.json` - Vercel 部署配置
+- ✅ `vercel.json` - Vercel 部署配置（已修复 functions/builds 冲突）
 - ✅ `.vercelignore` - 排除不需要的文件
 - ✅ `DEPLOYMENT.md` - 详细部署指南
 - ✅ 构建测试通过 ✅
