@@ -46,6 +46,12 @@
     grid-auto-rows: 180px;
   }
   
+  .bento-grid-enhanced {
+    @apply grid gap-6 md:gap-8;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-auto-rows: 200px;
+  }
+  
   .bento-card {
     @apply rounded-3xl p-5;
     @apply transition-all duration-500 ease-out;
@@ -94,6 +100,30 @@
     @apply hover:shadow-2xl hover:shadow-purple-500/30;
     position: relative;
     overflow: hidden;
+  }
+  
+  .tool-card-enhanced {
+    @apply rounded-3xl p-6 cursor-pointer;
+    @apply transition-all duration-500 ease-out;
+    @apply hover:border-purple-400/50;
+    @apply hover:shadow-2xl hover:shadow-purple-500/30;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      0 4px 16px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+    animation: slideInUp 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .tool-card-enhanced:hover {
+    transform: translateY(-8px) scale(1.02);
   }
   
   .tool-card::after {
@@ -222,6 +252,22 @@
     border-color: rgba(124, 58, 237, 0.3);
   }
   
+  .category-pill-enhanced {
+    @apply px-6 py-3 rounded-2xl text-sm font-medium transition-all duration-500;
+    @apply hover:scale-105 hover:-translate-y-1;
+    @apply backdrop-blur-md shadow-lg hover:shadow-xl;
+    background: rgba(22, 27, 34, 0.6);
+    border: 1px solid rgba(240, 246, 252, 0.08);
+    color: #f0f6fc;
+  }
+  
+  .category-pill-enhanced.active {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.3) 0%, rgba(168, 85, 247, 0.3) 100%);
+    border: 1px solid rgba(124, 58, 237, 0.6);
+    color: white;
+    box-shadow: 0 8px 25px rgba(124, 58, 237, 0.3);
+  }
+  
   .animate-fade-in {
     animation: fadeIn 0.5s ease-in-out;
   }
@@ -232,6 +278,10 @@
   
   .animate-bounce-subtle {
     animation: bounceSubtle 0.6s ease-in-out;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
   }
 }
 
@@ -254,6 +304,26 @@
   }
   50% {
     transform: translateY(-10px);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
   }
 }
 
