@@ -123,7 +123,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, inject } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { 
@@ -134,6 +134,11 @@ import {
   Server, Palette, Database, Droplets, Ruler, Binary, Code2
 } from 'lucide-vue-next'
 import { tools, getLocalizedCategories, getToolsByCategory, searchTools } from '../data/tools.js'
+
+// 注入全局搜索状态
+const globalSearchQuery = inject('searchQuery', ref(''))
+const globalSearchResults = inject('searchResults', ref([]))
+const showGlobalSearchResults = inject('showSearchResults', ref(false))
 
 // 图标组件映射
 const iconComponents = {
@@ -158,8 +163,11 @@ const categories = computed(() => {
 const filteredTools = computed(() => {
   let result = getToolsByCategory(selectedCategory.value)
   
-  if (searchQuery.value.trim()) {
-    result = searchTools(searchQuery.value)
+  // 优先使用全局搜索，如果没有则使用本地搜索
+  const activeSearchQuery = globalSearchQuery.value.trim() || searchQuery.value.trim()
+  
+  if (activeSearchQuery) {
+    result = searchTools(activeSearchQuery)
   }
   
   return result
@@ -207,6 +215,17 @@ const getCardAnimationDelay = (index) => {
 // 监听分类变化，重置搜索
 watch(selectedCategory, () => {
   searchQuery.value = ''
+  // 如果全局搜索有内容，也清空它
+  if (globalSearchQuery.value) {
+    globalSearchQuery.value = ''
+  }
+})
+
+// 监听全局搜索变化，同步到本地搜索
+watch(globalSearchQuery, (newQuery) => {
+  if (newQuery.trim()) {
+    searchQuery.value = newQuery
+  }
 })
 </script>
 

@@ -68,7 +68,13 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { ArrowLeft, AlertCircle } from 'lucide-vue-next'
+import { 
+  ArrowLeft, AlertCircle, Code, ArrowLeftRight, FileText, Clock, Calculator, Timer,
+  Shield, Link, Hash, GitCompare, Search, BarChart3,
+  Key, Lock, Users, Image, RefreshCw, QrCode,
+  Fingerprint, ShieldCheck, AlertTriangle, Globe, Monitor,
+  Server, Palette, Database, Droplets, Ruler, Binary, Code2
+} from 'lucide-vue-next'
 import { getToolById } from '../data/tools.js'
 
 const router = useRouter()
@@ -77,86 +83,107 @@ const toolId = computed(() => route.params.id)
 const tool = ref(null)
 const toolComponent = ref(null)
 
-// 动态导入所有图标组件
-const iconComponents = {}
-const iconNames = [
-  'Code', 'ArrowLeftRight', 'FileText', 'Clock', 'Calculator', 'Timer',
-  'Shield', 'Link', 'Hash', 'GitCompare', 'Search', 'BarChart3',
-  'Key', 'Lock', 'Users', 'Image', 'RefreshCw', 'QrCode',
-  'Fingerprint', 'ShieldCheck', 'AlertTriangle', 'Globe', 'Monitor',
-  'Server', 'Palette', 'Database', 'Droplets', 'Ruler', 'Binary', 'Code2'
-]
-
-// 动态导入图标
-iconNames.forEach(name => {
-  import('lucide-vue-next').then(module => {
-    iconComponents[name] = module[name]
-  })
-})
+// 图标组件映射
+const iconComponents = {
+  Code, ArrowLeftRight, FileText, Clock, Calculator, Timer,
+  Shield, Link, Hash, GitCompare, Search, BarChart3,
+  Key, Lock, Users, Image, RefreshCw, QrCode,
+  Fingerprint, ShieldCheck, AlertTriangle, Globe, Monitor,
+  Server, Palette, Database, Droplets, Ruler, Binary, Code2
+}
 
 // 获取工具组件
 const getToolComponent = async (toolId) => {
-  const toolComponentMap = {
-    'json-formatter': () => import('../components/tools/JsonFormatter.vue'),
-    'json-yaml-converter': () => import('../components/tools/JsonYamlConverter.vue'),
-    'json-schema-generator': () => import('../components/tools/JsonSchemaGenerator.vue'),
-    'base64-encoder': () => import('../components/tools/Base64Encoder.vue'),
-    'url-encoder': () => import('../components/tools/UrlEncoder.vue'),
-    'html-entities': () => import('../components/tools/HtmlEntities.vue'),
-    'password-generator': () => import('../components/tools/PasswordGenerator.vue'),
-    'uuid-generator': () => import('../components/tools/UuidGenerator.vue'),
-    'fake-data-generator': () => import('../components/tools/FakeDataGenerator.vue'),
-    'hash-generator': () => import('../components/tools/HashGenerator.vue'),
-    'aes-encryptor': () => import('../components/tools/AesEncryptor.vue'),
-    'password-strength': () => import('../components/tools/PasswordStrength.vue'),
-    'text-statistics': () => import('../components/tools/TextStatistics.vue'),
-    'text-diff': () => import('../components/tools/TextDiff.vue'),
-    'regex-tester': () => import('../components/tools/RegexTester.vue'),
-    'timestamp-converter': () => import('../components/tools/TimestampConverter.vue'),
-    'time-calculator': () => import('../components/tools/TimeCalculator.vue'),
-    'countdown-timer': () => import('../components/tools/CountdownTimer.vue'),
-    'color-picker': () => import('../components/tools/ColorPicker.vue'),
-    'unit-converter': () => import('../components/tools/UnitConverter.vue'),
-    'number-base-converter': () => import('../components/tools/NumberBaseConverter.vue'),
-    'css-formatter': () => import('../components/tools/CssFormatter.vue'),
-    'sql-formatter': () => import('../components/tools/SqlFormatter.vue'),
-    'code-highlighter': () => import('../components/tools/CodeHighlighter.vue'),
-    'image-compressor': () => import('../components/tools/ImageCompressor.vue'),
-    'image-converter': () => import('../components/tools/ImageConverter.vue'),
-    'qr-code-generator': () => import('../components/tools/QrCodeGenerator.vue'),
-    'ip-lookup': () => import('../components/tools/IpLookup.vue'),
-    'user-agent-parser': () => import('../components/tools/UserAgentParser.vue'),
-    'http-status-codes': () => import('../components/tools/HttpStatusCodes.vue')
-  }
+  console.log('Loading tool component for:', toolId)
   
-  const componentLoader = toolComponentMap[toolId]
-  if (componentLoader) {
-    try {
-      const module = await componentLoader()
-      toolComponent.value = module.default
-    } catch (error) {
-      console.warn(`Failed to load tool component: ${toolId}`, error)
+  try {
+    // 直接尝试导入对应的组件
+    const componentPath = `../components/tools/${toolId.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('')}.vue`
+    console.log('Trying to load component from:', componentPath)
+    
+    const module = await import(componentPath)
+    console.log('Component loaded successfully:', toolId, module)
+    toolComponent.value = module.default
+  } catch (error) {
+    console.error(`Failed to load tool component: ${toolId}`, error)
+    
+    // 如果直接导入失败，尝试使用映射表
+    const toolComponentMap = {
+      'json-formatter': () => import('../components/tools/JsonFormatter.vue'),
+      'json-yaml-converter': () => import('../components/tools/JsonYamlConverter.vue'),
+      'json-schema-generator': () => import('../components/tools/JsonSchemaGenerator.vue'),
+      'base64-encoder': () => import('../components/tools/Base64Encoder.vue'),
+      'url-encoder': () => import('../components/tools/UrlEncoder.vue'),
+      'html-entities': () => import('../components/tools/HtmlEntities.vue'),
+      'password-generator': () => import('../components/tools/PasswordGenerator.vue'),
+      'uuid-generator': () => import('../components/tools/UuidGenerator.vue'),
+      'fake-data-generator': () => import('../components/tools/FakeDataGenerator.vue'),
+      'hash-generator': () => import('../components/tools/HashGenerator.vue'),
+      'aes-encryptor': () => import('../components/tools/AesEncryptor.vue'),
+      'password-strength': () => import('../components/tools/PasswordStrength.vue'),
+      'text-statistics': () => import('../components/tools/TextStatistics.vue'),
+      'text-diff': () => import('../components/tools/TextDiff.vue'),
+      'regex-tester': () => import('../components/tools/RegexTester.vue'),
+      'timestamp-converter': () => import('../components/tools/TimestampConverter.vue'),
+      'time-calculator': () => import('../components/tools/TimeCalculator.vue'),
+      'countdown-timer': () => import('../components/tools/CountdownTimer.vue'),
+      'color-picker': () => import('../components/tools/ColorPicker.vue'),
+      'unit-converter': () => import('../components/tools/UnitConverter.vue'),
+      'number-base-converter': () => import('../components/tools/NumberBaseConverter.vue'),
+      'css-formatter': () => import('../components/tools/CssFormatter.vue'),
+      'sql-formatter': () => import('../components/tools/SqlFormatter.vue'),
+      'code-highlighter': () => import('../components/tools/CodeHighlighter.vue'),
+      'image-compressor': () => import('../components/tools/ImageCompressor.vue'),
+      'image-converter': () => import('../components/tools/ImageConverter.vue'),
+      'qr-code-generator': () => import('../components/tools/QrCodeGenerator.vue'),
+      'ip-lookup': () => import('../components/tools/IpLookup.vue'),
+      'user-agent-parser': () => import('../components/tools/UserAgentParser.vue'),
+      'http-status-codes': () => import('../components/tools/HttpStatusCodes.vue')
+    }
+    
+    const componentLoader = toolComponentMap[toolId]
+    if (componentLoader) {
+      try {
+        console.log('Loading component from map for:', toolId)
+        const module = await componentLoader()
+        console.log('Component loaded successfully from map:', toolId, module)
+        toolComponent.value = module.default
+      } catch (mapError) {
+        console.error(`Failed to load tool component from map: ${toolId}`, mapError)
+        // 使用占位符组件
+        const placeholderModule = await import('../components/tools/PlaceholderTool.vue')
+        toolComponent.value = placeholderModule.default
+      }
+    } else {
+      console.warn('No component loader found for:', toolId)
       // 使用占位符组件
       const placeholderModule = await import('../components/tools/PlaceholderTool.vue')
       toolComponent.value = placeholderModule.default
-    }
-  } else {
-    // 使用占位符组件
-    try {
-      const placeholderModule = await import('../components/tools/PlaceholderTool.vue')
-      toolComponent.value = placeholderModule.default
-    } catch (error) {
-      console.warn(`Failed to load placeholder component: ${toolId}`, error)
-      toolComponent.value = null
     }
   }
 }
 
 // 获取工具信息
 onMounted(async () => {
+  console.log('ToolDetail mounted, toolId:', toolId.value)
   tool.value = getToolById(toolId.value)
+  console.log('Tool found:', tool.value)
   if (tool.value) {
     await getToolComponent(toolId.value)
+    console.log('Tool component loaded:', toolComponent.value)
+    
+    // 确保组件已加载，如果没有则使用占位符
+    if (!toolComponent.value) {
+      console.warn('No component loaded, using placeholder')
+      try {
+        const placeholderModule = await import('../components/tools/PlaceholderTool.vue')
+        toolComponent.value = placeholderModule.default
+      } catch (error) {
+        console.error('Failed to load placeholder component:', error)
+      }
+    }
+  } else {
+    console.warn('Tool not found for ID:', toolId.value)
   }
 })
 
