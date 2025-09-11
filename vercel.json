@@ -17,6 +17,12 @@
       }
     },
     {
+      "src": "/(favicon.*|ads\\.txt|site\\.webmanifest)",
+      "headers": {
+        "cache-control": "public, max-age=86400"
+      }
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html"
     }

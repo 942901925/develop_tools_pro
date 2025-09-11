@@ -1,1 +1,9 @@
-google.com, pub-3896009904827809, DIRECT
+# ads.txt file for ca-pub-3896009904827809
+# This file is used to verify the authenticity of the ad inventory
+# and prevent unauthorized ad sales.
+
+# Google AdSense
+google.com, pub-3896009904827809, DIRECT, f08c47fec0942fa0
+
+# Additional ad networks (if you use them in the future)
+# Add other ad network entries here as needed
