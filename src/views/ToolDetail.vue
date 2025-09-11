@@ -1,5 +1,5 @@
 <template>
-  <div v-if="tool" class="max-w-full mx-auto px-2">
+  <div v-if="tool" class="max-w-full mx-auto px-2"> 
     <!-- 工具头部 -->
     <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-6">
       <div class="flex items-center space-x-4">
@@ -41,6 +41,7 @@
         <p class="text-gray-500 dark:text-gray-400">{{ t('toolDetail.underDevelopmentDesc') }}</p>
       </div>
     </div>
+    
     
     <!-- 返回按钮 -->
     <div class="mt-6 text-center">
