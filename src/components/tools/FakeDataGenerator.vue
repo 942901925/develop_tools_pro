@@ -2,12 +2,12 @@
   <div class="space-y-6">
     <!-- 假数据生成器 -->
     <div class="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-lg">
-      <h3 class="text-lg font-semibold text-gray-900 mb-4">假数据生成器</h3>
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">{{ t('fakeDataGenerator.title') }}</h3>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="space-y-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">数据类型</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('fakeDataGenerator.dataTypes') }}</label>
             <div class="space-y-2">
               <label v-for="type in dataTypes" :key="type.id" class="flex items-center">
                 <input v-model="selectedTypes" :value="type.id" type="checkbox" class="mr-2" />
@@ -17,7 +17,7 @@
           </div>
           
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">生成数量</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('fakeDataGenerator.generateCount') }}</label>
             <input
               v-model.number="count"
               type="number"
@@ -30,15 +30,15 @@
         
         <div class="space-y-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">格式选项</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('fakeDataGenerator.formatOptions') }}</label>
             <div class="space-y-2">
               <label class="flex items-center">
                 <input v-model="includeHeaders" type="checkbox" class="mr-2" />
-                包含表头
+                {{ t('fakeDataGenerator.includeHeaders') }}
               </label>
               <label class="flex items-center">
                 <input v-model="jsonFormat" type="checkbox" class="mr-2" />
-                JSON格式
+                {{ t('fakeDataGenerator.jsonFormat') }}
               </label>
             </div>
           </div>
@@ -48,13 +48,13 @@
               @click="generateData"
               class="flex-1 px-4 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
             >
-              生成数据
+              {{ t('fakeDataGenerator.generateData') }}
             </button>
             <button
               @click="clearResults"
               class="px-4 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
             >
-              清空
+              {{ t('fakeDataGenerator.clear') }}
             </button>
           </div>
         </div>
@@ -64,12 +64,12 @@
     <!-- 生成的数据 -->
     <div v-if="generatedData.length > 0" class="space-y-4">
       <div class="flex items-center justify-between">
-        <h3 class="text-lg font-semibold text-gray-900">生成的数据</h3>
+        <h3 class="text-lg font-semibold text-gray-900">{{ t('fakeDataGenerator.generatedData') }}</h3>
         <button
           @click="copyData"
           class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
         >
-          复制数据
+          {{ t('fakeDataGenerator.copyData') }}
         </button>
       </div>
       
@@ -102,6 +102,9 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const selectedTypes = ref(['name', 'email'])
 const count = ref(10)
@@ -109,17 +112,17 @@ const includeHeaders = ref(true)
 const jsonFormat = ref(false)
 const generatedData = ref([])
 
-const dataTypes = ref([
-  { id: 'name', name: '姓名', generator: generateName },
-  { id: 'email', name: '邮箱', generator: generateEmail },
-  { id: 'phone', name: '手机号', generator: generatePhone },
-  { id: 'address', name: '地址', generator: generateAddress },
-  { id: 'company', name: '公司', generator: generateCompany },
-  { id: 'job', name: '职位', generator: generateJob },
-  { id: 'website', name: '网站', generator: generateWebsite },
-  { id: 'date', name: '日期', generator: generateDate },
-  { id: 'age', name: '年龄', generator: generateAge },
-  { id: 'id', name: 'ID', generator: generateId }
+const dataTypes = computed(() => [
+  { id: 'name', name: t('fakeDataGenerator.types.name'), generator: generateName },
+  { id: 'email', name: t('fakeDataGenerator.types.email'), generator: generateEmail },
+  { id: 'phone', name: t('fakeDataGenerator.types.phone'), generator: generatePhone },
+  { id: 'address', name: t('fakeDataGenerator.types.address'), generator: generateAddress },
+  { id: 'company', name: t('fakeDataGenerator.types.company'), generator: generateCompany },
+  { id: 'job', name: t('fakeDataGenerator.types.job'), generator: generateJob },
+  { id: 'website', name: t('fakeDataGenerator.types.website'), generator: generateWebsite },
+  { id: 'date', name: t('fakeDataGenerator.types.date'), generator: generateDate },
+  { id: 'age', name: t('fakeDataGenerator.types.age'), generator: generateAge },
+  { id: 'id', name: t('fakeDataGenerator.types.id'), generator: generateId }
 ])
 
 const formattedData = computed(() => {
@@ -152,7 +155,7 @@ const formatType = computed(() => {
 
 const generateData = () => {
   if (selectedTypes.value.length === 0) {
-    alert('请至少选择一种数据类型')
+    alert(t('fakeDataGenerator.selectAtLeastOne'))
     return
   }
   

@@ -2,12 +2,12 @@
   <div class="space-y-6">
     <!-- 颜色选择器 -->
     <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-lg">
-      <h3 class="text-lg font-semibold text-gray-900 mb-4">颜色选择器</h3>
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">{{ t('colorPicker.title') }}</h3>
       
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div class="space-y-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">颜色选择</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('colorPicker.colorSelection') }}</label>
             <input
               v-model="selectedColor"
               type="color"
@@ -16,7 +16,7 @@
           </div>
           
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">手动输入</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('colorPicker.manualInput') }}</label>
             <input
               v-model="hexInput"
               placeholder="#000000"
@@ -28,7 +28,7 @@
         
         <div class="space-y-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">RGB值</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('colorPicker.rgbValues') }}</label>
             <div class="grid grid-cols-3 gap-2">
               <input
                 v-model.number="rgb.r"
@@ -61,7 +61,7 @@
           </div>
           
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">HSL值</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('colorPicker.hslValues') }}</label>
             <div class="grid grid-cols-3 gap-2">
               <input
                 v-model.number="hsl.h"
@@ -98,36 +98,36 @@
 
     <!-- 颜色预览 -->
     <div class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">颜色预览</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('colorPicker.colorPreview') }}</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <div class="text-center">
           <div class="w-24 h-24 mx-auto rounded-lg border-2 border-gray-300" :style="{ backgroundColor: selectedColor }"></div>
-          <div class="text-sm text-gray-600 mt-2">主色</div>
+          <div class="text-sm text-gray-600 mt-2">{{ t('colorPicker.primary') }}</div>
         </div>
         <div class="text-center">
           <div class="w-24 h-24 mx-auto rounded-lg border-2 border-gray-300" :style="{ backgroundColor: lightenColor(selectedColor, 0.3) }"></div>
-          <div class="text-sm text-gray-600 mt-2">浅色</div>
+          <div class="text-sm text-gray-600 mt-2">{{ t('colorPicker.light') }}</div>
         </div>
         <div class="text-center">
           <div class="w-24 h-24 mx-auto rounded-lg border-2 border-gray-300" :style="{ backgroundColor: darkenColor(selectedColor, 0.3) }"></div>
-          <div class="text-sm text-gray-600 mt-2">深色</div>
+          <div class="text-sm text-gray-600 mt-2">{{ t('colorPicker.dark') }}</div>
         </div>
         <div class="text-center">
           <div class="w-24 h-24 mx-auto rounded-lg border-2 border-gray-300" :style="{ backgroundColor: selectedColor, opacity: 0.5 }"></div>
-          <div class="text-sm text-gray-600 mt-2">半透明</div>
+          <div class="text-sm text-gray-600 mt-2">{{ t('colorPicker.semiTransparent') }}</div>
         </div>
       </div>
     </div>
 
     <!-- 颜色格式转换 -->
     <div class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">颜色格式</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('colorPicker.colorFormats') }}</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="space-y-2">
           <div class="flex justify-between items-center">
             <span class="text-sm font-medium text-gray-700">HEX</span>
             <button @click="copyToClipboard(hexValue)" class="px-2 py-1 bg-gray-500 text-white text-xs rounded hover:bg-gray-600 transition-colors">
-              复制
+              {{ t('colorPicker.copy') }}
             </button>
           </div>
           <div class="p-3 bg-gray-100 rounded-lg font-mono text-sm">{{ hexValue }}</div>
@@ -137,7 +137,7 @@
           <div class="flex justify-between items-center">
             <span class="text-sm font-medium text-gray-700">RGB</span>
             <button @click="copyToClipboard(rgbValue)" class="px-2 py-1 bg-gray-500 text-white text-xs rounded hover:bg-gray-600 transition-colors">
-              复制
+              {{ t('colorPicker.copy') }}
             </button>
           </div>
           <div class="p-3 bg-gray-100 rounded-lg font-mono text-sm">{{ rgbValue }}</div>
@@ -147,7 +147,7 @@
           <div class="flex justify-between items-center">
             <span class="text-sm font-medium text-gray-700">HSL</span>
             <button @click="copyToClipboard(hslValue)" class="px-2 py-1 bg-gray-500 text-white text-xs rounded hover:bg-gray-600 transition-colors">
-              复制
+              {{ t('colorPicker.copy') }}
             </button>
           </div>
           <div class="p-3 bg-gray-100 rounded-lg font-mono text-sm">{{ hslValue }}</div>
@@ -157,7 +157,7 @@
           <div class="flex justify-between items-center">
             <span class="text-sm font-medium text-gray-700">CSS</span>
             <button @click="copyToClipboard(cssValue)" class="px-2 py-1 bg-gray-500 text-white text-xs rounded hover:bg-gray-600 transition-colors">
-              复制
+              {{ t('colorPicker.copy') }}
             </button>
           </div>
           <div class="p-3 bg-gray-100 rounded-lg font-mono text-sm">{{ cssValue }}</div>
@@ -167,7 +167,7 @@
 
     <!-- 调色板 -->
     <div class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">调色板</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('colorPicker.colorPalette') }}</h3>
       <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2">
         <div
           v-for="color in colorPalette"
@@ -181,7 +181,7 @@
 
     <!-- 颜色历史 -->
     <div v-if="colorHistory.length > 0" class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">颜色历史</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('colorPicker.colorHistory') }}</h3>
       <div class="flex flex-wrap gap-2">
         <div
           v-for="(color, index) in colorHistory"
@@ -197,6 +197,9 @@
 
 <script setup>
 import { ref, computed, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const selectedColor = ref('#3B82F6')
 const hexInput = ref('#3B82F6')

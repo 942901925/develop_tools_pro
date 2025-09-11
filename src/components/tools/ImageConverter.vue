@@ -3,7 +3,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <!-- 上传区域 -->
       <div class="space-y-4">
-        <h3 class="text-lg font-semibold text-gray-900">上传图片</h3>
+        <h3 class="text-lg font-semibold text-gray-900">{{ t('imageConverter.uploadImage') }}</h3>
         <div 
           @drop="handleDrop"
           @dragover.prevent
@@ -23,24 +23,24 @@
               <Image class="w-8 h-8 text-gray-400" />
             </div>
             <div>
-              <p class="text-lg font-medium text-gray-900">拖拽图片到此处</p>
-              <p class="text-sm text-gray-500">或点击选择文件</p>
+              <p class="text-lg font-medium text-gray-900">{{ t('imageConverter.dragImageHere') }}</p>
+              <p class="text-sm text-gray-500">{{ t('imageConverter.orClickToSelect') }}</p>
             </div>
             <button
               @click="$refs.fileInput.click()"
               class="btn-primary"
             >
-              选择图片
+              {{ t('imageConverter.selectImage') }}
             </button>
           </div>
         </div>
         
         <!-- 转换设置 -->
         <div v-if="selectedFile" class="space-y-4">
-          <h4 class="font-medium text-gray-900">转换设置</h4>
+          <h4 class="font-medium text-gray-900">{{ t('imageConverter.conversionSettings') }}</h4>
           <div class="space-y-3">
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">目标格式</label>
+              <label class="block text-sm font-medium text-gray-700 mb-1">{{ t('imageConverter.targetFormat') }}</label>
               <select v-model="targetFormat" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                 <option value="jpeg">JPEG</option>
                 <option value="png">PNG</option>
@@ -50,7 +50,7 @@
               </select>
             </div>
             <div v-if="targetFormat === 'jpeg'">
-              <label class="block text-sm font-medium text-gray-700 mb-1">质量 ({{ quality }}%)</label>
+              <label class="block text-sm font-medium text-gray-700 mb-1">{{ t('imageConverter.quality') }} ({{ quality }}%)</label>
               <input
                 v-model="quality"
                 type="range"
@@ -60,7 +60,7 @@
               />
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">缩放比例 ({{ scale }}%)</label>
+              <label class="block text-sm font-medium text-gray-700 mb-1">{{ t('imageConverter.scale') }} ({{ scale }}%)</label>
               <input
                 v-model="scale"
                 type="range"
@@ -76,23 +76,23 @@
             :disabled="isConverting"
             class="btn-primary w-full"
           >
-            {{ isConverting ? '转换中...' : '开始转换' }}
+            {{ isConverting ? t('imageConverter.converting') : t('imageConverter.startConversion') }}
           </button>
         </div>
       </div>
       
       <!-- 预览区域 -->
       <div class="space-y-4">
-        <h3 class="text-lg font-semibold text-gray-900">转换结果</h3>
+        <h3 class="text-lg font-semibold text-gray-900">{{ t('imageConverter.conversionResult') }}</h3>
         <div v-if="originalImage" class="space-y-4">
           <!-- 原图信息 -->
           <div class="bg-gray-50 rounded-lg p-4">
-            <h4 class="font-medium text-gray-900 mb-2">原图信息</h4>
+            <h4 class="font-medium text-gray-900 mb-2">{{ t('imageConverter.originalImageInfo') }}</h4>
             <div class="text-sm text-gray-600 space-y-1">
-              <p>文件名: {{ selectedFile.name }}</p>
-              <p>格式: {{ getFileExtension(selectedFile.name).toUpperCase() }}</p>
-              <p>大小: {{ formatFileSize(selectedFile.size) }}</p>
-              <p>尺寸: {{ originalImage.width }} × {{ originalImage.height }}</p>
+              <p>{{ t('imageConverter.fileName') }}: {{ selectedFile.name }}</p>
+              <p>{{ t('imageConverter.format') }}: {{ getFileExtension(selectedFile.name).toUpperCase() }}</p>
+              <p>{{ t('imageConverter.size') }}: {{ formatFileSize(selectedFile.size) }}</p>
+              <p>{{ t('imageConverter.dimensions') }}: {{ originalImage.width }} × {{ originalImage.height }}</p>
             </div>
             <div class="mt-3">
               <img :src="originalImage.src" class="max-w-full h-auto rounded border" />
@@ -101,11 +101,11 @@
           
           <!-- 转换后信息 -->
           <div v-if="convertedImage" class="bg-green-50 rounded-lg p-4">
-            <h4 class="font-medium text-gray-900 mb-2">转换后信息</h4>
+            <h4 class="font-medium text-gray-900 mb-2">{{ t('imageConverter.convertedImageInfo') }}</h4>
             <div class="text-sm text-gray-600 space-y-1">
-              <p>格式: {{ targetFormat.toUpperCase() }}</p>
-              <p>大小: {{ formatFileSize(convertedImage.size) }}</p>
-              <p>尺寸: {{ convertedImage.width }} × {{ convertedImage.height }}</p>
+              <p>{{ t('imageConverter.format') }}: {{ targetFormat.toUpperCase() }}</p>
+              <p>{{ t('imageConverter.size') }}: {{ formatFileSize(convertedImage.size) }}</p>
+              <p>{{ t('imageConverter.dimensions') }}: {{ convertedImage.width }} × {{ convertedImage.height }}</p>
             </div>
             <div class="mt-3">
               <img :src="convertedImage.src" class="max-w-full h-auto rounded border" />
@@ -115,7 +115,7 @@
                 @click="downloadConverted"
                 class="btn-primary flex-1"
               >
-                下载转换图片
+                {{ t('imageConverter.downloadConverted') }}
               </button>
             </div>
           </div>
@@ -128,6 +128,9 @@
 <script setup>
 import { ref } from 'vue'
 import { Image } from 'lucide-vue-next'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const fileInput = ref(null)
 const selectedFile = ref(null)

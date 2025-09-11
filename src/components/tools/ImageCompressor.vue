@@ -3,7 +3,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <!-- 上传区域 -->
       <div class="space-y-4">
-        <h3 class="text-lg font-semibold text-gray-900">上传图片</h3>
+        <h3 class="text-lg font-semibold text-gray-900">{{ t('imageCompressor.uploadImage') }}</h3>
         <div 
           @drop="handleDrop"
           @dragover.prevent
@@ -23,24 +23,24 @@
               <Image class="w-8 h-8 text-gray-400" />
             </div>
             <div>
-              <p class="text-lg font-medium text-gray-900">拖拽图片到此处</p>
-              <p class="text-sm text-gray-500">或点击选择文件</p>
+              <p class="text-lg font-medium text-gray-900">{{ t('imageCompressor.dragImageHere') }}</p>
+              <p class="text-sm text-gray-500">{{ t('imageCompressor.orClickToSelect') }}</p>
             </div>
             <button
               @click="$refs.fileInput.click()"
               class="btn-primary"
             >
-              选择图片
+              {{ t('imageCompressor.selectImage') }}
             </button>
           </div>
         </div>
         
         <!-- 压缩设置 -->
         <div v-if="selectedFile" class="space-y-4">
-          <h4 class="font-medium text-gray-900">压缩设置</h4>
+          <h4 class="font-medium text-gray-900">{{ t('imageCompressor.compressionSettings') }}</h4>
           <div class="space-y-3">
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">质量 ({{ quality }}%)</label>
+              <label class="block text-sm font-medium text-gray-700 mb-1">{{ t('imageCompressor.quality') }} ({{ quality }}%)</label>
               <input
                 v-model="quality"
                 type="range"
@@ -50,7 +50,7 @@
               />
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">最大宽度 ({{ maxWidth }}px)</label>
+              <label class="block text-sm font-medium text-gray-700 mb-1">{{ t('imageCompressor.maxWidth') }} ({{ maxWidth }}px)</label>
               <input
                 v-model="maxWidth"
                 type="range"
@@ -61,7 +61,7 @@
               />
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">最大高度 ({{ maxHeight }}px)</label>
+              <label class="block text-sm font-medium text-gray-700 mb-1">{{ t('imageCompressor.maxHeight') }} ({{ maxHeight }}px)</label>
               <input
                 v-model="maxHeight"
                 type="range"
@@ -77,22 +77,22 @@
             :disabled="isCompressing"
             class="btn-primary w-full"
           >
-            {{ isCompressing ? '压缩中...' : '开始压缩' }}
+            {{ isCompressing ? t('imageCompressor.compressing') : t('imageCompressor.startCompression') }}
           </button>
         </div>
       </div>
       
       <!-- 预览区域 -->
       <div class="space-y-4">
-        <h3 class="text-lg font-semibold text-gray-900">预览结果</h3>
+        <h3 class="text-lg font-semibold text-gray-900">{{ t('imageCompressor.previewResult') }}</h3>
         <div v-if="originalImage" class="space-y-4">
           <!-- 原图信息 -->
           <div class="bg-gray-50 rounded-lg p-4">
-            <h4 class="font-medium text-gray-900 mb-2">原图信息</h4>
+            <h4 class="font-medium text-gray-900 mb-2">{{ t('imageCompressor.originalImageInfo') }}</h4>
             <div class="text-sm text-gray-600 space-y-1">
-              <p>文件名: {{ selectedFile.name }}</p>
-              <p>大小: {{ formatFileSize(selectedFile.size) }}</p>
-              <p>尺寸: {{ originalImage.width }} × {{ originalImage.height }}</p>
+              <p>{{ t('imageCompressor.fileName') }}: {{ selectedFile.name }}</p>
+              <p>{{ t('imageCompressor.fileSize') }}: {{ formatFileSize(selectedFile.size) }}</p>
+              <p>{{ t('imageCompressor.dimensions') }}: {{ originalImage.width }} × {{ originalImage.height }}</p>
             </div>
             <div class="mt-3">
               <img :src="originalImage.src" class="max-w-full h-auto rounded border" />
@@ -101,11 +101,11 @@
           
           <!-- 压缩后信息 -->
           <div v-if="compressedImage" class="bg-green-50 rounded-lg p-4">
-            <h4 class="font-medium text-gray-900 mb-2">压缩后信息</h4>
+            <h4 class="font-medium text-gray-900 mb-2">{{ t('imageCompressor.compressedImageInfo') }}</h4>
             <div class="text-sm text-gray-600 space-y-1">
-              <p>大小: {{ formatFileSize(compressedImage.size) }}</p>
-              <p>尺寸: {{ compressedImage.width }} × {{ compressedImage.height }}</p>
-              <p>压缩率: {{ compressionRatio }}%</p>
+              <p>{{ t('imageCompressor.fileSize') }}: {{ formatFileSize(compressedImage.size) }}</p>
+              <p>{{ t('imageCompressor.dimensions') }}: {{ compressedImage.width }} × {{ compressedImage.height }}</p>
+              <p>{{ t('imageCompressor.compressionRatio') }}: {{ compressionRatio }}%</p>
             </div>
             <div class="mt-3">
               <img :src="compressedImage.src" class="max-w-full h-auto rounded border" />
@@ -115,7 +115,7 @@
                 @click="downloadCompressed"
                 class="btn-primary flex-1"
               >
-                下载压缩图片
+                {{ t('imageCompressor.downloadCompressed') }}
               </button>
             </div>
           </div>
@@ -127,6 +127,9 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 import { Image } from 'lucide-vue-next'
 
 const fileInput = ref(null)

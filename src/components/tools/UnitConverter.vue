@@ -2,32 +2,32 @@
   <div class="space-y-6">
     <!-- 单位转换器 -->
     <div class="bg-gradient-to-r from-blue-50 to-green-50 p-6 rounded-lg">
-      <h3 class="text-lg font-semibold text-gray-900 mb-4">单位转换器</h3>
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">{{ t('unitConverter.title') }}</h3>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="space-y-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">转换类型</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('unitConverter.conversionType') }}</label>
             <select
               v-model="conversionType"
               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             >
-              <option value="length">长度</option>
-              <option value="weight">重量</option>
-              <option value="temperature">温度</option>
-              <option value="area">面积</option>
-              <option value="volume">体积</option>
-              <option value="time">时间</option>
+              <option value="length">{{ t('unitConverter.types.length') }}</option>
+              <option value="weight">{{ t('unitConverter.types.weight') }}</option>
+              <option value="temperature">{{ t('unitConverter.types.temperature') }}</option>
+              <option value="area">{{ t('unitConverter.types.area') }}</option>
+              <option value="volume">{{ t('unitConverter.types.volume') }}</option>
+              <option value="time">{{ t('unitConverter.types.time') }}</option>
             </select>
           </div>
           
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">输入值</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('unitConverter.inputValue') }}</label>
             <input
               v-model.number="inputValue"
               type="number"
               step="any"
-              placeholder="输入数值"
+              :placeholder="t('unitConverter.enterValue')"
               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
@@ -35,7 +35,7 @@
         
         <div class="space-y-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">从单位</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('unitConverter.fromUnit') }}</label>
             <select
               v-model="fromUnit"
               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
@@ -47,7 +47,7 @@
           </div>
           
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">到单位</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('unitConverter.toUnit') }}</label>
             <select
               v-model="toUnit"
               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
@@ -65,14 +65,14 @@
           @click="convert"
           class="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-medium"
         >
-          转换
+          {{ t('unitConverter.convert') }}
         </button>
       </div>
     </div>
 
     <!-- 转换结果 -->
     <div v-if="conversionResult !== null" class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">转换结果</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('unitConverter.conversionResult') }}</h3>
       <div class="bg-gray-50 p-6 rounded-lg">
         <div class="text-center">
           <div class="text-3xl font-bold text-blue-600 mb-2">{{ conversionResult }}</div>
@@ -85,7 +85,7 @@
 
     <!-- 快速转换 -->
     <div class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">快速转换</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('unitConverter.quickConversions') }}</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <div
           v-for="quick in quickConversions"
@@ -126,6 +126,9 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const conversionType = ref('length')
 const inputValue = ref(1)
@@ -134,64 +137,64 @@ const toUnit = ref('kilometer')
 const conversionResult = ref(null)
 const conversionHistory = ref([])
 
-const units = {
+const units = computed(() => ({
   length: [
-    { value: 'millimeter', label: '毫米 (mm)', factor: 0.001 },
-    { value: 'centimeter', label: '厘米 (cm)', factor: 0.01 },
-    { value: 'meter', label: '米 (m)', factor: 1 },
-    { value: 'kilometer', label: '千米 (km)', factor: 1000 },
-    { value: 'inch', label: '英寸 (in)', factor: 0.0254 },
-    { value: 'foot', label: '英尺 (ft)', factor: 0.3048 },
-    { value: 'yard', label: '码 (yd)', factor: 0.9144 },
-    { value: 'mile', label: '英里 (mi)', factor: 1609.344 }
+    { value: 'millimeter', label: t('unitConverter.units.millimeter'), factor: 0.001 },
+    { value: 'centimeter', label: t('unitConverter.units.centimeter'), factor: 0.01 },
+    { value: 'meter', label: t('unitConverter.units.meter'), factor: 1 },
+    { value: 'kilometer', label: t('unitConverter.units.kilometer'), factor: 1000 },
+    { value: 'inch', label: t('unitConverter.units.inch'), factor: 0.0254 },
+    { value: 'foot', label: t('unitConverter.units.foot'), factor: 0.3048 },
+    { value: 'yard', label: t('unitConverter.units.yard'), factor: 0.9144 },
+    { value: 'mile', label: t('unitConverter.units.mile'), factor: 1609.344 }
   ],
   weight: [
-    { value: 'gram', label: '克 (g)', factor: 1 },
-    { value: 'kilogram', label: '千克 (kg)', factor: 1000 },
-    { value: 'pound', label: '磅 (lb)', factor: 453.592 },
-    { value: 'ounce', label: '盎司 (oz)', factor: 28.3495 },
-    { value: 'ton', label: '吨 (t)', factor: 1000000 }
+    { value: 'gram', label: t('unitConverter.units.gram'), factor: 1 },
+    { value: 'kilogram', label: t('unitConverter.units.kilogram'), factor: 1000 },
+    { value: 'pound', label: t('unitConverter.units.pound'), factor: 453.592 },
+    { value: 'ounce', label: t('unitConverter.units.ounce'), factor: 28.3495 },
+    { value: 'ton', label: t('unitConverter.units.ton'), factor: 1000000 }
   ],
   temperature: [
-    { value: 'celsius', label: '摄氏度 (°C)', factor: 1 },
-    { value: 'fahrenheit', label: '华氏度 (°F)', factor: 1 },
-    { value: 'kelvin', label: '开尔文 (K)', factor: 1 }
+    { value: 'celsius', label: t('unitConverter.units.celsius'), factor: 1 },
+    { value: 'fahrenheit', label: t('unitConverter.units.fahrenheit'), factor: 1 },
+    { value: 'kelvin', label: t('unitConverter.units.kelvin'), factor: 1 }
   ],
   area: [
-    { value: 'square_meter', label: '平方米 (m²)', factor: 1 },
-    { value: 'square_kilometer', label: '平方千米 (km²)', factor: 1000000 },
-    { value: 'square_foot', label: '平方英尺 (ft²)', factor: 0.092903 },
-    { value: 'acre', label: '英亩 (ac)', factor: 4046.86 },
-    { value: 'hectare', label: '公顷 (ha)', factor: 10000 }
+    { value: 'square_meter', label: t('unitConverter.units.squareMeter'), factor: 1 },
+    { value: 'square_kilometer', label: t('unitConverter.units.squareKilometer'), factor: 1000000 },
+    { value: 'square_foot', label: t('unitConverter.units.squareFoot'), factor: 0.092903 },
+    { value: 'acre', label: t('unitConverter.units.acre'), factor: 4046.86 },
+    { value: 'hectare', label: t('unitConverter.units.hectare'), factor: 10000 }
   ],
   volume: [
-    { value: 'milliliter', label: '毫升 (ml)', factor: 0.001 },
-    { value: 'liter', label: '升 (l)', factor: 1 },
-    { value: 'cubic_meter', label: '立方米 (m³)', factor: 1000 },
-    { value: 'gallon', label: '加仑 (gal)', factor: 3.78541 },
-    { value: 'quart', label: '夸脱 (qt)', factor: 0.946353 }
+    { value: 'milliliter', label: t('unitConverter.units.milliliter'), factor: 0.001 },
+    { value: 'liter', label: t('unitConverter.units.liter'), factor: 1 },
+    { value: 'cubic_meter', label: t('unitConverter.units.cubicMeter'), factor: 1000 },
+    { value: 'gallon', label: t('unitConverter.units.gallon'), factor: 3.78541 },
+    { value: 'quart', label: t('unitConverter.units.quart'), factor: 0.946353 }
   ],
   time: [
-    { value: 'second', label: '秒 (s)', factor: 1 },
-    { value: 'minute', label: '分钟 (min)', factor: 60 },
-    { value: 'hour', label: '小时 (h)', factor: 3600 },
-    { value: 'day', label: '天 (d)', factor: 86400 },
-    { value: 'week', label: '周 (w)', factor: 604800 },
-    { value: 'month', label: '月 (m)', factor: 2628000 },
-    { value: 'year', label: '年 (y)', factor: 31536000 }
+    { value: 'second', label: t('unitConverter.units.second'), factor: 1 },
+    { value: 'minute', label: t('unitConverter.units.minute'), factor: 60 },
+    { value: 'hour', label: t('unitConverter.units.hour'), factor: 3600 },
+    { value: 'day', label: t('unitConverter.units.day'), factor: 86400 },
+    { value: 'week', label: t('unitConverter.units.week'), factor: 604800 },
+    { value: 'month', label: t('unitConverter.units.month'), factor: 2628000 },
+    { value: 'year', label: t('unitConverter.units.year'), factor: 31536000 }
   ]
-}
+}))
 
-const quickConversions = ref([
-  { name: '1米转英尺', type: 'length', from: 'meter', to: 'foot', value: 1 },
-  { name: '1千克转磅', type: 'weight', from: 'kilogram', to: 'pound', value: 1 },
-  { name: '100°C转°F', type: 'temperature', from: 'celsius', to: 'fahrenheit', value: 100 },
-  { name: '1升转加仑', type: 'volume', from: 'liter', to: 'gallon', value: 1 },
-  { name: '1小时转分钟', type: 'time', from: 'hour', to: 'minute', value: 1 }
+const quickConversions = computed(() => [
+  { name: t('unitConverter.quickConversions.meterToFoot'), type: 'length', from: 'meter', to: 'foot', value: 1 },
+  { name: t('unitConverter.quickConversions.kilogramToPound'), type: 'weight', from: 'kilogram', to: 'pound', value: 1 },
+  { name: t('unitConverter.quickConversions.celsiusToFahrenheit'), type: 'temperature', from: 'celsius', to: 'fahrenheit', value: 100 },
+  { name: t('unitConverter.quickConversions.literToGallon'), type: 'volume', from: 'liter', to: 'gallon', value: 1 },
+  { name: t('unitConverter.quickConversions.hourToMinute'), type: 'time', from: 'hour', to: 'minute', value: 1 }
 ])
 
 const getUnits = (type) => {
-  return units[type] || []
+  return units.value[type] || []
 }
 
 const getUnitLabel = (unitValue) => {

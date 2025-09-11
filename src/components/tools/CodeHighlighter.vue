@@ -2,12 +2,12 @@
   <div class="space-y-6">
     <!-- 代码高亮器 -->
     <div class="bg-gradient-to-r from-indigo-50 to-purple-50 p-6 rounded-lg">
-      <h3 class="text-lg font-semibold text-gray-900 mb-4">代码高亮器</h3>
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">{{ t('codeHighlighter.title') }}</h3>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="space-y-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">编程语言</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('codeHighlighter.programmingLanguage') }}</label>
             <select
               v-model="selectedLanguage"
               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
@@ -19,7 +19,7 @@
           </div>
           
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">主题</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('codeHighlighter.theme') }}</label>
             <select
               v-model="selectedTheme"
               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
@@ -33,19 +33,19 @@
         
         <div class="space-y-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">选项</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('codeHighlighter.options') }}</label>
             <div class="space-y-2">
               <label class="flex items-center">
                 <input v-model="showLineNumbers" type="checkbox" class="mr-2" />
-                显示行号
+                {{ t('codeHighlighter.showLineNumbers') }}
               </label>
               <label class="flex items-center">
                 <input v-model="wrapLines" type="checkbox" class="mr-2" />
-                自动换行
+                {{ t('codeHighlighter.wrapLines') }}
               </label>
               <label class="flex items-center">
                 <input v-model="copyButton" type="checkbox" class="mr-2" />
-                显示复制按钮
+                {{ t('codeHighlighter.showCopyButton') }}
               </label>
             </div>
           </div>
@@ -55,13 +55,13 @@
               @click="highlightCode"
               class="flex-1 px-4 py-3 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition-colors"
             >
-              高亮代码
+              {{ t('codeHighlighter.highlightCode') }}
             </button>
             <button
               @click="clearCode"
               class="px-4 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
             >
-              清空
+              {{ t('codeHighlighter.clear') }}
             </button>
           </div>
         </div>
@@ -70,10 +70,10 @@
 
     <!-- 代码输入 -->
     <div class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">代码输入</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('codeHighlighter.codeInput') }}</h3>
       <textarea
         v-model="inputCode"
-        placeholder="输入要高亮的代码..."
+        :placeholder="t('codeHighlighter.enterCodeToHighlight')"
         class="w-full h-64 p-4 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
       ></textarea>
     </div>
@@ -81,12 +81,12 @@
     <!-- 高亮结果 -->
     <div v-if="highlightedCode" class="space-y-4">
       <div class="flex items-center justify-between">
-        <h3 class="text-lg font-semibold text-gray-900">高亮结果</h3>
+        <h3 class="text-lg font-semibold text-gray-900">{{ t('codeHighlighter.highlightResult') }}</h3>
         <button
           @click="copyCode"
           class="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
         >
-          复制代码
+          {{ t('codeHighlighter.copyCode') }}
         </button>
       </div>
       
@@ -97,7 +97,7 @@
 
     <!-- 示例代码 -->
     <div class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">示例代码</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('codeHighlighter.exampleCode') }}</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div
           v-for="example in examples"
@@ -135,6 +135,9 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const inputCode = ref('')
 const selectedLanguage = ref('javascript')
@@ -164,36 +167,36 @@ const languages = ref([
   { value: 'markdown', label: 'Markdown' }
 ])
 
-const themes = ref([
-  { value: 'dark', label: '深色主题' },
-  { value: 'light', label: '浅色主题' },
+const themes = computed(() => [
+  { value: 'dark', label: t('codeHighlighter.themes.dark') },
+  { value: 'light', label: t('codeHighlighter.themes.light') },
   { value: 'monokai', label: 'Monokai' },
   { value: 'github', label: 'GitHub' },
   { value: 'vs', label: 'Visual Studio' }
 ])
 
-const examples = ref([
+const examples = computed(() => [
   {
-    name: 'JavaScript函数',
-    description: 'JavaScript函数示例',
+    name: t('codeHighlighter.examples.javascriptFunction.name'),
+    description: t('codeHighlighter.examples.javascriptFunction.description'),
     code: 'function fibonacci(n) {\n  if (n <= 1) return n;\n  return fibonacci(n - 1) + fibonacci(n - 2);\n}\n\nconsole.log(fibonacci(10));',
     language: 'javascript'
   },
   {
-    name: 'Python类',
-    description: 'Python类定义示例',
+    name: t('codeHighlighter.examples.pythonClass.name'),
+    description: t('codeHighlighter.examples.pythonClass.description'),
     code: 'class Person:\n    def __init__(self, name, age):\n        self.name = name\n        self.age = age\n    \n    def greet(self):\n        return f"Hello, I\'m {self.name}"',
     language: 'python'
   },
   {
-    name: 'HTML结构',
-    description: 'HTML页面结构示例',
+    name: t('codeHighlighter.examples.htmlStructure.name'),
+    description: t('codeHighlighter.examples.htmlStructure.description'),
     code: '<!DOCTYPE html>\n<html>\n<head>\n    <title>My Page</title>\n</head>\n<body>\n    <h1>Hello World</h1>\n</body>\n</html>',
     language: 'html'
   },
   {
-    name: 'CSS样式',
-    description: 'CSS样式示例',
+    name: t('codeHighlighter.examples.cssStyle.name'),
+    description: t('codeHighlighter.examples.cssStyle.description'),
     code: '.container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100vh;\n}',
     language: 'css'
   }

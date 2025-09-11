@@ -4,31 +4,31 @@
       <!-- 输入区域 -->
       <div class="space-y-4">
         <div class="flex items-center justify-between">
-          <h3 class="text-lg font-semibold text-gray-900">SQL 输入</h3>
+          <h3 class="text-lg font-semibold text-gray-900">{{ t('sqlFormatter.sqlInput') }}</h3>
           <div class="flex space-x-2">
             <button
               @click="formatSql"
               class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
             >
-              格式化
+              {{ t('sqlFormatter.format') }}
             </button>
             <button
               @click="minifySql"
               class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
             >
-              压缩
+              {{ t('sqlFormatter.minify') }}
             </button>
             <button
               @click="clearInput"
               class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
             >
-              清空
+              {{ t('sqlFormatter.clear') }}
             </button>
           </div>
         </div>
         <textarea
           v-model="inputSql"
-          placeholder="请输入SQL语句..."
+          :placeholder="t('sqlFormatter.enterSqlStatement')"
           class="w-full h-64 p-4 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
         ></textarea>
         <div v-if="error" class="text-red-600 text-sm">{{ error }}</div>
@@ -37,12 +37,12 @@
       <!-- 输出区域 -->
       <div class="space-y-4">
         <div class="flex items-center justify-between">
-          <h3 class="text-lg font-semibold text-gray-900">格式化结果</h3>
+          <h3 class="text-lg font-semibold text-gray-900">{{ t('sqlFormatter.formatResult') }}</h3>
           <button
             @click="copyResult"
             class="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
           >
-            复制结果
+            {{ t('sqlFormatter.copyResult') }}
           </button>
         </div>
         <pre class="w-full h-64 p-4 bg-gray-100 border border-gray-300 rounded-lg overflow-auto text-sm">{{ formattedSql }}</pre>
@@ -51,10 +51,10 @@
 
     <!-- SQL验证 -->
     <div v-if="validationResult" class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">SQL验证</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('sqlFormatter.sqlValidation') }}</h3>
       <div class="p-4 rounded-lg" :class="validationResult.valid ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'">
         <div class="font-medium">
-          {{ validationResult.valid ? '✓ SQL语法正确' : '✗ SQL语法错误' }}
+          {{ validationResult.valid ? t('sqlFormatter.sqlSyntaxCorrect') : t('sqlFormatter.sqlSyntaxError') }}
         </div>
         <div v-if="validationResult.errors.length > 0" class="mt-2 text-sm">
           <div v-for="error in validationResult.errors" :key="error" class="mb-1">
@@ -66,7 +66,7 @@
 
     <!-- 示例SQL -->
     <div class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">示例SQL</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('sqlFormatter.exampleSql') }}</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div
           v-for="example in examples"
@@ -104,31 +104,34 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const inputSql = ref('')
 const formattedSql = ref('')
 const error = ref('')
 const validationResult = ref(null)
 
-const examples = ref([
+const examples = computed(() => [
   {
-    name: 'SELECT查询',
-    description: '基本的SELECT查询语句',
+    name: t('sqlFormatter.examples.selectQuery.name'),
+    description: t('sqlFormatter.examples.selectQuery.description'),
     sql: 'SELECT id, name, email FROM users WHERE age > 18 ORDER BY name ASC LIMIT 10;'
   },
   {
-    name: 'JOIN查询',
-    description: '多表关联查询',
+    name: t('sqlFormatter.examples.joinQuery.name'),
+    description: t('sqlFormatter.examples.joinQuery.description'),
     sql: 'SELECT u.name, p.title FROM users u JOIN posts p ON u.id = p.user_id WHERE u.active = 1;'
   },
   {
-    name: '复杂查询',
-    description: '包含子查询和聚合函数',
+    name: t('sqlFormatter.examples.complexQuery.name'),
+    description: t('sqlFormatter.examples.complexQuery.description'),
     sql: 'SELECT department, COUNT(*) as employee_count FROM employees WHERE salary > (SELECT AVG(salary) FROM employees) GROUP BY department HAVING COUNT(*) > 5 ORDER BY employee_count DESC;'
   },
   {
-    name: 'INSERT语句',
-    description: '插入数据语句',
+    name: t('sqlFormatter.examples.insertStatement.name'),
+    description: t('sqlFormatter.examples.insertStatement.description'),
     sql: 'INSERT INTO users (name, email, age) VALUES ("John Doe", "john@example.com", 25), ("Jane Smith", "jane@example.com", 30);'
   }
 ])
@@ -176,7 +179,7 @@ const formatSql = () => {
     error.value = ''
     validateSql()
   } catch (e) {
-    error.value = '格式化失败: ' + e.message
+    error.value = t('sqlFormatter.formatFailed') + ': ' + e.message
     formattedCss.value = ''
   }
 }

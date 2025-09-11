@@ -225,6 +225,108 @@ export default {
     }
   },
   
+  // JSON格式化工具
+  jsonFormatter: {
+    exampleData: '範例資料',
+    format: '格式化',
+    minify: '壓縮',
+    validate: '驗證',
+    clear: '清空',
+    jsonInput: 'JSON 輸入',
+    copy: '複製',
+    inputPlaceholder: '請輸入JSON資料，或點擊上方範例按鈕載入範例資料...',
+    formattedResult: '格式化結果',
+    copyResult: '複製結果',
+    download: '下載',
+    resultPlaceholder: '格式化結果將顯示在這裡...',
+    noResult: '暫無結果',
+    charCount: '字元數',
+    lineCount: '行數',
+    objectCount: '物件數',
+    arrayCount: '陣列數',
+    examples: {
+      userInfo: '使用者資訊',
+      apiResponse: 'API回應',
+      configInfo: '設定資訊'
+    }
+  },
+  
+  // Base64編解碼工具
+  base64Encoder: {
+    originalData: '原始資料',
+    encode: '編碼',
+    clear: '清空',
+    inputPlaceholder: '請輸入要編碼的文字...',
+    encodedResult: 'Base64 編碼結果',
+    copyResult: '複製結果',
+    base64Data: 'Base64 資料',
+    decode: '解碼',
+    decodePlaceholder: '請輸入要解碼的Base64資料...',
+    decodedResult: '解碼結果',
+    originalCharCount: '原始字元數',
+    encodedCharCount: '編碼後字元數',
+    compressionRatio: '壓縮比',
+    encodeStatus: '編碼狀態',
+    encoded: '已編碼',
+    notEncoded: '未編碼'
+  },
+  
+  // 佔位符工具
+  placeholderTool: {
+    developing: '功能開發中',
+    developingDesc: '此工具正在開發中，敬請期待！',
+    expectedFeatures: '預計功能',
+    developingButton: '功能開發中...'
+  },
+  
+  // 文字統計工具
+  textStatistics: {
+    textInput: '文字輸入',
+    inputPlaceholder: '請輸入要分析的文字...',
+    characters: '字元數',
+    words: '單詞數',
+    lines: '行數',
+    paragraphs: '段落數',
+    charTypeStats: '字元類型統計',
+    letters: '字母',
+    digits: '數字',
+    spaces: '空格',
+    punctuation: '標點符號',
+    specialChars: '特殊字元',
+    wordStats: '單詞統計',
+    avgWordLength: '平均單詞長度',
+    longestWord: '最長單詞',
+    shortestWord: '最短單詞',
+    uniqueWords: '唯一單詞',
+    topWords: '最常用單詞 (前10個)',
+    times: '次',
+    textPreview: '文字預覽',
+    first100Chars: '前100個字元:'
+  },
+  
+  // 二維碼生成工具
+  qrCodeGenerator: {
+    generateQR: '生成二維碼',
+    contentType: '內容類型',
+    text: '文字',
+    url: '網址',
+    email: '信箱',
+    phone: '電話',
+    sms: '簡訊',
+    wifi: 'WiFi',
+    vcard: '名片',
+    content: '內容',
+    placeholders: {
+      text: '輸入要生成二維碼的文字內容...',
+      url: 'https://example.com',
+      email: 'example@email.com',
+      phone: '+886 912 345 678',
+      sms: '簡訊內容',
+      wifi: 'WiFi 資訊將透過下方設定生成',
+      vcard: 'BEGIN:VCARD\nVERSION:3.0\nFN:姓名\nTEL:電話\nEMAIL:信箱\nEND:VCARD'
+    }
+  },
+  
   // 頁尾
   footer: {
     copyright: '© 2024 Develop Tools Pro. 為開發者打造的現代化工具集合.'

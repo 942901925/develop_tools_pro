@@ -2,42 +2,42 @@
   <div class="space-y-6">
     <!-- AES加密解密器 -->
     <div class="bg-gradient-to-r from-red-50 to-orange-50 p-6 rounded-lg">
-      <h3 class="text-lg font-semibold text-gray-900 mb-4">AES加密解密器</h3>
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">{{ t('aesEncryptor.title') }}</h3>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="space-y-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">加密密钥</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('aesEncryptor.encryptionKey') }}</label>
             <input
               v-model="encryptionKey"
               type="password"
-              placeholder="输入加密密钥"
+              :placeholder="t('aesEncryptor.enterKey')"
               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
             />
           </div>
           
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">操作模式</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('aesEncryptor.operationMode') }}</label>
             <select
               v-model="mode"
               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
             >
-              <option value="encrypt">加密</option>
-              <option value="decrypt">解密</option>
+              <option value="encrypt">{{ t('aesEncryptor.encrypt') }}</option>
+              <option value="decrypt">{{ t('aesEncryptor.decrypt') }}</option>
             </select>
           </div>
         </div>
         
         <div class="space-y-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">密钥长度</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('aesEncryptor.keyLength') }}</label>
             <select
               v-model="keyLength"
               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
             >
-              <option value="128">128位</option>
-              <option value="192">192位</option>
-              <option value="256">256位</option>
+              <option value="128">{{ t('aesEncryptor.key128') }}</option>
+              <option value="192">{{ t('aesEncryptor.key192') }}</option>
+              <option value="256">{{ t('aesEncryptor.key256') }}</option>
             </select>
           </div>
           
@@ -46,13 +46,13 @@
               @click="processData"
               class="flex-1 px-4 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
             >
-              {{ mode === 'encrypt' ? '加密' : '解密' }}
+              {{ mode === 'encrypt' ? t('aesEncryptor.encrypt') : t('aesEncryptor.decrypt') }}
             </button>
             <button
               @click="clearAll"
               class="px-4 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
             >
-              清空
+              {{ t('aesEncryptor.clear') }}
             </button>
           </div>
         </div>
@@ -62,11 +62,11 @@
     <!-- 数据输入 -->
     <div class="space-y-4">
       <h3 class="text-lg font-semibold text-gray-900">
-        {{ mode === 'encrypt' ? '明文输入' : '密文输入' }}
+        {{ mode === 'encrypt' ? t('aesEncryptor.plaintextInput') : t('aesEncryptor.ciphertextInput') }}
       </h3>
       <textarea
         v-model="inputData"
-        :placeholder="mode === 'encrypt' ? '输入要加密的明文...' : '输入要解密的密文...'"
+        :placeholder="mode === 'encrypt' ? t('aesEncryptor.enterPlaintext') : t('aesEncryptor.enterCiphertext')"
         class="w-full h-32 p-4 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500"
       ></textarea>
     </div>
@@ -74,7 +74,7 @@
     <!-- 处理结果 -->
     <div v-if="processedData" class="space-y-4">
       <h3 class="text-lg font-semibold text-gray-900">
-        {{ mode === 'encrypt' ? '加密结果' : '解密结果' }}
+        {{ mode === 'encrypt' ? t('aesEncryptor.encryptionResult') : t('aesEncryptor.decryptionResult') }}
       </h3>
       <div class="bg-gray-900 text-white p-4 rounded-lg">
         <div class="font-mono text-sm break-all">{{ processedData }}</div>
@@ -85,13 +85,13 @@
           @click="copyResult"
           class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
         >
-          复制结果
+          {{ t('aesEncryptor.copyResult') }}
         </button>
         <button
           @click="copyAll"
           class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
         >
-          复制全部
+          {{ t('aesEncryptor.copyAll') }}
         </button>
       </div>
     </div>
@@ -105,11 +105,11 @@
           </svg>
         </div>
         <div class="ml-3">
-          <h4 class="text-sm font-medium text-yellow-800">安全提示</h4>
+          <h4 class="text-sm font-medium text-yellow-800">{{ t('aesEncryptor.securityTip') }}</h4>
           <div class="mt-2 text-sm text-yellow-700">
-            <p>• 请妥善保管您的加密密钥，丢失密钥将无法解密数据</p>
-            <p>• 建议使用强密码作为加密密钥</p>
-            <p>• 此工具仅用于演示，生产环境请使用专业的加密库</p>
+            <p>• {{ t('aesEncryptor.securityTip1') }}</p>
+            <p>• {{ t('aesEncryptor.securityTip2') }}</p>
+            <p>• {{ t('aesEncryptor.securityTip3') }}</p>
           </div>
         </div>
       </div>
@@ -117,7 +117,7 @@
 
     <!-- 示例数据 -->
     <div class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">示例数据</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('aesEncryptor.exampleData') }}</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div
           v-for="example in examples"
@@ -135,26 +135,29 @@
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
       <div class="bg-red-50 p-4 rounded-lg text-center">
         <div class="text-2xl font-bold text-red-600">{{ inputData.length }}</div>
-        <div class="text-sm text-gray-600">输入字符</div>
+        <div class="text-sm text-gray-600">{{ t('aesEncryptor.inputChars') }}</div>
       </div>
       <div class="bg-orange-50 p-4 rounded-lg text-center">
         <div class="text-2xl font-bold text-orange-600">{{ processedData ? processedData.length : 0 }}</div>
-        <div class="text-sm text-gray-600">输出字符</div>
+        <div class="text-sm text-gray-600">{{ t('aesEncryptor.outputChars') }}</div>
       </div>
       <div class="bg-yellow-50 p-4 rounded-lg text-center">
         <div class="text-2xl font-bold text-yellow-600">{{ keyLength }}</div>
-        <div class="text-sm text-gray-600">密钥长度</div>
+        <div class="text-sm text-gray-600">{{ t('aesEncryptor.keyLength') }}</div>
       </div>
       <div class="bg-green-50 p-4 rounded-lg text-center">
-        <div class="text-2xl font-bold text-green-600">{{ mode === 'encrypt' ? '加密' : '解密' }}</div>
-        <div class="text-sm text-gray-600">操作模式</div>
+        <div class="text-2xl font-bold text-green-600">{{ mode === 'encrypt' ? t('aesEncryptor.encrypt') : t('aesEncryptor.decrypt') }}</div>
+        <div class="text-sm text-gray-600">{{ t('aesEncryptor.operationMode') }}</div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const encryptionKey = ref('')
 const mode = ref('encrypt')
@@ -162,22 +165,22 @@ const keyLength = ref('256')
 const inputData = ref('')
 const processedData = ref('')
 
-const examples = ref([
+const examples = computed(() => [
   {
-    name: '简单文本',
-    description: '加密简单文本消息',
+    name: t('aesEncryptor.examples.simpleText'),
+    description: t('aesEncryptor.examples.simpleTextDesc'),
     data: 'Hello, World!',
     key: 'mySecretKey123'
   },
   {
-    name: '敏感信息',
-    description: '加密敏感信息',
+    name: t('aesEncryptor.examples.sensitiveInfo'),
+    description: t('aesEncryptor.examples.sensitiveInfoDesc'),
     data: 'password: mypassword123',
     key: 'strongKey456'
   },
   {
-    name: 'JSON数据',
-    description: '加密JSON格式数据',
+    name: t('aesEncryptor.examples.jsonData'),
+    description: t('aesEncryptor.examples.jsonDataDesc'),
     data: '{"username": "admin", "password": "secret"}',
     key: 'jsonKey789'
   }
@@ -185,7 +188,7 @@ const examples = ref([
 
 const processData = () => {
   if (!inputData.value || !encryptionKey.value) {
-    alert('请输入数据和密钥')
+    alert(t('aesEncryptor.enterDataAndKey'))
     return
   }
   

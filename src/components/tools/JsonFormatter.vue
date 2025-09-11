@@ -2,7 +2,7 @@
   <div class="space-y-2">
     <!-- 示例数据 -->
     <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-1">
-      <h4 class="font-medium text-blue-900 dark:text-blue-100 mb-1">示例数据</h4>
+      <h4 class="font-medium text-blue-900 dark:text-blue-100 mb-1">{{ t('jsonFormatter.exampleData') }}</h4>
       <div class="flex flex-wrap gap-1">
         <button
           v-for="example in examples"
@@ -22,27 +22,27 @@
         :disabled="!inputJson.trim()"
         class="px-3 py-1.5 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
       >
-        格式化
+        {{ t('jsonFormatter.format') }}
       </button>
       <button
         @click="minifyJson"
         :disabled="!inputJson.trim()"
         class="px-3 py-1.5 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
       >
-        压缩
+        {{ t('jsonFormatter.minify') }}
       </button>
       <button
         @click="validateJson"
         :disabled="!inputJson.trim()"
         class="px-3 py-1.5 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
       >
-        验证
+        {{ t('jsonFormatter.validate') }}
       </button>
       <button
         @click="clearInput"
         class="px-3 py-1.5 bg-gray-500 text-white rounded-md hover:bg-gray-600 transition-colors text-sm"
       >
-        清空
+        {{ t('jsonFormatter.clear') }}
       </button>
     </div>
 
@@ -50,20 +50,20 @@
       <!-- 输入区域 -->
       <div class="space-y-1">
         <div class="flex items-center justify-between">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">JSON 输入</h3>
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{{ t('jsonFormatter.jsonInput') }}</h3>
           <div class="flex space-x-2">
             <button
               @click="copyInput"
               :disabled="!inputJson.trim()"
               class="px-2 py-1 bg-gray-500 text-white rounded text-xs hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              复制
+              {{ t('jsonFormatter.copy') }}
             </button>
           </div>
         </div>
         <textarea
           v-model="inputJson"
-          placeholder="请输入JSON数据，或点击上方示例按钮加载示例数据..."
+          :placeholder="t('jsonFormatter.inputPlaceholder')"
           class="w-full h-96 p-1 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg font-mono text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
         ></textarea>
         <div v-if="error" class="bg-red-50 border border-red-200 rounded-lg p-3">
@@ -83,28 +83,28 @@
       <!-- 输出区域 -->
       <div class="space-y-1">
         <div class="flex items-center justify-between">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">格式化结果</h3>
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{{ t('jsonFormatter.formattedResult') }}</h3>
           <div class="flex space-x-2">
             <button
               @click="copyResult"
               :disabled="!formattedJson"
               class="px-2 py-1 bg-blue-500 text-white rounded text-xs hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              复制结果
+              {{ t('jsonFormatter.copyResult') }}
             </button>
             <button
               @click="downloadJson"
               :disabled="!formattedJson"
               class="px-2 py-1 bg-green-500 text-white rounded text-xs hover:bg-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              下载
+              {{ t('jsonFormatter.download') }}
             </button>
           </div>
         </div>
         <div class="relative">
-          <pre class="w-full h-96 p-1 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-lg overflow-auto text-sm font-mono">{{ formattedJson || '格式化结果将显示在这里...' }}</pre>
+          <pre class="w-full h-96 p-1 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-lg overflow-auto text-sm font-mono">{{ formattedJson || t('jsonFormatter.resultPlaceholder') }}</pre>
           <div v-if="!formattedJson" class="absolute inset-0 flex items-center justify-center text-gray-400 dark:text-gray-500">
-            暂无结果
+            {{ t('jsonFormatter.noResult') }}
           </div>
         </div>
       </div>
@@ -113,19 +113,19 @@
     <!-- 统计信息 -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-1">
       <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
-        <div class="text-sm text-gray-600 dark:text-gray-400">字符数</div>
+        <div class="text-sm text-gray-600 dark:text-gray-400">{{ t('jsonFormatter.charCount') }}</div>
         <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">{{ inputJson.length }}</div>
       </div>
       <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
-        <div class="text-sm text-gray-600 dark:text-gray-400">行数</div>
+        <div class="text-sm text-gray-600 dark:text-gray-400">{{ t('jsonFormatter.lineCount') }}</div>
         <div class="text-2xl font-bold text-green-600 dark:text-green-400">{{ inputJson.split('\n').length }}</div>
       </div>
       <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
-        <div class="text-sm text-gray-600 dark:text-gray-400">对象数</div>
+        <div class="text-sm text-gray-600 dark:text-gray-400">{{ t('jsonFormatter.objectCount') }}</div>
         <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">{{ objectCount }}</div>
       </div>
       <div class="bg-orange-50 dark:bg-orange-900/20 p-2 rounded-lg">
-        <div class="text-sm text-gray-600 dark:text-gray-400">数组数</div>
+        <div class="text-sm text-gray-600 dark:text-gray-400">{{ t('jsonFormatter.arrayCount') }}</div>
         <div class="text-2xl font-bold text-orange-600 dark:text-orange-400">{{ arrayCount }}</div>
       </div>
     </div>
@@ -134,7 +134,10 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { AlertCircle, CheckCircle } from 'lucide-vue-next'
+
+const { t } = useI18n()
 
 const inputJson = ref('')
 const formattedJson = ref('')
@@ -142,9 +145,9 @@ const error = ref('')
 const successMessage = ref('')
 
 // 示例数据
-const examples = ref([
+const examples = computed(() => [
   {
-    name: '用户信息',
+    name: t('jsonFormatter.examples.userInfo'),
     data: {
       "id": 1,
       "name": "张三",
@@ -159,7 +162,7 @@ const examples = ref([
     }
   },
   {
-    name: 'API响应',
+    name: t('jsonFormatter.examples.apiResponse'),
     data: {
       "status": "success",
       "data": {
@@ -174,7 +177,7 @@ const examples = ref([
     }
   },
   {
-    name: '配置信息',
+    name: t('jsonFormatter.examples.configInfo'),
     data: {
       "database": {
         "host": "localhost",

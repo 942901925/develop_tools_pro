@@ -2,33 +2,33 @@
   <div class="space-y-6">
     <!-- UUID生成器 -->
     <div class="bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-lg">
-      <h3 class="text-lg font-semibold text-gray-900 mb-4">UUID生成器</h3>
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">{{ t('uuidGenerator.title') }}</h3>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="space-y-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">UUID版本</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('uuidGenerator.uuidVersion') }}</label>
             <select
               v-model="uuidVersion"
               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
             >
-              <option value="v1">UUID v1 (时间戳)</option>
-              <option value="v4">UUID v4 (随机)</option>
-              <option value="v5">UUID v5 (命名空间)</option>
+              <option value="v1">{{ t('uuidGenerator.v1Timestamp') }}</option>
+              <option value="v4">{{ t('uuidGenerator.v4Random') }}</option>
+              <option value="v5">{{ t('uuidGenerator.v5Namespace') }}</option>
             </select>
           </div>
           
           <div v-if="uuidVersion === 'v5'">
-            <label class="block text-sm font-medium text-gray-700 mb-2">命名空间</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('uuidGenerator.namespace') }}</label>
             <input
               v-model="namespace"
-              placeholder="输入命名空间"
+              :placeholder="t('uuidGenerator.enterNamespace')"
               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
             />
           </div>
           
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">生成数量</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('uuidGenerator.generateCount') }}</label>
             <input
               v-model.number="count"
               type="number"
@@ -41,19 +41,19 @@
         
         <div class="space-y-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">格式选项</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('uuidGenerator.formatOptions') }}</label>
             <div class="space-y-2">
               <label class="flex items-center">
                 <input v-model="uppercase" type="checkbox" class="mr-2" />
-                大写字母
+                {{ t('uuidGenerator.uppercase') }}
               </label>
               <label class="flex items-center">
                 <input v-model="hyphens" type="checkbox" checked class="mr-2" />
-                包含连字符
+                {{ t('uuidGenerator.includeHyphens') }}
               </label>
               <label class="flex items-center">
                 <input v-model="braces" type="checkbox" class="mr-2" />
-                包含大括号
+                {{ t('uuidGenerator.includeBraces') }}
               </label>
             </div>
           </div>
@@ -63,13 +63,13 @@
               @click="generateUuids"
               class="flex-1 px-4 py-3 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
             >
-              生成UUID
+              {{ t('uuidGenerator.generate') }}
             </button>
             <button
               @click="clearResults"
               class="px-4 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
             >
-              清空
+              {{ t('uuidGenerator.clear') }}
             </button>
           </div>
         </div>
@@ -79,12 +79,12 @@
     <!-- 生成的UUID -->
     <div v-if="generatedUuids.length > 0" class="space-y-4">
       <div class="flex items-center justify-between">
-        <h3 class="text-lg font-semibold text-gray-900">生成的UUID</h3>
+        <h3 class="text-lg font-semibold text-gray-900">{{ t('uuidGenerator.generatedUuids') }}</h3>
         <button
           @click="copyAll"
           class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
         >
-          复制全部
+          {{ t('uuidGenerator.copyAll') }}
         </button>
       </div>
       
@@ -99,7 +99,7 @@
             @click="copyUuid(uuid)"
             class="px-2 py-1 bg-gray-500 text-white text-xs rounded hover:bg-gray-600 transition-colors"
           >
-            复制
+            {{ t('uuidGenerator.copy') }}
           </button>
         </div>
       </div>
@@ -107,26 +107,26 @@
 
     <!-- UUID信息 -->
     <div v-if="generatedUuids.length > 0" class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">UUID信息</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('uuidGenerator.uuidInfo') }}</h3>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div class="bg-purple-50 p-4 rounded-lg text-center">
           <div class="text-2xl font-bold text-purple-600">{{ generatedUuids.length }}</div>
-          <div class="text-sm text-gray-600">生成数量</div>
+          <div class="text-sm text-gray-600">{{ t('uuidGenerator.generateCount') }}</div>
         </div>
         <div class="bg-blue-50 p-4 rounded-lg text-center">
           <div class="text-2xl font-bold text-blue-600">{{ uuidVersion.toUpperCase() }}</div>
-          <div class="text-sm text-gray-600">UUID版本</div>
+          <div class="text-sm text-gray-600">{{ t('uuidGenerator.uuidVersion') }}</div>
         </div>
         <div class="bg-green-50 p-4 rounded-lg text-center">
           <div class="text-2xl font-bold text-green-600">{{ averageLength }}</div>
-          <div class="text-sm text-gray-600">平均长度</div>
+          <div class="text-sm text-gray-600">{{ t('uuidGenerator.averageLength') }}</div>
         </div>
       </div>
     </div>
 
     <!-- 常用UUID格式 -->
     <div class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">常用UUID格式</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('uuidGenerator.commonFormats') }}</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div
           v-for="format in uuidFormats"
@@ -145,6 +145,9 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const uuidVersion = ref('v4')
 const namespace = ref('')
@@ -154,25 +157,25 @@ const hyphens = ref(true)
 const braces = ref(false)
 const generatedUuids = ref([])
 
-const uuidFormats = ref([
+const uuidFormats = computed(() => [
   {
-    name: '标准格式',
-    description: '带连字符的标准UUID格式',
+    name: t('uuidGenerator.formats.standard'),
+    description: t('uuidGenerator.formats.standardDesc'),
     example: '550e8400-e29b-41d4-a716-446655440000'
   },
   {
-    name: '无连字符',
-    description: '不带连字符的紧凑格式',
+    name: t('uuidGenerator.formats.noHyphens'),
+    description: t('uuidGenerator.formats.noHyphensDesc'),
     example: '550e8400e29b41d4a716446655440000'
   },
   {
-    name: '大括号格式',
-    description: '包含大括号的格式',
+    name: t('uuidGenerator.formats.withBraces'),
+    description: t('uuidGenerator.formats.withBracesDesc'),
     example: '{550e8400-e29b-41d4-a716-446655440000}'
   },
   {
-    name: '大写格式',
-    description: '全大写字母格式',
+    name: t('uuidGenerator.formats.uppercase'),
+    description: t('uuidGenerator.formats.uppercaseDesc'),
     example: '550E8400-E29B-41D4-A716-446655440000'
   }
 ])

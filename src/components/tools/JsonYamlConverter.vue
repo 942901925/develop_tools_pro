@@ -4,25 +4,25 @@
       <!-- JSON输入 -->
       <div class="space-y-4">
         <div class="flex items-center justify-between">
-          <h3 class="text-lg font-semibold text-gray-900">JSON 输入</h3>
+          <h3 class="text-lg font-semibold text-gray-900">{{ t('jsonYamlConverter.jsonInput') }}</h3>
           <div class="flex space-x-2">
             <button
               @click="jsonToYaml"
               class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
             >
-              JSON → YAML
+              {{ t('jsonYamlConverter.jsonToYaml') }}
             </button>
             <button
               @click="clearJson"
               class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
             >
-              清空
+              {{ t('jsonYamlConverter.clear') }}
             </button>
           </div>
         </div>
         <textarea
           v-model="jsonInput"
-          placeholder="请输入JSON数据..."
+          :placeholder="t('jsonYamlConverter.enterJsonData')"
           class="w-full h-64 p-4 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
         ></textarea>
         <div v-if="jsonError" class="text-red-600 text-sm">{{ jsonError }}</div>
@@ -31,12 +31,12 @@
       <!-- YAML输出 -->
       <div class="space-y-4">
         <div class="flex items-center justify-between">
-          <h3 class="text-lg font-semibold text-gray-900">YAML 输出</h3>
+          <h3 class="text-lg font-semibold text-gray-900">{{ t('jsonYamlConverter.yamlOutput') }}</h3>
           <button
             @click="copyYaml"
             class="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
           >
-            复制YAML
+            {{ t('jsonYamlConverter.copyYaml') }}
           </button>
         </div>
         <pre class="w-full h-64 p-4 bg-gray-100 border border-gray-300 rounded-lg overflow-auto text-sm">{{ yamlOutput }}</pre>
@@ -48,25 +48,25 @@
       <!-- YAML输入 -->
       <div class="space-y-4">
         <div class="flex items-center justify-between">
-          <h3 class="text-lg font-semibold text-gray-900">YAML 输入</h3>
+          <h3 class="text-lg font-semibold text-gray-900">{{ t('jsonYamlConverter.yamlInput') }}</h3>
           <div class="flex space-x-2">
             <button
               @click="yamlToJson"
               class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
             >
-              YAML → JSON
+              {{ t('jsonYamlConverter.yamlToJson') }}
             </button>
             <button
               @click="clearYaml"
               class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
             >
-              清空
+              {{ t('jsonYamlConverter.clear') }}
             </button>
           </div>
         </div>
         <textarea
           v-model="yamlInput"
-          placeholder="请输入YAML数据..."
+          :placeholder="t('jsonYamlConverter.enterYamlData')"
           class="w-full h-64 p-4 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500"
         ></textarea>
         <div v-if="yamlError" class="text-red-600 text-sm">{{ yamlError }}</div>
@@ -75,12 +75,12 @@
       <!-- JSON输出 -->
       <div class="space-y-4">
         <div class="flex items-center justify-between">
-          <h3 class="text-lg font-semibold text-gray-900">JSON 输出</h3>
+          <h3 class="text-lg font-semibold text-gray-900">{{ t('jsonYamlConverter.jsonOutput') }}</h3>
           <button
             @click="copyJson"
             class="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
           >
-            复制JSON
+            {{ t('jsonYamlConverter.copyJson') }}
           </button>
         </div>
         <pre class="w-full h-64 p-4 bg-gray-100 border border-gray-300 rounded-lg overflow-auto text-sm">{{ jsonOutput }}</pre>
@@ -89,7 +89,7 @@
 
     <!-- 示例数据 -->
     <div class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">示例数据</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('jsonYamlConverter.exampleData') }}</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div
           v-for="example in examples"
@@ -107,19 +107,19 @@
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
       <div class="bg-blue-50 p-4 rounded-lg text-center">
         <div class="text-2xl font-bold text-blue-600">{{ jsonInput.length }}</div>
-        <div class="text-sm text-gray-600">JSON字符数</div>
+        <div class="text-sm text-gray-600">{{ t('jsonYamlConverter.jsonCharCount') }}</div>
       </div>
       <div class="bg-green-50 p-4 rounded-lg text-center">
         <div class="text-2xl font-bold text-green-600">{{ yamlInput.length }}</div>
-        <div class="text-sm text-gray-600">YAML字符数</div>
+        <div class="text-sm text-gray-600">{{ t('jsonYamlConverter.yamlCharCount') }}</div>
       </div>
       <div class="bg-purple-50 p-4 rounded-lg text-center">
         <div class="text-2xl font-bold text-purple-600">{{ conversionRatio }}%</div>
-        <div class="text-sm text-gray-600">转换比</div>
+        <div class="text-sm text-gray-600">{{ t('jsonYamlConverter.conversionRatio') }}</div>
       </div>
       <div class="bg-orange-50 p-4 rounded-lg text-center">
-        <div class="text-2xl font-bold text-orange-600">{{ hasError ? '有错误' : '正常' }}</div>
-        <div class="text-sm text-gray-600">状态</div>
+        <div class="text-2xl font-bold text-orange-600">{{ hasError ? t('jsonYamlConverter.hasError') : t('jsonYamlConverter.normal') }}</div>
+        <div class="text-sm text-gray-600">{{ t('jsonYamlConverter.status') }}</div>
       </div>
     </div>
   </div>
@@ -127,6 +127,9 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const jsonInput = ref('')
 const yamlOutput = ref('')
@@ -135,22 +138,22 @@ const jsonOutput = ref('')
 const jsonError = ref('')
 const yamlError = ref('')
 
-const examples = ref([
+const examples = computed(() => [
   {
-    name: '简单对象',
-    description: '基本的JSON对象示例',
+    name: t('jsonYamlConverter.examples.simpleObject.name'),
+    description: t('jsonYamlConverter.examples.simpleObject.description'),
     json: '{"name": "张三", "age": 25, "city": "北京"}',
     yaml: 'name: 张三\nage: 25\ncity: 北京'
   },
   {
-    name: '嵌套对象',
-    description: '包含嵌套结构的对象',
+    name: t('jsonYamlConverter.examples.nestedObject.name'),
+    description: t('jsonYamlConverter.examples.nestedObject.description'),
     json: '{"user": {"name": "李四", "profile": {"email": "li@example.com", "phone": "13800138000"}}, "settings": {"theme": "dark", "language": "zh-CN"}}',
     yaml: 'user:\n  name: 李四\n  profile:\n    email: li@example.com\n    phone: "13800138000"\nsettings:\n  theme: dark\n  language: zh-CN'
   },
   {
-    name: '数组数据',
-    description: '包含数组的JSON数据',
+    name: t('jsonYamlConverter.examples.arrayData.name'),
+    description: t('jsonYamlConverter.examples.arrayData.description'),
     json: '{"items": ["苹果", "香蕉", "橙子"], "counts": [5, 3, 8], "metadata": {"total": 16, "categories": ["水果"]}}',
     yaml: 'items:\n  - 苹果\n  - 香蕉\n  - 橙子\ncounts:\n  - 5\n  - 3\n  - 8\nmetadata:\n  total: 16\n  categories:\n    - 水果'
   }
@@ -171,7 +174,7 @@ const jsonToYaml = () => {
     yamlOutput.value = convertToYaml(obj)
     jsonError.value = ''
   } catch (e) {
-    jsonError.value = 'JSON格式错误: ' + e.message
+    jsonError.value = t('jsonYamlConverter.jsonFormatError') + ': ' + e.message
     yamlOutput.value = ''
   }
 }
@@ -182,7 +185,7 @@ const yamlToJson = () => {
     jsonOutput.value = JSON.stringify(obj, null, 2)
     yamlError.value = ''
   } catch (e) {
-    yamlError.value = 'YAML格式错误: ' + e.message
+    yamlError.value = t('jsonYamlConverter.yamlFormatError') + ': ' + e.message
     jsonOutput.value = ''
   }
 }

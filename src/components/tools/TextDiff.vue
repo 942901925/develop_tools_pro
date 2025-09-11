@@ -4,58 +4,58 @@
       <!-- 原始文本 -->
       <div class="space-y-4">
         <div class="flex items-center justify-between">
-          <h3 class="text-lg font-semibold text-gray-900">原始文本</h3>
+          <h3 class="text-lg font-semibold text-gray-900">{{ t('textDiff.originalText') }}</h3>
           <div class="flex space-x-2">
             <button
               @click="clearText1"
               class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
             >
-              清空
+              {{ t('textDiff.clear') }}
             </button>
             <button
               @click="loadSample1"
               class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
             >
-              示例1
+              {{ t('textDiff.sample1') }}
             </button>
           </div>
         </div>
         <textarea
           v-model="text1"
-          placeholder="输入第一段文本..."
+          :placeholder="t('textDiff.enterFirstText')"
           class="w-full h-64 p-4 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
         ></textarea>
         <div class="text-sm text-gray-600">
-          字符数: {{ text1.length }} | 行数: {{ text1.split('\n').length }}
+          {{ t('textDiff.charCount') }}: {{ text1.length }} | {{ t('textDiff.lineCount') }}: {{ text1.split('\n').length }}
         </div>
       </div>
 
       <!-- 对比文本 -->
       <div class="space-y-4">
         <div class="flex items-center justify-between">
-          <h3 class="text-lg font-semibold text-gray-900">对比文本</h3>
+          <h3 class="text-lg font-semibold text-gray-900">{{ t('textDiff.compareText') }}</h3>
           <div class="flex space-x-2">
             <button
               @click="clearText2"
               class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
             >
-              清空
+              {{ t('textDiff.clear') }}
             </button>
             <button
               @click="loadSample2"
               class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
             >
-              示例2
+              {{ t('textDiff.sample2') }}
             </button>
           </div>
         </div>
         <textarea
           v-model="text2"
-          placeholder="输入第二段文本..."
+          :placeholder="t('textDiff.enterSecondText')"
           class="w-full h-64 p-4 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500"
         ></textarea>
         <div class="text-sm text-gray-600">
-          字符数: {{ text2.length }} | 行数: {{ text2.split('\n').length }}
+          {{ t('textDiff.charCount') }}: {{ text2.length }} | {{ t('textDiff.lineCount') }}: {{ text2.split('\n').length }}
         </div>
       </div>
     </div>
@@ -67,31 +67,31 @@
         :disabled="!text1 || !text2"
         class="px-8 py-3 bg-purple-500 text-white rounded-lg hover:bg-purple-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors font-medium"
       >
-        开始对比
+        {{ t('textDiff.startCompare') }}
       </button>
     </div>
 
     <!-- 对比结果 -->
     <div v-if="diffResult" class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">对比结果</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('textDiff.compareResult') }}</h3>
       
       <!-- 统计信息 -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div class="bg-red-50 p-4 rounded-lg text-center">
           <div class="text-2xl font-bold text-red-600">{{ diffResult.deletions }}</div>
-          <div class="text-sm text-gray-600">删除行</div>
+          <div class="text-sm text-gray-600">{{ t('textDiff.deletedLines') }}</div>
         </div>
         <div class="bg-green-50 p-4 rounded-lg text-center">
           <div class="text-2xl font-bold text-green-600">{{ diffResult.additions }}</div>
-          <div class="text-sm text-gray-600">新增行</div>
+          <div class="text-sm text-gray-600">{{ t('textDiff.addedLines') }}</div>
         </div>
         <div class="bg-blue-50 p-4 rounded-lg text-center">
           <div class="text-2xl font-bold text-blue-600">{{ diffResult.changes }}</div>
-          <div class="text-sm text-gray-600">修改行</div>
+          <div class="text-sm text-gray-600">{{ t('textDiff.modifiedLines') }}</div>
         </div>
         <div class="bg-purple-50 p-4 rounded-lg text-center">
           <div class="text-2xl font-bold text-purple-600">{{ diffResult.similarity }}%</div>
-          <div class="text-sm text-gray-600">相似度</div>
+          <div class="text-sm text-gray-600">{{ t('textDiff.similarity') }}</div>
         </div>
       </div>
 
@@ -103,7 +103,7 @@
 
     <!-- 逐行对比 -->
     <div v-if="lineDiffResult.length > 0" class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">逐行对比</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('textDiff.lineByLineCompare') }}</h3>
       <div class="space-y-2">
         <div
           v-for="(line, index) in lineDiffResult"
@@ -154,6 +154,9 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const text1 = ref('')
 const text2 = ref('')

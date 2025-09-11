@@ -7,7 +7,7 @@
           <input
             v-model="searchQuery"
             type="text"
-            placeholder="搜索状态码或描述..."
+            :placeholder="t('httpStatusCodes.searchPlaceholder')"
             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
@@ -16,12 +16,12 @@
             v-model="selectedCategory"
             class="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           >
-            <option value="">所有分类</option>
-            <option value="1xx">1xx - 信息响应</option>
-            <option value="2xx">2xx - 成功响应</option>
-            <option value="3xx">3xx - 重定向</option>
-            <option value="4xx">4xx - 客户端错误</option>
-            <option value="5xx">5xx - 服务器错误</option>
+            <option value="">{{ t('httpStatusCodes.allCategories') }}</option>
+            <option value="1xx">{{ t('httpStatusCodes.categories.informational') }}</option>
+            <option value="2xx">{{ t('httpStatusCodes.categories.success') }}</option>
+            <option value="3xx">{{ t('httpStatusCodes.categories.redirection') }}</option>
+            <option value="4xx">{{ t('httpStatusCodes.categories.clientError') }}</option>
+            <option value="5xx">{{ t('httpStatusCodes.categories.serverError') }}</option>
           </select>
         </div>
       </div>
@@ -57,7 +57,7 @@
         <p class="text-sm text-gray-600 mb-3">{{ statusCode.description }}</p>
         
         <div v-if="statusCode.commonUse" class="text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded">
-          常用
+          {{ t('httpStatusCodes.common') }}
         </div>
       </div>
     </div>
@@ -88,37 +88,37 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- 基本信息 -->
         <div class="space-y-4">
-          <h3 class="font-medium text-gray-900">基本信息</h3>
+          <h3 class="font-medium text-gray-900">{{ t('httpStatusCodes.basicInfo') }}</h3>
           <div class="space-y-2 text-sm">
             <div class="flex justify-between">
-              <span class="text-gray-500">状态码:</span>
+              <span class="text-gray-500">{{ t('httpStatusCodes.statusCode') }}:</span>
               <span class="font-mono">{{ selectedCode.code }}</span>
             </div>
             <div class="flex justify-between">
-              <span class="text-gray-500">分类:</span>
+              <span class="text-gray-500">{{ t('httpStatusCodes.category') }}:</span>
               <span>{{ selectedCode.category }}</span>
             </div>
             <div class="flex justify-between">
-              <span class="text-gray-500">标准:</span>
+              <span class="text-gray-500">{{ t('httpStatusCodes.standard') }}:</span>
               <span>{{ selectedCode.standard }}</span>
             </div>
             <div class="flex justify-between">
-              <span class="text-gray-500">常用程度:</span>
-              <span>{{ selectedCode.commonUse ? '常用' : '不常用' }}</span>
+              <span class="text-gray-500">{{ t('httpStatusCodes.commonUsage') }}:</span>
+              <span>{{ selectedCode.commonUse ? t('httpStatusCodes.common') : t('httpStatusCodes.uncommon') }}</span>
             </div>
           </div>
         </div>
         
         <!-- 使用场景 -->
         <div class="space-y-4">
-          <h3 class="font-medium text-gray-900">使用场景</h3>
+          <h3 class="font-medium text-gray-900">{{ t('httpStatusCodes.usageScenarios') }}</h3>
           <div class="space-y-2 text-sm">
             <div v-if="selectedCode.whenToUse">
-              <span class="text-gray-500 block mb-1">何时使用:</span>
+              <span class="text-gray-500 block mb-1">{{ t('httpStatusCodes.whenToUse') }}:</span>
               <p class="text-gray-700">{{ selectedCode.whenToUse }}</p>
             </div>
             <div v-if="selectedCode.example">
-              <span class="text-gray-500 block mb-1">示例:</span>
+              <span class="text-gray-500 block mb-1">{{ t('httpStatusCodes.example') }}:</span>
               <p class="text-gray-700 font-mono text-xs bg-gray-50 p-2 rounded">{{ selectedCode.example }}</p>
             </div>
           </div>
@@ -127,7 +127,7 @@
       
       <!-- 相关状态码 -->
       <div v-if="selectedCode.related && selectedCode.related.length > 0" class="mt-6">
-        <h3 class="font-medium text-gray-900 mb-3">相关状态码</h3>
+        <h3 class="font-medium text-gray-900 mb-3">{{ t('httpStatusCodes.relatedStatusCodes') }}</h3>
         <div class="flex flex-wrap gap-2">
           <button
             v-for="relatedCode in selectedCode.related"
@@ -145,6 +145,9 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 import { Copy, X } from 'lucide-vue-next'
 
 const searchQuery = ref('')

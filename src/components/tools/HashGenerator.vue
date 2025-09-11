@@ -2,21 +2,21 @@
   <div class="space-y-6">
     <!-- 哈希生成器 -->
     <div class="bg-gradient-to-r from-red-50 to-orange-50 p-6 rounded-lg">
-      <h3 class="text-lg font-semibold text-gray-900 mb-4">哈希生成器</h3>
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">{{ t('hashGenerator.title') }}</h3>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="space-y-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">输入文本</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('hashGenerator.inputText') }}</label>
             <textarea
               v-model="inputText"
-              placeholder="输入要计算哈希的文本..."
+              :placeholder="t('hashGenerator.inputPlaceholder')"
               class="w-full h-32 p-3 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500"
             ></textarea>
           </div>
           
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">哈希算法</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('hashGenerator.algorithm') }}</label>
             <select
               v-model="selectedAlgorithm"
               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
@@ -31,15 +31,15 @@
         
         <div class="space-y-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">输出格式</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('hashGenerator.outputFormat') }}</label>
             <div class="space-y-2">
               <label class="flex items-center">
                 <input v-model="uppercase" type="checkbox" class="mr-2" />
-                大写字母
+                {{ t('hashGenerator.uppercase') }}
               </label>
               <label class="flex items-center">
                 <input v-model="includeInput" type="checkbox" class="mr-2" />
-                包含输入文本
+                {{ t('hashGenerator.includeInput') }}
               </label>
             </div>
           </div>
@@ -49,13 +49,13 @@
               @click="generateHash"
               class="flex-1 px-4 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
             >
-              生成哈希
+              {{ t('hashGenerator.generate') }}
             </button>
             <button
               @click="clearInput"
               class="px-4 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
             >
-              清空
+              {{ t('hashGenerator.clear') }}
             </button>
           </div>
         </div>
@@ -64,7 +64,7 @@
 
     <!-- 哈希结果 -->
     <div v-if="hashResult" class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">哈希结果</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('hashGenerator.result') }}</h3>
       
       <div class="bg-gray-900 text-white p-4 rounded-lg">
         <div class="font-mono text-sm break-all">{{ hashResult }}</div>
@@ -75,38 +75,38 @@
           @click="copyHash"
           class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
         >
-          复制哈希
+          {{ t('hashGenerator.copyHash') }}
         </button>
         <button
           @click="copyAll"
           class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
         >
-          复制全部
+          {{ t('hashGenerator.copyAll') }}
         </button>
       </div>
     </div>
 
     <!-- 批量哈希 -->
     <div class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">批量哈希</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('hashGenerator.batchHash') }}</h3>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-2">输入文本（每行一个）</label>
+          <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('hashGenerator.batchInput') }}</label>
           <textarea
             v-model="batchInput"
-            placeholder="输入多行文本，每行一个..."
+            :placeholder="t('hashGenerator.batchPlaceholder')"
             class="w-full h-32 p-3 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           ></textarea>
           <button
             @click="generateBatchHash"
             class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
           >
-            批量生成
+            {{ t('hashGenerator.batchGenerate') }}
           </button>
         </div>
         
         <div v-if="batchResults.length > 0">
-          <label class="block text-sm font-medium text-gray-700 mb-2">批量结果</label>
+          <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('hashGenerator.batchResult') }}</label>
           <div class="bg-gray-50 p-3 rounded-lg max-h-32 overflow-auto">
             <div
               v-for="(result, index) in batchResults"
@@ -122,36 +122,36 @@
 
     <!-- 哈希验证 -->
     <div class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">哈希验证</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('hashGenerator.verify') }}</h3>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-2">原始文本</label>
+          <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('hashGenerator.originalText') }}</label>
           <textarea
             v-model="verifyText"
-            placeholder="输入要验证的文本..."
+            :placeholder="t('hashGenerator.verifyTextPlaceholder')"
             class="w-full h-24 p-3 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500"
           ></textarea>
         </div>
         
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-2">哈希值</label>
+          <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('hashGenerator.hashValue') }}</label>
           <input
             v-model="verifyHash"
-            placeholder="输入要验证的哈希值..."
+            :placeholder="t('hashGenerator.verifyHashPlaceholder')"
             class="w-full p-3 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500"
           />
           <button
             @click="verifyHashFunction"
             class="mt-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
           >
-            验证哈希
+            {{ t('hashGenerator.verifyHash') }}
           </button>
         </div>
       </div>
       
       <div v-if="verificationResult !== null" class="p-4 rounded-lg" :class="verificationResult ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'">
         <div class="font-medium">
-          {{ verificationResult ? '✓ 哈希验证通过' : '✗ 哈希验证失败' }}
+          {{ verificationResult ? t('hashGenerator.verifySuccess') : t('hashGenerator.verifyFailed') }}
         </div>
       </div>
     </div>
@@ -160,19 +160,19 @@
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
       <div class="bg-red-50 p-4 rounded-lg text-center">
         <div class="text-2xl font-bold text-red-600">{{ inputText.length }}</div>
-        <div class="text-sm text-gray-600">输入字符</div>
+        <div class="text-sm text-gray-600">{{ t('hashGenerator.inputChars') }}</div>
       </div>
       <div class="bg-orange-50 p-4 rounded-lg text-center">
         <div class="text-2xl font-bold text-orange-600">{{ hashLength }}</div>
-        <div class="text-sm text-gray-600">哈希长度</div>
+        <div class="text-sm text-gray-600">{{ t('hashGenerator.hashLength') }}</div>
       </div>
       <div class="bg-yellow-50 p-4 rounded-lg text-center">
         <div class="text-2xl font-bold text-yellow-600">{{ selectedAlgorithm.toUpperCase() }}</div>
-        <div class="text-sm text-gray-600">算法</div>
+        <div class="text-sm text-gray-600">{{ t('hashGenerator.algorithm') }}</div>
       </div>
       <div class="bg-green-50 p-4 rounded-lg text-center">
         <div class="text-2xl font-bold text-green-600">{{ batchResults.length }}</div>
-        <div class="text-sm text-gray-600">批量结果</div>
+        <div class="text-sm text-gray-600">{{ t('hashGenerator.batchCount') }}</div>
       </div>
     </div>
   </div>
@@ -180,6 +180,9 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const inputText = ref('')
 const selectedAlgorithm = ref('md5')

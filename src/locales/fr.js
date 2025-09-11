@@ -225,6 +225,52 @@ export default {
     }
   },
   
+  // Formateur JSON
+  jsonFormatter: {
+    exampleData: 'Données d\'exemple',
+    format: 'Formater',
+    minify: 'Minifier',
+    validate: 'Valider',
+    clear: 'Effacer',
+    jsonInput: 'Entrée JSON',
+    copy: 'Copier',
+    inputPlaceholder: 'Entrez les données JSON, ou cliquez sur les boutons d\'exemple ci-dessus pour charger des échantillons...',
+    formattedResult: 'Résultat formaté',
+    copyResult: 'Copier le résultat',
+    download: 'Télécharger',
+    resultPlaceholder: 'Le résultat formaté sera affiché ici...',
+    noResult: 'Aucun résultat',
+    charCount: 'Caractères',
+    lineCount: 'Lignes',
+    objectCount: 'Objets',
+    arrayCount: 'Tableaux',
+    examples: {
+      userInfo: 'Informations utilisateur',
+      apiResponse: 'Réponse API',
+      configInfo: 'Informations de configuration'
+    }
+  },
+  
+  // Encodeur/Décodeur Base64
+  base64Encoder: {
+    originalData: 'Données originales',
+    encode: 'Encoder',
+    clear: 'Effacer',
+    inputPlaceholder: 'Entrez le texte à encoder...',
+    encodedResult: 'Résultat encodé Base64',
+    copyResult: 'Copier le résultat',
+    base64Data: 'Données Base64',
+    decode: 'Décoder',
+    decodePlaceholder: 'Entrez les données Base64 à décoder...',
+    decodedResult: 'Résultat décodé',
+    originalCharCount: 'Caractères originaux',
+    encodedCharCount: 'Caractères encodés',
+    compressionRatio: 'Ratio de compression',
+    encodeStatus: 'Statut d\'encodage',
+    encoded: 'Encodé',
+    notEncoded: 'Non encodé'
+  },
+  
   // Pied de page
   footer: {
     copyright: '© 2024 Develop Tools Pro. Une collection moderne d\'outils de développement.'

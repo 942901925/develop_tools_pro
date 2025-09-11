@@ -3,34 +3,34 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <!-- 输入区域 -->
       <div class="space-y-4">
-        <h3 class="text-lg font-semibold text-gray-900">User-Agent 解析</h3>
+        <h3 class="text-lg font-semibold text-gray-900">{{ t('userAgentParser.title') }}</h3>
         
         <!-- User-Agent 输入 -->
         <div class="space-y-3">
-          <label class="block text-sm font-medium text-gray-700">User-Agent 字符串</label>
+          <label class="block text-sm font-medium text-gray-700">{{ t('userAgentParser.userAgentString') }}</label>
           <textarea
             v-model="userAgent"
             rows="4"
-            placeholder="粘贴 User-Agent 字符串..."
+            :placeholder="t('userAgentParser.pasteUserAgent')"
             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-mono text-sm"
           ></textarea>
         </div>
         
         <!-- 快速选择 -->
         <div class="space-y-3">
-          <label class="block text-sm font-medium text-gray-700">快速选择</label>
+          <label class="block text-sm font-medium text-gray-700">{{ t('userAgentParser.quickSelect') }}</label>
           <div class="grid grid-cols-2 gap-2">
             <button
               @click="getMyUserAgent"
               class="btn-secondary text-sm"
             >
-              我的 User-Agent
+              {{ t('userAgentParser.myUserAgent') }}
             </button>
             <button
               @click="clearInput"
               class="btn-secondary text-sm"
             >
-              清空
+              {{ t('userAgentParser.clear') }}
             </button>
           </div>
         </div>
@@ -41,12 +41,12 @@
           :disabled="!userAgent.trim()"
           class="btn-primary w-full"
         >
-          解析 User-Agent
+          {{ t('userAgentParser.parseUserAgent') }}
         </button>
         
         <!-- 历史记录 -->
         <div v-if="searchHistory.length > 0" class="space-y-3">
-          <h4 class="font-medium text-gray-900">解析历史</h4>
+          <h4 class="font-medium text-gray-900">{{ t('userAgentParser.parseHistory') }}</h4>
           <div class="space-y-2 max-h-40 overflow-y-auto">
             <button
               v-for="(item, index) in searchHistory.slice(0, 5)"
@@ -61,88 +61,88 @@
             @click="clearHistory"
             class="text-sm text-red-600 hover:text-red-700"
           >
-            清空历史
+            {{ t('userAgentParser.clearHistory') }}
           </button>
         </div>
       </div>
       
       <!-- 结果区域 -->
       <div class="space-y-4">
-        <h3 class="text-lg font-semibold text-gray-900">解析结果</h3>
+        <h3 class="text-lg font-semibold text-gray-900">{{ t('userAgentParser.parseResult') }}</h3>
         
         <div v-if="parsedInfo" class="space-y-4">
           <!-- 浏览器信息 -->
           <div class="bg-white border border-gray-200 rounded-lg p-4">
-            <h4 class="font-medium text-gray-900 mb-3">浏览器信息</h4>
+            <h4 class="font-medium text-gray-900 mb-3">{{ t('userAgentParser.browserInfo') }}</h4>
             <div class="grid grid-cols-2 gap-3 text-sm">
               <div>
-                <span class="text-gray-500">浏览器:</span>
-                <span class="ml-2">{{ parsedInfo.browser || '未知' }}</span>
+                <span class="text-gray-500">{{ t('userAgentParser.browser') }}:</span>
+                <span class="ml-2">{{ parsedInfo.browser || t('userAgentParser.unknown') }}</span>
               </div>
               <div>
-                <span class="text-gray-500">版本:</span>
-                <span class="ml-2">{{ parsedInfo.browserVersion || '未知' }}</span>
+                <span class="text-gray-500">{{ t('userAgentParser.version') }}:</span>
+                <span class="ml-2">{{ parsedInfo.browserVersion || t('userAgentParser.unknown') }}</span>
               </div>
               <div>
-                <span class="text-gray-500">引擎:</span>
-                <span class="ml-2">{{ parsedInfo.engine || '未知' }}</span>
+                <span class="text-gray-500">{{ t('userAgentParser.engine') }}:</span>
+                <span class="ml-2">{{ parsedInfo.engine || t('userAgentParser.unknown') }}</span>
               </div>
               <div>
-                <span class="text-gray-500">引擎版本:</span>
-                <span class="ml-2">{{ parsedInfo.engineVersion || '未知' }}</span>
+                <span class="text-gray-500">{{ t('userAgentParser.engineVersion') }}:</span>
+                <span class="ml-2">{{ parsedInfo.engineVersion || t('userAgentParser.unknown') }}</span>
               </div>
             </div>
           </div>
           
           <!-- 操作系统信息 -->
           <div class="bg-white border border-gray-200 rounded-lg p-4">
-            <h4 class="font-medium text-gray-900 mb-3">操作系统信息</h4>
+            <h4 class="font-medium text-gray-900 mb-3">{{ t('userAgentParser.osInfo') }}</h4>
             <div class="grid grid-cols-2 gap-3 text-sm">
               <div>
-                <span class="text-gray-500">操作系统:</span>
-                <span class="ml-2">{{ parsedInfo.os || '未知' }}</span>
+                <span class="text-gray-500">{{ t('userAgentParser.operatingSystem') }}:</span>
+                <span class="ml-2">{{ parsedInfo.os || t('userAgentParser.unknown') }}</span>
               </div>
               <div>
-                <span class="text-gray-500">版本:</span>
-                <span class="ml-2">{{ parsedInfo.osVersion || '未知' }}</span>
+                <span class="text-gray-500">{{ t('userAgentParser.version') }}:</span>
+                <span class="ml-2">{{ parsedInfo.osVersion || t('userAgentParser.unknown') }}</span>
               </div>
               <div>
-                <span class="text-gray-500">架构:</span>
-                <span class="ml-2">{{ parsedInfo.architecture || '未知' }}</span>
+                <span class="text-gray-500">{{ t('userAgentParser.architecture') }}:</span>
+                <span class="ml-2">{{ parsedInfo.architecture || t('userAgentParser.unknown') }}</span>
               </div>
               <div>
-                <span class="text-gray-500">设备类型:</span>
-                <span class="ml-2">{{ parsedInfo.deviceType || '未知' }}</span>
+                <span class="text-gray-500">{{ t('userAgentParser.deviceType') }}:</span>
+                <span class="ml-2">{{ parsedInfo.deviceType || t('userAgentParser.unknown') }}</span>
               </div>
             </div>
           </div>
           
           <!-- 设备信息 -->
           <div class="bg-white border border-gray-200 rounded-lg p-4">
-            <h4 class="font-medium text-gray-900 mb-3">设备信息</h4>
+            <h4 class="font-medium text-gray-900 mb-3">{{ t('userAgentParser.deviceInfo') }}</h4>
             <div class="grid grid-cols-2 gap-3 text-sm">
               <div>
-                <span class="text-gray-500">设备:</span>
-                <span class="ml-2">{{ parsedInfo.device || '未知' }}</span>
+                <span class="text-gray-500">{{ t('userAgentParser.device') }}:</span>
+                <span class="ml-2">{{ parsedInfo.device || t('userAgentParser.unknown') }}</span>
               </div>
               <div>
-                <span class="text-gray-500">制造商:</span>
-                <span class="ml-2">{{ parsedInfo.manufacturer || '未知' }}</span>
+                <span class="text-gray-500">{{ t('userAgentParser.manufacturer') }}:</span>
+                <span class="ml-2">{{ parsedInfo.manufacturer || t('userAgentParser.unknown') }}</span>
               </div>
               <div>
-                <span class="text-gray-500">移动设备:</span>
-                <span class="ml-2">{{ parsedInfo.isMobile ? '是' : '否' }}</span>
+                <span class="text-gray-500">{{ t('userAgentParser.mobileDevice') }}:</span>
+                <span class="ml-2">{{ parsedInfo.isMobile ? t('userAgentParser.yes') : t('userAgentParser.no') }}</span>
               </div>
               <div>
-                <span class="text-gray-500">平板设备:</span>
-                <span class="ml-2">{{ parsedInfo.isTablet ? '是' : '否' }}</span>
+                <span class="text-gray-500">{{ t('userAgentParser.tabletDevice') }}:</span>
+                <span class="ml-2">{{ parsedInfo.isTablet ? t('userAgentParser.yes') : t('userAgentParser.no') }}</span>
               </div>
             </div>
           </div>
           
           <!-- 原始 User-Agent -->
           <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
-            <h4 class="font-medium text-gray-900 mb-3">原始 User-Agent</h4>
+            <h4 class="font-medium text-gray-900 mb-3">{{ t('userAgentParser.originalUserAgent') }}</h4>
             <div class="bg-white p-3 rounded border font-mono text-xs text-gray-700 break-all">
               {{ userAgent }}
             </div>
@@ -154,13 +154,13 @@
               @click="copyParsedInfo"
               class="btn-secondary flex-1"
             >
-              复制信息
+              {{ t('userAgentParser.copyInfo') }}
             </button>
             <button
               @click="copyUserAgent"
               class="btn-primary flex-1"
             >
-              复制 User-Agent
+              {{ t('userAgentParser.copyUserAgent') }}
             </button>
           </div>
         </div>
@@ -174,7 +174,7 @@
         
         <div v-else class="bg-gray-50 border border-gray-200 rounded-lg p-8 text-center">
           <Monitor class="w-16 h-16 text-gray-300 mx-auto mb-4" />
-          <p class="text-gray-500">输入 User-Agent 字符串开始解析</p>
+          <p class="text-gray-500">{{ t('userAgentParser.enterUserAgentToStart') }}</p>
         </div>
       </div>
     </div>
@@ -183,6 +183,9 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 import { Monitor, AlertCircle } from 'lucide-vue-next'
 
 const userAgent = ref('')

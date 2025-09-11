@@ -3,16 +3,16 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <!-- 输入区域 -->
       <div class="space-y-4">
-        <h3 class="text-lg font-semibold text-gray-900">IP 地址查询</h3>
+        <h3 class="text-lg font-semibold text-gray-900">{{ t('ipLookup.title') }}</h3>
         
         <!-- IP 输入 -->
         <div class="space-y-3">
-          <label class="block text-sm font-medium text-gray-700">IP 地址</label>
+          <label class="block text-sm font-medium text-gray-700">{{ t('ipLookup.ipAddress') }}</label>
           <div class="flex space-x-2">
             <input
               v-model="ipAddress"
               type="text"
-              placeholder="输入 IP 地址，如: 8.8.8.8"
+              :placeholder="t('ipLookup.enterIpAddress')"
               class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
             <button
@@ -20,7 +20,7 @@
               :disabled="isLoading"
               class="btn-secondary whitespace-nowrap"
             >
-              {{ isLoading ? '查询中...' : '我的IP' }}
+              {{ isLoading ? t('ipLookup.querying') : t('ipLookup.myIp') }}
             </button>
           </div>
         </div>
@@ -31,12 +31,12 @@
           :disabled="!isValidIP || isLoading"
           class="btn-primary w-full"
         >
-          {{ isLoading ? '查询中...' : '查询 IP 信息' }}
+          {{ isLoading ? t('ipLookup.querying') : t('ipLookup.queryIpInfo') }}
         </button>
         
         <!-- 历史记录 -->
         <div v-if="searchHistory.length > 0" class="space-y-3">
-          <h4 class="font-medium text-gray-900">查询历史</h4>
+          <h4 class="font-medium text-gray-900">{{ t('ipLookup.searchHistory') }}</h4>
           <div class="space-y-2">
             <button
               v-for="(item, index) in searchHistory.slice(0, 5)"
@@ -44,92 +44,92 @@
               @click="selectFromHistory(item)"
               class="w-full text-left px-3 py-2 bg-gray-50 hover:bg-gray-100 rounded-md text-sm text-gray-700 transition-colors"
             >
-              {{ item.ip }} - {{ item.location || '未知位置' }}
+              {{ item.ip }} - {{ item.location || t('ipLookup.unknownLocation') }}
             </button>
           </div>
           <button
             @click="clearHistory"
             class="text-sm text-red-600 hover:text-red-700"
           >
-            清空历史
+            {{ t('ipLookup.clearHistory') }}
           </button>
         </div>
       </div>
       
       <!-- 结果区域 -->
       <div class="space-y-4">
-        <h3 class="text-lg font-semibold text-gray-900">查询结果</h3>
+        <h3 class="text-lg font-semibold text-gray-900">{{ t('ipLookup.queryResult') }}</h3>
         
         <div v-if="ipInfo" class="space-y-4">
           <!-- 基本信息 -->
           <div class="bg-white border border-gray-200 rounded-lg p-4">
-            <h4 class="font-medium text-gray-900 mb-3">基本信息</h4>
+            <h4 class="font-medium text-gray-900 mb-3">{{ t('ipLookup.basicInfo') }}</h4>
             <div class="grid grid-cols-2 gap-3 text-sm">
               <div>
-                <span class="text-gray-500">IP 地址:</span>
+                <span class="text-gray-500">{{ t('ipLookup.ipAddress') }}:</span>
                 <span class="ml-2 font-mono">{{ ipInfo.ip }}</span>
               </div>
               <div>
-                <span class="text-gray-500">类型:</span>
-                <span class="ml-2">{{ ipInfo.type || '未知' }}</span>
+                <span class="text-gray-500">{{ t('ipLookup.type') }}:</span>
+                <span class="ml-2">{{ ipInfo.type || t('ipLookup.unknown') }}</span>
               </div>
               <div>
-                <span class="text-gray-500">版本:</span>
-                <span class="ml-2">{{ ipInfo.version || '未知' }}</span>
+                <span class="text-gray-500">{{ t('ipLookup.version') }}:</span>
+                <span class="ml-2">{{ ipInfo.version || t('ipLookup.unknown') }}</span>
               </div>
               <div>
-                <span class="text-gray-500">主机名:</span>
-                <span class="ml-2 font-mono">{{ ipInfo.hostname || '无' }}</span>
+                <span class="text-gray-500">{{ t('ipLookup.hostname') }}:</span>
+                <span class="ml-2 font-mono">{{ ipInfo.hostname || t('ipLookup.none') }}</span>
               </div>
             </div>
           </div>
           
           <!-- 地理位置 -->
           <div class="bg-white border border-gray-200 rounded-lg p-4">
-            <h4 class="font-medium text-gray-900 mb-3">地理位置</h4>
+            <h4 class="font-medium text-gray-900 mb-3">{{ t('ipLookup.geoLocation') }}</h4>
             <div class="grid grid-cols-2 gap-3 text-sm">
               <div>
-                <span class="text-gray-500">国家:</span>
-                <span class="ml-2">{{ ipInfo.country || '未知' }}</span>
+                <span class="text-gray-500">{{ t('ipLookup.country') }}:</span>
+                <span class="ml-2">{{ ipInfo.country || t('ipLookup.unknown') }}</span>
               </div>
               <div>
-                <span class="text-gray-500">地区:</span>
-                <span class="ml-2">{{ ipInfo.region || '未知' }}</span>
+                <span class="text-gray-500">{{ t('ipLookup.region') }}:</span>
+                <span class="ml-2">{{ ipInfo.region || t('ipLookup.unknown') }}</span>
               </div>
               <div>
-                <span class="text-gray-500">城市:</span>
-                <span class="ml-2">{{ ipInfo.city || '未知' }}</span>
+                <span class="text-gray-500">{{ t('ipLookup.city') }}:</span>
+                <span class="ml-2">{{ ipInfo.city || t('ipLookup.unknown') }}</span>
               </div>
               <div>
-                <span class="text-gray-500">邮编:</span>
-                <span class="ml-2">{{ ipInfo.postal || '未知' }}</span>
+                <span class="text-gray-500">{{ t('ipLookup.postal') }}:</span>
+                <span class="ml-2">{{ ipInfo.postal || t('ipLookup.unknown') }}</span>
               </div>
               <div class="col-span-2">
-                <span class="text-gray-500">坐标:</span>
-                <span class="ml-2 font-mono">{{ ipInfo.loc || '未知' }}</span>
+                <span class="text-gray-500">{{ t('ipLookup.coordinates') }}:</span>
+                <span class="ml-2 font-mono">{{ ipInfo.loc || t('ipLookup.unknown') }}</span>
               </div>
             </div>
           </div>
           
           <!-- 网络信息 -->
           <div class="bg-white border border-gray-200 rounded-lg p-4">
-            <h4 class="font-medium text-gray-900 mb-3">网络信息</h4>
+            <h4 class="font-medium text-gray-900 mb-3">{{ t('ipLookup.networkInfo') }}</h4>
             <div class="grid grid-cols-2 gap-3 text-sm">
               <div>
                 <span class="text-gray-500">ISP:</span>
-                <span class="ml-2">{{ ipInfo.org || '未知' }}</span>
+                <span class="ml-2">{{ ipInfo.org || t('ipLookup.unknown') }}</span>
               </div>
               <div>
                 <span class="text-gray-500">ASN:</span>
-                <span class="ml-2 font-mono">{{ ipInfo.asn || '未知' }}</span>
+                <span class="ml-2 font-mono">{{ ipInfo.asn || t('ipLookup.unknown') }}</span>
               </div>
               <div>
-                <span class="text-gray-500">时区:</span>
-                <span class="ml-2">{{ ipInfo.timezone || '未知' }}</span>
+                <span class="text-gray-500">{{ t('ipLookup.timezone') }}:</span>
+                <span class="ml-2">{{ ipInfo.timezone || t('ipLookup.unknown') }}</span>
               </div>
               <div>
                 <span class="text-gray-500">UTC:</span>
-                <span class="ml-2">{{ ipInfo.utc_offset || '未知' }}</span>
+                <span class="ml-2">{{ ipInfo.utc_offset || t('ipLookup.unknown') }}</span>
               </div>
             </div>
           </div>
@@ -140,14 +140,14 @@
               @click="copyIPInfo"
               class="btn-secondary flex-1"
             >
-              复制信息
+              {{ t('ipLookup.copyInfo') }}
             </button>
             <button
               @click="viewOnMap"
               :disabled="!ipInfo.loc"
               class="btn-primary flex-1"
             >
-              在地图上查看
+              {{ t('ipLookup.viewOnMap') }}
             </button>
           </div>
         </div>
@@ -161,7 +161,7 @@
         
         <div v-else class="bg-gray-50 border border-gray-200 rounded-lg p-8 text-center">
           <Globe class="w-16 h-16 text-gray-300 mx-auto mb-4" />
-          <p class="text-gray-500">输入 IP 地址开始查询</p>
+          <p class="text-gray-500">{{ t('ipLookup.enterIpToStart') }}</p>
         </div>
       </div>
     </div>
@@ -170,6 +170,9 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 import { Globe, AlertCircle } from 'lucide-vue-next'
 
 const ipAddress = ref('')

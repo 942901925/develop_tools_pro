@@ -4,25 +4,25 @@
       <!-- JSON输入 -->
       <div class="space-y-4">
         <div class="flex items-center justify-between">
-          <h3 class="text-lg font-semibold text-gray-900">JSON 数据</h3>
+          <h3 class="text-lg font-semibold text-gray-900">{{ t('jsonSchemaGenerator.jsonData') }}</h3>
           <div class="flex space-x-2">
             <button
               @click="generateSchema"
               class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
             >
-              生成Schema
+              {{ t('jsonSchemaGenerator.generateSchema') }}
             </button>
             <button
               @click="clearInput"
               class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
             >
-              清空
+              {{ t('jsonSchemaGenerator.clear') }}
             </button>
           </div>
         </div>
         <textarea
           v-model="jsonInput"
-          placeholder="请输入JSON数据..."
+          :placeholder="t('jsonSchemaGenerator.enterJsonData')"
           class="w-full h-64 p-4 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
         ></textarea>
         <div v-if="jsonError" class="text-red-600 text-sm">{{ jsonError }}</div>
@@ -31,12 +31,12 @@
       <!-- Schema输出 -->
       <div class="space-y-4">
         <div class="flex items-center justify-between">
-          <h3 class="text-lg font-semibold text-gray-900">JSON Schema</h3>
+          <h3 class="text-lg font-semibold text-gray-900">{{ t('jsonSchemaGenerator.jsonSchema') }}</h3>
           <button
             @click="copySchema"
             class="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
           >
-            复制Schema
+            {{ t('jsonSchemaGenerator.copySchema') }}
           </button>
         </div>
         <pre class="w-full h-64 p-4 bg-gray-100 border border-gray-300 rounded-lg overflow-auto text-sm">{{ schemaOutput }}</pre>
@@ -45,22 +45,22 @@
 
     <!-- Schema配置选项 -->
     <div class="bg-gray-50 p-6 rounded-lg">
-      <h3 class="text-lg font-semibold text-gray-900 mb-4">Schema 配置选项</h3>
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">{{ t('jsonSchemaGenerator.schemaOptions') }}</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="space-y-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Schema标题</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('jsonSchemaGenerator.schemaTitle') }}</label>
             <input
               v-model="schemaTitle"
-              placeholder="输入Schema标题"
+              :placeholder="t('jsonSchemaGenerator.enterSchemaTitle')"
               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Schema描述</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('jsonSchemaGenerator.schemaDescription') }}</label>
             <input
               v-model="schemaDescription"
-              placeholder="输入Schema描述"
+              :placeholder="t('jsonSchemaGenerator.enterSchemaDescription')"
               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
@@ -69,19 +69,19 @@
           <div>
             <label class="flex items-center">
               <input v-model="includeRequired" type="checkbox" class="mr-2" />
-              包含required字段
+              {{ t('jsonSchemaGenerator.includeRequired') }}
             </label>
           </div>
           <div>
             <label class="flex items-center">
               <input v-model="includeExamples" type="checkbox" class="mr-2" />
-              包含示例值
+              {{ t('jsonSchemaGenerator.includeExamples') }}
             </label>
           </div>
           <div>
             <label class="flex items-center">
               <input v-model="strictMode" type="checkbox" class="mr-2" />
-              严格模式
+              {{ t('jsonSchemaGenerator.strictMode') }}
             </label>
           </div>
         </div>
@@ -90,7 +90,7 @@
 
     <!-- 示例数据 -->
     <div class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">示例数据</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('jsonSchemaGenerator.exampleData') }}</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div
           v-for="example in examples"
@@ -106,26 +106,26 @@
 
     <!-- Schema验证 -->
     <div v-if="schemaOutput" class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">Schema验证</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('jsonSchemaGenerator.schemaValidation') }}</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-2">测试JSON数据</label>
+          <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('jsonSchemaGenerator.testJsonData') }}</label>
           <textarea
             v-model="testJson"
-            placeholder="输入要验证的JSON数据..."
+            :placeholder="t('jsonSchemaGenerator.enterTestJsonData')"
             class="w-full h-32 p-4 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500"
           ></textarea>
           <button
             @click="validateJson"
             class="mt-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
           >
-            验证JSON
+            {{ t('jsonSchemaGenerator.validateJson') }}
           </button>
         </div>
         <div>
-          <div class="text-sm font-medium text-gray-700 mb-2">验证结果</div>
+          <div class="text-sm font-medium text-gray-700 mb-2">{{ t('jsonSchemaGenerator.validationResult') }}</div>
           <div class="p-4 rounded-lg" :class="validationResult.valid ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'">
-            <div class="font-medium">{{ validationResult.valid ? '✓ 验证通过' : '✗ 验证失败' }}</div>
+            <div class="font-medium">{{ validationResult.valid ? t('jsonSchemaGenerator.validationPassed') : t('jsonSchemaGenerator.validationFailed') }}</div>
             <div v-if="validationResult.errors.length > 0" class="mt-2 text-sm">
               <div v-for="error in validationResult.errors" :key="error" class="mb-1">
                 • {{ error }}
@@ -140,19 +140,19 @@
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
       <div class="bg-blue-50 p-4 rounded-lg text-center">
         <div class="text-2xl font-bold text-blue-600">{{ jsonInput.length }}</div>
-        <div class="text-sm text-gray-600">JSON字符数</div>
+        <div class="text-sm text-gray-600">{{ t('jsonSchemaGenerator.jsonCharCount') }}</div>
       </div>
       <div class="bg-green-50 p-4 rounded-lg text-center">
         <div class="text-2xl font-bold text-green-600">{{ schemaOutput.length }}</div>
-        <div class="text-sm text-gray-600">Schema字符数</div>
+        <div class="text-sm text-gray-600">{{ t('jsonSchemaGenerator.schemaCharCount') }}</div>
       </div>
       <div class="bg-purple-50 p-4 rounded-lg text-center">
         <div class="text-2xl font-bold text-purple-600">{{ propertyCount }}</div>
-        <div class="text-sm text-gray-600">属性数量</div>
+        <div class="text-sm text-gray-600">{{ t('jsonSchemaGenerator.propertyCount') }}</div>
       </div>
       <div class="bg-orange-50 p-4 rounded-lg text-center">
         <div class="text-2xl font-bold text-orange-600">{{ schemaLevel }}</div>
-        <div class="text-sm text-gray-600">嵌套层级</div>
+        <div class="text-sm text-gray-600">{{ t('jsonSchemaGenerator.nestingLevel') }}</div>
       </div>
     </div>
   </div>
@@ -160,6 +160,9 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const jsonInput = ref('')
 const schemaOutput = ref('')
@@ -172,20 +175,20 @@ const strictMode = ref(false)
 const testJson = ref('')
 const validationResult = ref({ valid: true, errors: [] })
 
-const examples = ref([
+const examples = computed(() => [
   {
-    name: '用户对象',
-    description: '包含基本用户信息的对象',
+    name: t('jsonSchemaGenerator.examples.userObject.name'),
+    description: t('jsonSchemaGenerator.examples.userObject.description'),
     json: '{"id": 1, "name": "张三", "email": "zhang@example.com", "age": 25, "active": true}'
   },
   {
-    name: '产品列表',
-    description: '包含产品数组的对象',
+    name: t('jsonSchemaGenerator.examples.productList.name'),
+    description: t('jsonSchemaGenerator.examples.productList.description'),
     json: '{"products": [{"id": 1, "name": "商品A", "price": 99.99, "inStock": true}, {"id": 2, "name": "商品B", "price": 149.99, "inStock": false}], "total": 2}'
   },
   {
-    name: '嵌套配置',
-    description: '包含嵌套配置的对象',
+    name: t('jsonSchemaGenerator.examples.nestedConfig.name'),
+    description: t('jsonSchemaGenerator.examples.nestedConfig.description'),
     json: '{"database": {"host": "localhost", "port": 5432, "credentials": {"username": "admin", "password": "secret"}}, "cache": {"enabled": true, "ttl": 3600}}'
   }
 ])
@@ -215,7 +218,7 @@ const generateSchema = () => {
     schemaOutput.value = JSON.stringify(schema, null, 2)
     jsonError.value = ''
   } catch (e) {
-    jsonError.value = 'JSON格式错误: ' + e.message
+    jsonError.value = t('jsonSchemaGenerator.jsonFormatError') + ': ' + e.message
     schemaOutput.value = ''
   }
 }

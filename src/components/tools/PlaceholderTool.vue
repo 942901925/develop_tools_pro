@@ -14,10 +14,10 @@
           </svg>
         </div>
         <div class="ml-3">
-          <h4 class="text-sm font-medium text-blue-800">功能开发中</h4>
+          <h4 class="text-sm font-medium text-blue-800">{{ t('placeholderTool.developing') }}</h4>
           <div class="mt-2 text-sm text-blue-700">
-            <p>此工具正在开发中，敬请期待！</p>
-            <p class="mt-1">预计功能：{{ expectedFeatures }}</p>
+            <p>{{ t('placeholderTool.developingDesc') }}</p>
+            <p class="mt-1">{{ t('placeholderTool.expectedFeatures') }}：{{ expectedFeatures }}</p>
           </div>
         </div>
       </div>
@@ -25,7 +25,7 @@
 
     <!-- 模拟功能演示 -->
     <div class="mt-8 max-w-2xl mx-auto">
-      <h4 class="text-lg font-semibold text-gray-900 mb-4">功能预览</h4>
+      <h4 class="text-lg font-semibold text-gray-900 mb-4">{{ t('placeholderTool.featurePreview') }}</h4>
       <div class="bg-gray-50 rounded-lg p-6">
         <div class="space-y-4">
           <div class="flex items-center space-x-3">
@@ -43,7 +43,7 @@
         </div>
         <div class="mt-4 text-center">
           <button class="px-4 py-2 bg-gray-300 text-gray-600 rounded-lg cursor-not-allowed">
-            功能开发中...
+            {{ t('placeholderTool.developingButton') }}
           </button>
         </div>
       </div>
@@ -53,7 +53,10 @@
 
 <script setup>
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { Code } from 'lucide-vue-next'
+
+const { t } = useI18n()
 
 const props = defineProps({
   toolName: {

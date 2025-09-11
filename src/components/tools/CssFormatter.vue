@@ -4,31 +4,31 @@
       <!-- 输入区域 -->
       <div class="space-y-4">
         <div class="flex items-center justify-between">
-          <h3 class="text-lg font-semibold text-gray-900">CSS 输入</h3>
+          <h3 class="text-lg font-semibold text-gray-900">{{ t('cssFormatter.cssInput') }}</h3>
           <div class="flex space-x-2">
             <button
               @click="formatCss"
               class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
             >
-              格式化
+              {{ t('cssFormatter.format') }}
             </button>
             <button
               @click="minifyCss"
               class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
             >
-              压缩
+              {{ t('cssFormatter.minify') }}
             </button>
             <button
               @click="clearInput"
               class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
             >
-              清空
+              {{ t('cssFormatter.clear') }}
             </button>
           </div>
         </div>
         <textarea
           v-model="inputCss"
-          placeholder="请输入CSS代码..."
+          :placeholder="t('cssFormatter.enterCssCode')"
           class="w-full h-64 p-4 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
         ></textarea>
         <div v-if="error" class="text-red-600 text-sm">{{ error }}</div>
@@ -37,12 +37,12 @@
       <!-- 输出区域 -->
       <div class="space-y-4">
         <div class="flex items-center justify-between">
-          <h3 class="text-lg font-semibold text-gray-900">格式化结果</h3>
+          <h3 class="text-lg font-semibold text-gray-900">{{ t('cssFormatter.formatResult') }}</h3>
           <button
             @click="copyResult"
             class="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
           >
-            复制结果
+            {{ t('cssFormatter.copyResult') }}
           </button>
         </div>
         <pre class="w-full h-64 p-4 bg-gray-100 border border-gray-300 rounded-lg overflow-auto text-sm">{{ formattedCss }}</pre>
@@ -51,10 +51,10 @@
 
     <!-- CSS验证 -->
     <div v-if="validationResult" class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">CSS验证</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('cssFormatter.cssValidation') }}</h3>
       <div class="p-4 rounded-lg" :class="validationResult.valid ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'">
         <div class="font-medium">
-          {{ validationResult.valid ? '✓ CSS语法正确' : '✗ CSS语法错误' }}
+          {{ validationResult.valid ? t('cssFormatter.cssSyntaxCorrect') : t('cssFormatter.cssSyntaxError') }}
         </div>
         <div v-if="validationResult.errors.length > 0" class="mt-2 text-sm">
           <div v-for="error in validationResult.errors" :key="error" class="mb-1">
@@ -66,7 +66,7 @@
 
     <!-- 示例CSS -->
     <div class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">示例CSS</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('cssFormatter.exampleCss') }}</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div
           v-for="example in examples"
@@ -104,26 +104,29 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const inputCss = ref('')
 const formattedCss = ref('')
 const error = ref('')
 const validationResult = ref(null)
 
-const examples = ref([
+const examples = computed(() => [
   {
-    name: '基础样式',
-    description: '基本的CSS样式示例',
+    name: t('cssFormatter.examples.basicStyle.name'),
+    description: t('cssFormatter.examples.basicStyle.description'),
     css: '.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 20px; } .button { background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }'
   },
   {
-    name: '响应式设计',
-    description: '响应式CSS媒体查询',
+    name: t('cssFormatter.examples.responsiveDesign.name'),
+    description: t('cssFormatter.examples.responsiveDesign.description'),
     css: '@media (max-width: 768px) { .container { padding: 10px; } .button { width: 100%; margin-bottom: 10px; } } @media (min-width: 769px) { .container { display: flex; justify-content: space-between; } }'
   },
   {
-    name: '动画效果',
-    description: 'CSS动画和过渡效果',
+    name: t('cssFormatter.examples.animationEffect.name'),
+    description: t('cssFormatter.examples.animationEffect.description'),
     css: '.fade-in { animation: fadeIn 0.5s ease-in-out; } @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } } .hover-effect { transition: all 0.3s ease; } .hover-effect:hover { transform: scale(1.05); }'
   }
 ])
@@ -160,7 +163,7 @@ const formatCss = () => {
     error.value = ''
     validateCss()
   } catch (e) {
-    error.value = '格式化失败: ' + e.message
+    error.value = t('cssFormatter.formatFailed') + ': ' + e.message
     formattedCss.value = ''
   }
 }

@@ -2,12 +2,12 @@
   <div class="space-y-6">
     <!-- 倒计时设置 -->
     <div class="bg-gradient-to-r from-red-50 to-orange-50 p-6 rounded-lg">
-      <h3 class="text-lg font-semibold text-gray-900 mb-4">倒计时设置</h3>
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">{{ t('countdownTimer.settings') }}</h3>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="space-y-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">目标时间</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('countdownTimer.targetTime') }}</label>
             <input
               v-model="targetDateTime"
               type="datetime-local"
@@ -16,10 +16,10 @@
           </div>
           
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">倒计时标题</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('countdownTimer.timerTitle') }}</label>
             <input
               v-model="timerTitle"
-              placeholder="输入倒计时标题"
+              :placeholder="t('countdownTimer.enterTitle')"
               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
             />
           </div>
@@ -27,7 +27,7 @@
         
         <div class="space-y-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">快速设置</label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('countdownTimer.quickSettings') }}</label>
             <div class="grid grid-cols-2 gap-2">
               <button
                 v-for="preset in timePresets"
@@ -46,14 +46,14 @@
               :disabled="!targetDateTime || isRunning"
               class="flex-1 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
             >
-              {{ isRunning ? '运行中...' : '开始倒计时' }}
+              {{ isRunning ? t('countdownTimer.running') : t('countdownTimer.start') }}
             </button>
             <button
               @click="stopTimer"
               :disabled="!isRunning"
               class="flex-1 px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
             >
-              停止
+              {{ t('countdownTimer.stop') }}
             </button>
           </div>
         </div>
@@ -62,7 +62,7 @@
 
     <!-- 倒计时显示 -->
     <div v-if="isRunning || timeRemaining" class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">{{ timerTitle || '倒计时' }}</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ timerTitle || t('countdownTimer.countdown') }}</h3>
       
       <div class="bg-gray-900 text-white p-8 rounded-lg text-center">
         <div v-if="timeRemaining > 0" class="space-y-4">
@@ -70,16 +70,16 @@
           <div class="text-lg text-gray-300">{{ formatDateTime(targetDateTime) }}</div>
         </div>
         <div v-else class="space-y-4">
-          <div class="text-6xl font-bold text-red-400">时间到！</div>
-          <div class="text-lg text-gray-300">倒计时已结束</div>
+          <div class="text-6xl font-bold text-red-400">{{ t('countdownTimer.timeUp') }}</div>
+          <div class="text-lg text-gray-300">{{ t('countdownTimer.countdownEnded') }}</div>
         </div>
       </div>
       
       <!-- 进度条 -->
       <div class="space-y-2">
         <div class="flex justify-between text-sm text-gray-600">
-          <span>开始时间: {{ formatDateTime(startTime) }}</span>
-          <span>剩余时间: {{ Math.max(0, Math.ceil(timeRemaining / 1000)) }}秒</span>
+          <span>{{ t('countdownTimer.startTime') }}: {{ formatDateTime(startTime) }}</span>
+          <span>{{ t('countdownTimer.remainingTime') }}: {{ Math.max(0, Math.ceil(timeRemaining / 1000)) }}{{ t('countdownTimer.seconds') }}</span>
         </div>
         <div class="w-full bg-gray-200 rounded-full h-2">
           <div
@@ -155,6 +155,9 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const targetDateTime = ref('')
 const timerTitle = ref('')
@@ -163,22 +166,22 @@ const timeRemaining = ref(0)
 const startTime = ref('')
 const history = ref([])
 
-const timePresets = ref([
-  { name: '5分钟', minutes: 5 },
-  { name: '10分钟', minutes: 10 },
-  { name: '30分钟', minutes: 30 },
-  { name: '1小时', minutes: 60 },
-  { name: '2小时', minutes: 120 },
-  { name: '1天', minutes: 1440 }
+const timePresets = computed(() => [
+  { name: t('countdownTimer.presets.fiveMinutes'), minutes: 5 },
+  { name: t('countdownTimer.presets.tenMinutes'), minutes: 10 },
+  { name: t('countdownTimer.presets.thirtyMinutes'), minutes: 30 },
+  { name: t('countdownTimer.presets.oneHour'), minutes: 60 },
+  { name: t('countdownTimer.presets.twoHours'), minutes: 120 },
+  { name: t('countdownTimer.presets.oneDay'), minutes: 1440 }
 ])
 
-const countdownPresets = ref([
-  { name: '工作休息', description: '25分钟专注工作', duration: '25分钟', minutes: 25 },
-  { name: '短休息', description: '5分钟短暂休息', duration: '5分钟', minutes: 5 },
-  { name: '长休息', description: '15分钟长休息', duration: '15分钟', minutes: 15 },
-  { name: '运动时间', description: '30分钟运动', duration: '30分钟', minutes: 30 },
-  { name: '学习时间', description: '45分钟学习', duration: '45分钟', minutes: 45 },
-  { name: '会议时间', description: '1小时会议', duration: '1小时', minutes: 60 }
+const countdownPresets = computed(() => [
+  { name: t('countdownTimer.countdownPresets.workBreak'), description: t('countdownTimer.countdownPresets.workBreakDesc'), duration: t('countdownTimer.countdownPresets.workBreakDuration'), minutes: 25 },
+  { name: t('countdownTimer.countdownPresets.shortBreak'), description: t('countdownTimer.countdownPresets.shortBreakDesc'), duration: t('countdownTimer.countdownPresets.shortBreakDuration'), minutes: 5 },
+  { name: t('countdownTimer.countdownPresets.longBreak'), description: t('countdownTimer.countdownPresets.longBreakDesc'), duration: t('countdownTimer.countdownPresets.longBreakDuration'), minutes: 15 },
+  { name: t('countdownTimer.countdownPresets.exercise'), description: t('countdownTimer.countdownPresets.exerciseDesc'), duration: t('countdownTimer.countdownPresets.exerciseDuration'), minutes: 30 },
+  { name: t('countdownTimer.countdownPresets.study'), description: t('countdownTimer.countdownPresets.studyDesc'), duration: t('countdownTimer.countdownPresets.studyDuration'), minutes: 45 },
+  { name: t('countdownTimer.countdownPresets.meeting'), description: t('countdownTimer.countdownPresets.meetingDesc'), duration: t('countdownTimer.countdownPresets.meetingDuration'), minutes: 60 }
 ])
 
 let timer = null

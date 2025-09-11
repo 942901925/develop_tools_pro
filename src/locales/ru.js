@@ -225,6 +225,52 @@ export default {
     }
   },
   
+  // JSON Форматтер
+  jsonFormatter: {
+    exampleData: 'Примеры данных',
+    format: 'Форматировать',
+    minify: 'Сжать',
+    validate: 'Проверить',
+    clear: 'Очистить',
+    jsonInput: 'JSON Ввод',
+    copy: 'Копировать',
+    inputPlaceholder: 'Введите JSON данные, или нажмите кнопки примеров выше для загрузки образцов...',
+    formattedResult: 'Отформатированный результат',
+    copyResult: 'Копировать результат',
+    download: 'Скачать',
+    resultPlaceholder: 'Отформатированный результат будет отображен здесь...',
+    noResult: 'Нет результата',
+    charCount: 'Символы',
+    lineCount: 'Строки',
+    objectCount: 'Объекты',
+    arrayCount: 'Массивы',
+    examples: {
+      userInfo: 'Информация о пользователе',
+      apiResponse: 'API Ответ',
+      configInfo: 'Информация о конфигурации'
+    }
+  },
+  
+  // Base64 Кодировщик/Декодировщик
+  base64Encoder: {
+    originalData: 'Исходные данные',
+    encode: 'Кодировать',
+    clear: 'Очистить',
+    inputPlaceholder: 'Введите текст для кодирования...',
+    encodedResult: 'Результат Base64 кодирования',
+    copyResult: 'Копировать результат',
+    base64Data: 'Base64 данные',
+    decode: 'Декодировать',
+    decodePlaceholder: 'Введите Base64 данные для декодирования...',
+    decodedResult: 'Декодированный результат',
+    originalCharCount: 'Исходные символы',
+    encodedCharCount: 'Закодированные символы',
+    compressionRatio: 'Коэффициент сжатия',
+    encodeStatus: 'Статус кодирования',
+    encoded: 'Закодировано',
+    notEncoded: 'Не закодировано'
+  },
+  
   // Подвал
   footer: {
     copyright: '© 2024 Develop Tools Pro. Современная коллекция инструментов разработчика.'

@@ -10,18 +10,18 @@
           <component :is="getIconComponent(tool.icon)" class="w-8 h-8" />
         </div>
         <div class="flex-1">
-          <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">{{ $t(`tools.${tool.id}.name`) || tool.name }}</h1>
-          <p class="text-lg text-gray-600 dark:text-gray-300 mt-1">{{ $t(`tools.${tool.id}.description`) || tool.description }}</p>
+          <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">{{ t(`tools.${tool.id}.name`) || tool.name }}</h1>
+          <p class="text-lg text-gray-600 dark:text-gray-300 mt-1">{{ t(`tools.${tool.id}.description`) || tool.description }}</p>
           <div class="flex items-center space-x-4 mt-3">
             <span class="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">
-              {{ $t(`tools.categories.${tool.category}`) || tool.category }}
+              {{ t(`tools.categories.${tool.category}`) || tool.category }}
             </span>
             <button
             
               @click="copyToClipboard"
               class="text-sm text-primary-600 hover:text-primary-700 font-medium"
             >
-              {{ $t('toolDetail.copyLink') }}
+              {{ t('toolDetail.copyLink') }}
             </button>
           </div>
         </div>
@@ -37,8 +37,8 @@
       />
       <div v-else class="text-center py-12">
         <component :is="getIconComponent(tool.icon)" class="w-16 h-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
-        <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">{{ $t('toolDetail.underDevelopment') }}</h3>
-        <p class="text-gray-500 dark:text-gray-400">{{ $t('toolDetail.underDevelopmentDesc') }}</p>
+        <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">{{ t('toolDetail.underDevelopment') }}</h3>
+        <p class="text-gray-500 dark:text-gray-400">{{ t('toolDetail.underDevelopmentDesc') }}</p>
       </div>
     </div>
     
@@ -49,7 +49,7 @@
         class="btn-secondary inline-flex items-center space-x-2"
       >
         <ArrowLeft class="w-4 h-4" />
-        <span>{{ $t('toolDetail.backToList') }}</span>
+        <span>{{ t('toolDetail.backToList') }}</span>
       </button>
     </div>
   </div>
@@ -57,10 +57,10 @@
   <!-- 工具不存在 -->
   <div v-else class="text-center py-12">
     <AlertCircle class="w-16 h-16 text-gray-300 mx-auto mb-4" />
-    <h3 class="text-lg font-medium text-gray-900 mb-2">{{ $t('toolDetail.toolNotFound') }}</h3>
-    <p class="text-gray-500 mb-4">{{ $t('toolDetail.toolNotFoundDesc') }}</p>
+    <h3 class="text-lg font-medium text-gray-900 mb-2">{{ t('toolDetail.toolNotFound') }}</h3>
+    <p class="text-gray-500 mb-4">{{ t('toolDetail.toolNotFoundDesc') }}</p>
     <button @click="goBack" class="btn-primary">
-      {{ $t('toolDetail.backToList') }}
+      {{ t('toolDetail.backToList') }}
     </button>
   </div>
 </template>
@@ -68,6 +68,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { 
   ArrowLeft, AlertCircle, Code, ArrowLeftRight, FileText, Clock, Calculator, Timer,
   Shield, Link, Hash, GitCompare, Search, BarChart3,
@@ -79,6 +80,7 @@ import { getToolById } from '../data/tools.js'
 
 const router = useRouter()
 const route = useRoute()
+const { t } = useI18n()
 const toolId = computed(() => route.params.id)
 const tool = ref(null)
 const toolComponent = ref(null)

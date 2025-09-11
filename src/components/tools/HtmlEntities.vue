@@ -4,41 +4,41 @@
       <!-- 编码区域 -->
       <div class="space-y-4">
         <div class="flex items-center justify-between">
-          <h3 class="text-lg font-semibold text-gray-900">HTML 实体编码</h3>
+          <h3 class="text-lg font-semibold text-gray-900">{{ t('htmlEntities.htmlEntityEncoding') }}</h3>
           <div class="flex space-x-2">
             <button
               @click="encodeHtml"
               class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
             >
-              编码
+              {{ t('htmlEntities.encode') }}
             </button>
             <button
               @click="clearInput"
               class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
             >
-              清空
+              {{ t('htmlEntities.clear') }}
             </button>
           </div>
         </div>
         <textarea
           v-model="inputText"
-          placeholder="请输入要编码的HTML文本..."
+          :placeholder="t('htmlEntities.enterHtmlTextToEncode')"
           class="w-full h-64 p-4 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
         ></textarea>
         <div class="text-sm text-gray-600">
-          字符数: {{ inputText.length }} | 行数: {{ inputText.split('\n').length }}
+          {{ t('htmlEntities.charCount') }}: {{ inputText.length }} | {{ t('htmlEntities.lineCount') }}: {{ inputText.split('\n').length }}
         </div>
       </div>
 
       <!-- 编码结果 -->
       <div class="space-y-4">
         <div class="flex items-center justify-between">
-          <h3 class="text-lg font-semibold text-gray-900">编码结果</h3>
+          <h3 class="text-lg font-semibold text-gray-900">{{ t('htmlEntities.encodingResult') }}</h3>
           <button
             @click="copyEncoded"
             class="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
           >
-            复制结果
+            {{ t('htmlEntities.copyResult') }}
           </button>
         </div>
         <textarea
@@ -47,7 +47,7 @@
           class="w-full h-64 p-4 bg-gray-100 border border-gray-300 rounded-lg font-mono text-sm"
         ></textarea>
         <div class="text-sm text-gray-600">
-          编码后字符数: {{ encodedText.length }} | 编码比: {{ encodingRatio }}%
+          {{ t('htmlEntities.encodedCharCount') }}: {{ encodedText.length }} | {{ t('htmlEntities.encodingRatio') }}: {{ encodingRatio }}%
         </div>
       </div>
     </div>
@@ -57,25 +57,25 @@
       <!-- 解码输入 -->
       <div class="space-y-4">
         <div class="flex items-center justify-between">
-          <h3 class="text-lg font-semibold text-gray-900">HTML 实体解码</h3>
+          <h3 class="text-lg font-semibold text-gray-900">{{ t('htmlEntities.htmlEntityDecoding') }}</h3>
           <div class="flex space-x-2">
             <button
               @click="decodeHtml"
               class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
             >
-              解码
+              {{ t('htmlEntities.decode') }}
             </button>
             <button
               @click="clearDecodeInput"
               class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
             >
-              清空
+              {{ t('htmlEntities.clear') }}
             </button>
           </div>
         </div>
         <textarea
           v-model="decodeInput"
-          placeholder="请输入要解码的HTML实体..."
+          :placeholder="t('htmlEntities.enterHtmlEntitiesToDecode')"
           class="w-full h-64 p-4 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500"
         ></textarea>
         <div v-if="decodeError" class="text-red-600 text-sm">{{ decodeError }}</div>
@@ -84,12 +84,12 @@
       <!-- 解码结果 -->
       <div class="space-y-4">
         <div class="flex items-center justify-between">
-          <h3 class="text-lg font-semibold text-gray-900">解码结果</h3>
+          <h3 class="text-lg font-semibold text-gray-900">{{ t('htmlEntities.decodingResult') }}</h3>
           <button
             @click="copyDecoded"
             class="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
           >
-            复制结果
+            {{ t('htmlEntities.copyResult') }}
           </button>
         </div>
         <textarea
@@ -98,14 +98,14 @@
           class="w-full h-64 p-4 bg-gray-100 border border-gray-300 rounded-lg font-mono text-sm"
         ></textarea>
         <div class="text-sm text-gray-600">
-          解码后字符数: {{ decodedText.length }}
+          {{ t('htmlEntities.decodedCharCount') }}: {{ decodedText.length }}
         </div>
       </div>
     </div>
 
     <!-- 常用HTML实体 -->
     <div class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">常用HTML实体</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('htmlEntities.commonHtmlEntities') }}</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <div
           v-for="entity in commonEntities"
@@ -126,7 +126,7 @@
 
     <!-- 示例文本 -->
     <div class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-900">示例文本</h3>
+      <h3 class="text-lg font-semibold text-gray-900">{{ t('htmlEntities.exampleText') }}</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div
           v-for="example in examples"
@@ -145,19 +145,19 @@
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
       <div class="bg-blue-50 p-4 rounded-lg text-center">
         <div class="text-2xl font-bold text-blue-600">{{ inputText.length }}</div>
-        <div class="text-sm text-gray-600">原始字符</div>
+        <div class="text-sm text-gray-600">{{ t('htmlEntities.originalChars') }}</div>
       </div>
       <div class="bg-green-50 p-4 rounded-lg text-center">
         <div class="text-2xl font-bold text-green-600">{{ encodedText.length }}</div>
-        <div class="text-sm text-gray-600">编码字符</div>
+        <div class="text-sm text-gray-600">{{ t('htmlEntities.encodedChars') }}</div>
       </div>
       <div class="bg-purple-50 p-4 rounded-lg text-center">
         <div class="text-2xl font-bold text-purple-600">{{ entityCount }}</div>
-        <div class="text-sm text-gray-600">实体数量</div>
+        <div class="text-sm text-gray-600">{{ t('htmlEntities.entityCount') }}</div>
       </div>
       <div class="bg-orange-50 p-4 rounded-lg text-center">
         <div class="text-2xl font-bold text-orange-600">{{ encodingRatio }}%</div>
-        <div class="text-sm text-gray-600">编码比</div>
+        <div class="text-sm text-gray-600">{{ t('htmlEntities.encodingRatio') }}</div>
       </div>
     </div>
   </div>
@@ -165,6 +165,9 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const inputText = ref('')
 const encodedText = ref('')
@@ -172,50 +175,50 @@ const decodeInput = ref('')
 const decodedText = ref('')
 const decodeError = ref('')
 
-const commonEntities = ref([
-  { entity: '&lt;', character: '<', description: '小于号' },
-  { entity: '&gt;', character: '>', description: '大于号' },
-  { entity: '&amp;', character: '&', description: '和号' },
-  { entity: '&quot;', character: '"', description: '双引号' },
-  { entity: '&#39;', character: "'", description: '单引号' },
-  { entity: '&nbsp;', character: ' ', description: '不间断空格' },
-  { entity: '&copy;', character: '©', description: '版权符号' },
-  { entity: '&reg;', character: '®', description: '注册商标' },
-  { entity: '&trade;', character: '™', description: '商标符号' },
-  { entity: '&euro;', character: '€', description: '欧元符号' },
-  { entity: '&pound;', character: '£', description: '英镑符号' },
-  { entity: '&yen;', character: '¥', description: '日元符号' },
-  { entity: '&sect;', character: '§', description: '节符号' },
-  { entity: '&para;', character: '¶', description: '段落符号' },
-  { entity: '&middot;', character: '·', description: '中点' },
-  { entity: '&hellip;', character: '…', description: '省略号' },
-  { entity: '&ndash;', character: '–', description: '短横线' },
-  { entity: '&mdash;', character: '—', description: '长横线' },
-  { entity: '&lsquo;', character: '\u2018', description: '左单引号' },
-  { entity: '&rsquo;', character: '\u2019', description: '右单引号' },
-  { entity: '&ldquo;', character: '\u201C', description: '左双引号' },
-  { entity: '&rdquo;', character: '\u201D', description: '右双引号' }
+const commonEntities = computed(() => [
+  { entity: '&lt;', character: '<', description: t('htmlEntities.entities.lessThan') },
+  { entity: '&gt;', character: '>', description: t('htmlEntities.entities.greaterThan') },
+  { entity: '&amp;', character: '&', description: t('htmlEntities.entities.ampersand') },
+  { entity: '&quot;', character: '"', description: t('htmlEntities.entities.doubleQuote') },
+  { entity: '&#39;', character: "'", description: t('htmlEntities.entities.singleQuote') },
+  { entity: '&nbsp;', character: ' ', description: t('htmlEntities.entities.nonBreakingSpace') },
+  { entity: '&copy;', character: '©', description: t('htmlEntities.entities.copyright') },
+  { entity: '&reg;', character: '®', description: t('htmlEntities.entities.registered') },
+  { entity: '&trade;', character: '™', description: t('htmlEntities.entities.trademark') },
+  { entity: '&euro;', character: '€', description: t('htmlEntities.entities.euro') },
+  { entity: '&pound;', character: '£', description: t('htmlEntities.entities.pound') },
+  { entity: '&yen;', character: '¥', description: t('htmlEntities.entities.yen') },
+  { entity: '&sect;', character: '§', description: t('htmlEntities.entities.section') },
+  { entity: '&para;', character: '¶', description: t('htmlEntities.entities.paragraph') },
+  { entity: '&middot;', character: '·', description: t('htmlEntities.entities.middleDot') },
+  { entity: '&hellip;', character: '…', description: t('htmlEntities.entities.ellipsis') },
+  { entity: '&ndash;', character: '–', description: t('htmlEntities.entities.enDash') },
+  { entity: '&mdash;', character: '—', description: t('htmlEntities.entities.emDash') },
+  { entity: '&lsquo;', character: '\u2018', description: t('htmlEntities.entities.leftSingleQuote') },
+  { entity: '&rsquo;', character: '\u2019', description: t('htmlEntities.entities.rightSingleQuote') },
+  { entity: '&ldquo;', character: '\u201C', description: t('htmlEntities.entities.leftDoubleQuote') },
+  { entity: '&rdquo;', character: '\u201D', description: t('htmlEntities.entities.rightDoubleQuote') }
 ])
 
-const examples = ref([
+const examples = computed(() => [
   {
-    name: 'HTML标签',
-    description: '包含HTML标签的文本',
+    name: t('htmlEntities.examples.htmlTags.name'),
+    description: t('htmlEntities.examples.htmlTags.description'),
     text: '<div class="container"><h1>标题</h1><p>这是一个段落 & 包含特殊字符</p></div>'
   },
   {
-    name: '数学公式',
-    description: '包含数学符号的文本',
+    name: t('htmlEntities.examples.mathFormula.name'),
+    description: t('htmlEntities.examples.mathFormula.description'),
     text: 'x < y & z > 0, 当 x ≠ 0 时，x² + y² = z²'
   },
   {
-    name: '版权信息',
-    description: '包含版权和商标符号',
+    name: t('htmlEntities.examples.copyrightInfo.name'),
+    description: t('htmlEntities.examples.copyrightInfo.description'),
     text: '© 2024 公司名称™ 版权所有，保留所有权利。'
   },
   {
-    name: '引号文本',
-    description: '包含各种引号的文本',
+    name: t('htmlEntities.examples.quotedText.name'),
+    description: t('htmlEntities.examples.quotedText.description'),
     text: '他说："这是一个测试文本，包含单引号和双引号。"'
   }
 ])

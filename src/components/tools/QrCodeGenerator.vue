@@ -3,24 +3,24 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <!-- 输入区域 -->
       <div class="space-y-4">
-        <h3 class="text-lg font-semibold text-gray-900">生成二维码</h3>
+        <h3 class="text-lg font-semibold text-gray-900">{{ t('qrCodeGenerator.generateQR') }}</h3>
         
         <!-- 内容输入 -->
         <div class="space-y-3">
-          <label class="block text-sm font-medium text-gray-700">内容类型</label>
+          <label class="block text-sm font-medium text-gray-700">{{ t('qrCodeGenerator.contentType') }}</label>
           <select v-model="contentType" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-            <option value="text">文本</option>
-            <option value="url">网址</option>
-            <option value="email">邮箱</option>
-            <option value="phone">电话</option>
-            <option value="sms">短信</option>
-            <option value="wifi">WiFi</option>
-            <option value="vcard">名片</option>
+            <option value="text">{{ t('qrCodeGenerator.text') }}</option>
+            <option value="url">{{ t('qrCodeGenerator.url') }}</option>
+            <option value="email">{{ t('qrCodeGenerator.email') }}</option>
+            <option value="phone">{{ t('qrCodeGenerator.phone') }}</option>
+            <option value="sms">{{ t('qrCodeGenerator.sms') }}</option>
+            <option value="wifi">{{ t('qrCodeGenerator.wifi') }}</option>
+            <option value="vcard">{{ t('qrCodeGenerator.vcard') }}</option>
           </select>
         </div>
         
         <div class="space-y-3">
-          <label class="block text-sm font-medium text-gray-700">内容</label>
+          <label class="block text-sm font-medium text-gray-700">{{ t('qrCodeGenerator.content') }}</label>
           <textarea
             v-model="content"
             :placeholder="getPlaceholder()"
@@ -171,8 +171,11 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { QrCode } from 'lucide-vue-next'
 import QRCode from 'qrcode'
+
+const { t } = useI18n()
 
 const contentType = ref('text')
 const content = ref('')
@@ -201,13 +204,13 @@ const canGenerate = computed(() => {
 // 获取占位符文本
 const getPlaceholder = () => {
   const placeholders = {
-    text: '输入要生成二维码的文本内容...',
-    url: 'https://example.com',
-    email: 'example@email.com',
-    phone: '+86 138 0013 8000',
-    sms: '短信内容',
-    wifi: 'WiFi 信息将通过下方设置生成',
-    vcard: 'BEGIN:VCARD\nVERSION:3.0\nFN:姓名\nTEL:电话\nEMAIL:邮箱\nEND:VCARD'
+    text: t('qrCodeGenerator.placeholders.text'),
+    url: t('qrCodeGenerator.placeholders.url'),
+    email: t('qrCodeGenerator.placeholders.email'),
+    phone: t('qrCodeGenerator.placeholders.phone'),
+    sms: t('qrCodeGenerator.placeholders.sms'),
+    wifi: t('qrCodeGenerator.placeholders.wifi'),
+    vcard: t('qrCodeGenerator.placeholders.vcard')
   }
   return placeholders[contentType.value] || ''
 }
