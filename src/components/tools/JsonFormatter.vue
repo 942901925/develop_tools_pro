@@ -136,6 +136,7 @@
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { AlertCircle, CheckCircle } from 'lucide-vue-next'
+import { copyTextWithFeedback } from '../../utils/clipboard.js'
 
 const { t } = useI18n()
 
@@ -278,23 +279,23 @@ const clearInput = () => {
 
 // 复制输入内容
 const copyInput = async () => {
-  try {
-    await navigator.clipboard.writeText(inputJson.value)
+  const success = await copyTextWithFeedback(inputJson.value, '输入内容')
+  if (success) {
     successMessage.value = '输入内容已复制到剪贴板！'
     setTimeout(() => { successMessage.value = '' }, 3000)
-  } catch (e) {
-    error.value = '复制失败: ' + e.message
+  } else {
+    error.value = '复制失败'
   }
 }
 
 // 复制结果
 const copyResult = async () => {
-  try {
-    await navigator.clipboard.writeText(formattedJson.value)
+  const success = await copyTextWithFeedback(formattedJson.value, '格式化结果')
+  if (success) {
     successMessage.value = '结果已复制到剪贴板！'
     setTimeout(() => { successMessage.value = '' }, 3000)
-  } catch (e) {
-    error.value = '复制失败: ' + e.message
+  } else {
+    error.value = '复制失败'
   }
 }
 

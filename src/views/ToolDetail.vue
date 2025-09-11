@@ -77,6 +77,9 @@ import {
   Server, Palette, Database, Droplets, Ruler, Binary, Code2
 } from 'lucide-vue-next'
 import { getToolById } from '../data/tools.js'
+import logger from '../utils/logger.js'
+import { trackToolUsage, trackUserInteraction } from '../utils/analytics.js'
+import { copyTextWithFeedback } from '../utils/clipboard.js'
 
 const router = useRouter()
 const route = useRoute()
@@ -96,18 +99,18 @@ const iconComponents = {
 
 // 获取工具组件
 const getToolComponent = async (toolId) => {
-  console.log('Loading tool component for:', toolId)
+  logger.log('Loading tool component for:', toolId)
   
   try {
     // 直接尝试导入对应的组件
     const componentPath = `../components/tools/${toolId.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('')}.vue`
-    console.log('Trying to load component from:', componentPath)
+    logger.log('Trying to load component from:', componentPath)
     
     const module = await import(componentPath)
-    console.log('Component loaded successfully:', toolId, module)
+    logger.log('Component loaded successfully:', toolId, module)
     toolComponent.value = module.default
   } catch (error) {
-    console.error(`Failed to load tool component: ${toolId}`, error)
+    logger.error(`Failed to load tool component: ${toolId}`, error)
     
     // 如果直接导入失败，尝试使用映射表
     const toolComponentMap = {
@@ -146,18 +149,18 @@ const getToolComponent = async (toolId) => {
     const componentLoader = toolComponentMap[toolId]
     if (componentLoader) {
       try {
-        console.log('Loading component from map for:', toolId)
+        logger.log('Loading component from map for:', toolId)
         const module = await componentLoader()
-        console.log('Component loaded successfully from map:', toolId, module)
+        logger.log('Component loaded successfully from map:', toolId, module)
         toolComponent.value = module.default
       } catch (mapError) {
-        console.error(`Failed to load tool component from map: ${toolId}`, mapError)
+        logger.error(`Failed to load tool component from map: ${toolId}`, mapError)
         // 使用占位符组件
         const placeholderModule = await import('../components/tools/PlaceholderTool.vue')
         toolComponent.value = placeholderModule.default
       }
     } else {
-      console.warn('No component loader found for:', toolId)
+      logger.warn('No component loader found for:', toolId)
       // 使用占位符组件
       const placeholderModule = await import('../components/tools/PlaceholderTool.vue')
       toolComponent.value = placeholderModule.default
@@ -167,25 +170,28 @@ const getToolComponent = async (toolId) => {
 
 // 获取工具信息
 onMounted(async () => {
-  console.log('ToolDetail mounted, toolId:', toolId.value)
+  logger.log('ToolDetail mounted, toolId:', toolId.value)
   tool.value = getToolById(toolId.value)
-  console.log('Tool found:', tool.value)
+  logger.log('Tool found:', tool.value)
   if (tool.value) {
     await getToolComponent(toolId.value)
-    console.log('Tool component loaded:', toolComponent.value)
+    logger.log('Tool component loaded:', toolComponent.value)
+    
+    // 跟踪工具使用
+    trackToolUsage(toolId.value, tool.value.name, tool.value.category)
     
     // 确保组件已加载，如果没有则使用占位符
     if (!toolComponent.value) {
-      console.warn('No component loaded, using placeholder')
+      logger.warn('No component loaded, using placeholder')
       try {
         const placeholderModule = await import('../components/tools/PlaceholderTool.vue')
         toolComponent.value = placeholderModule.default
       } catch (error) {
-        console.error('Failed to load placeholder component:', error)
+        logger.error('Failed to load placeholder component:', error)
       }
     }
   } else {
-    console.warn('Tool not found for ID:', toolId.value)
+    logger.warn('Tool not found for ID:', toolId.value)
   }
 })
 
@@ -208,12 +214,10 @@ const getIconComponent = (iconName) => {
 
 // 复制链接到剪贴板
 const copyToClipboard = async () => {
-  try {
-    await navigator.clipboard.writeText(window.location.href)
-    // 这里可以添加成功提示
-    console.log('链接已复制到剪贴板')
-  } catch (err) {
-    console.error('复制失败:', err)
+  const success = await copyTextWithFeedback(window.location.href, '链接')
+  if (success) {
+    // 跟踪用户交互
+    trackUserInteraction('copy_link', 'tool_detail')
   }
 }
 

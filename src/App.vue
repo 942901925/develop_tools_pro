@@ -137,7 +137,9 @@
     
     <!-- 主要内容 -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <router-view />
+      <ErrorBoundary>
+        <router-view />
+      </ErrorBoundary>
     </main>
     
     <!-- 页脚 -->
@@ -156,6 +158,9 @@ import { ref, watch, provide } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { Search, Menu, X } from 'lucide-vue-next'
 import LanguageSwitcher from './components/LanguageSwitcher.vue'
+import ErrorBoundary from './components/ErrorBoundary.vue'
+import logger from './utils/logger.js'
+import { trackSearch, trackUserInteraction } from './utils/analytics.js'
 
 const router = useRouter()
 const route = useRoute()
@@ -211,9 +216,12 @@ const performSearch = async (query) => {
     searchResults.value = filtered.slice(0, 8)
     showSearchResults.value = true
     
-    console.log('搜索结果:', filtered.length, '个工具')
+    // 跟踪搜索行为
+    trackSearch(query, filtered.length)
+    
+    logger.log('搜索结果:', filtered.length, '个工具')
   } catch (error) {
-    console.error('搜索失败:', error)
+    logger.error('搜索失败:', error)
     searchResults.value = []
     showSearchResults.value = false
   }
@@ -240,6 +248,10 @@ const goToTool = (toolId) => {
   searchQuery.value = ''
   showSearchResults.value = false
   mobileMenuOpen.value = false
+  
+  // 跟踪用户交互
+  trackUserInteraction('tool_click', toolId)
+  
   router.push(`/tool/${toolId}`)
 }
 </script>
