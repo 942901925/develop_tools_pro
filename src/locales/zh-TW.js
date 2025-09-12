@@ -45,7 +45,7 @@ export default {
   // 首頁
   home: {
     title: 'Develop Tools Pro',
-    subtitle: '為開發者打造的現代化工具集合，30+ 實用工具，提升開發效率',
+    subtitle: '為高效的工作人士打造的現代化工具集合，30+ 實用工具，提升工作效率',
     noResults: '未找到相關工具',
     noResultsDesc: '嘗試使用其他關鍵詞搜尋或選擇不同的分類',
     categories: {
@@ -329,7 +329,7 @@ export default {
   
   // 頁尾
   footer: {
-    copyright: '© 2024 Develop Tools Pro. 為開發者打造的現代化工具集合.'
+    copyright: '© 2025 Develop Tools Pro. 為高效的工作人士打造的現代化工具集合.'
   }
 }
 

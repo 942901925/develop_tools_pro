@@ -214,7 +214,7 @@ const examples = computed(() => [
   {
     name: t('htmlEntities.examples.copyrightInfo.name'),
     description: t('htmlEntities.examples.copyrightInfo.description'),
-    text: '© 2024 公司名称™ 版权所有，保留所有权利。'
+    text: '© 2025 公司名称™ 版权所有，保留所有权利。'
   },
   {
     name: t('htmlEntities.examples.quotedText.name'),

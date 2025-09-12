@@ -45,7 +45,7 @@ export default {
   // 首页
   home: {
     title: 'Develop Tools Pro',
-    subtitle: '为开发者打造的现代化工具集合，30+ 实用工具，提升开发效率',
+    subtitle: '为高效的工作人士打造的现代化工具集合，30+ 实用工具，提升工作效率',
     noResults: '未找到相关工具',
     noResultsDesc: '尝试使用其他关键词搜索或选择不同的分类',
     categories: {
@@ -1315,7 +1315,7 @@ export default {
   
   // 页脚
   footer: {
-    copyright: '© 2024 Develop Tools Pro. 为开发者打造的现代化工具集合.'
+    copyright: '© 2025 Develop Tools Pro. 为高效的工作人士打造的现代化工具集合.'
   },
   
   // 反馈系统
@@ -1391,6 +1391,14 @@ export default {
     copyFailed: '复制失败，请手动复制',
     momentsTip: '请手动分享到朋友圈',
     qrTip: '扫描二维码访问网站'
+  },
+
+  // 地理位置检测
+  geoLocation: {
+    detecting: '正在检测您的位置...',
+    autoSwitched: '已自动切换到',
+    detectionFailed: '位置检测失败，使用默认语言',
+    manualOverride: '您已手动设置语言偏好'
   }
 }
 

@@ -45,7 +45,7 @@ export default {
   // Accueil
   home: {
     title: 'Develop Tools Pro',
-    subtitle: 'Une collection moderne d\'outils de développement avec 30+ utilitaires pour améliorer votre efficacité de développement',
+    subtitle: 'Une collection moderne d\'outils pour professionnels efficaces avec 30+ utilitaires pour améliorer votre efficacité de travail',
     noResults: 'Aucun outil trouvé',
     noResultsDesc: 'Essayez d\'utiliser d\'autres mots-clés ou sélectionnez une catégorie différente',
     categories: {
@@ -273,7 +273,7 @@ export default {
   
   // Pied de page
   footer: {
-    copyright: '© 2024 Develop Tools Pro. Une collection moderne d\'outils de développement.'
+    copyright: '© 2025 Develop Tools Pro. Une collection moderne d\'outils pour professionnels efficaces.'
   }
 }
 

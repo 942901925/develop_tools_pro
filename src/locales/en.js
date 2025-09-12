@@ -45,7 +45,7 @@ export default {
   // Home
   home: {
     title: 'Develop Tools Pro',
-    subtitle: 'A modern collection of developer tools with 30+ utilities to boost your development efficiency',
+    subtitle: 'A modern collection of tools for efficient professionals with 30+ utilities to boost your work efficiency',
     noResults: 'No tools found',
     noResultsDesc: 'Try using different keywords or select a different category',
     categories: {
@@ -1315,7 +1315,7 @@ export default {
   
   // Footer
   footer: {
-    copyright: '© 2024 Develop Tools Pro. A modern collection of developer tools.'
+    copyright: '© 2025 Develop Tools Pro. A modern collection of tools for efficient professionals.'
   },
   
   // Feedback System
@@ -1391,6 +1391,14 @@ export default {
     copyFailed: 'Copy failed, please copy manually',
     momentsTip: 'Please share to Moments manually',
     qrTip: 'Scan QR code to visit website'
+  },
+
+  // Geo Location Detection
+  geoLocation: {
+    detecting: 'Detecting your location...',
+    autoSwitched: 'Auto-switched to',
+    detectionFailed: 'Location detection failed, using default language',
+    manualOverride: 'You have manually set language preference'
   }
 }
 
