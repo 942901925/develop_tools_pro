@@ -8,6 +8,7 @@ import { trackPageView } from './utils/analytics.js'
 // 导入页面组件
 import Home from './views/Home.vue'
 import ToolDetail from './views/ToolDetail.vue'
+import FeedbackAdmin from './views/FeedbackAdmin.vue'
 
 // 路由配置
 const routes = [
@@ -23,6 +24,12 @@ const routes = [
     component: ToolDetail, 
     props: true,
     meta: { title: '工具详情 - Develop Tools Pro' }
+  },
+  { 
+    path: '/admin/feedback', 
+    name: 'FeedbackAdmin', 
+    component: FeedbackAdmin,
+    meta: { title: '反馈管理 - Develop Tools Pro' }
   }
 ]
 

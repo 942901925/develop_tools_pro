@@ -150,6 +150,9 @@
         </div>
       </div>
     </footer>
+    
+    <!-- 反馈按钮 -->
+    <FeedbackButton />
   </div>
 </template>
 
@@ -159,6 +162,7 @@ import { useRouter, useRoute } from 'vue-router'
 import { Search, Menu, X } from 'lucide-vue-next'
 import LanguageSwitcher from './components/LanguageSwitcher.vue'
 import ErrorBoundary from './components/ErrorBoundary.vue'
+import FeedbackButton from './components/FeedbackButton.vue'
 import logger from './utils/logger.js'
 import { trackSearch, trackUserInteraction } from './utils/analytics.js'
 

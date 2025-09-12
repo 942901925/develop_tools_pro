@@ -1316,6 +1316,65 @@ export default {
   // Footer
   footer: {
     copyright: '© 2024 Develop Tools Pro. A modern collection of developer tools.'
+  },
+  
+  // Feedback System
+  feedback: {
+    title: 'Feedback',
+    openFeedback: 'Open Feedback',
+    type: 'Feedback Type',
+    rating: 'Rating',
+    content: 'Feedback Content',
+    placeholder: 'Please tell us your thoughts, suggestions, or issues...',
+    submit: 'Submit Feedback',
+    submitting: 'Submitting...',
+    cancel: 'Cancel',
+    success: 'Thank you for your feedback!',
+    types: {
+      suggestion: 'Suggestion',
+      bug: 'Bug',
+      feature: 'Feature',
+      other: 'Other'
+    }
+  },
+  
+  // Feedback Admin
+  feedbackAdmin: {
+    title: 'Feedback Management',
+    subtitle: 'View and manage user feedback',
+    stats: {
+      total: 'Total',
+      pending: 'Pending',
+      reviewed: 'Reviewed',
+      avgRating: 'Avg Rating'
+    },
+    filters: {
+      allStatus: 'All Status',
+      allTypes: 'All Types',
+      pending: 'Pending',
+      reviewed: 'Reviewed',
+      resolved: 'Resolved',
+      suggestion: 'Suggestion',
+      bug: 'Bug',
+      feature: 'Feature',
+      other: 'Other'
+    },
+    actions: {
+      export: 'Export',
+      clear: 'Clear',
+      markReviewed: 'Mark Reviewed',
+      markResolved: 'Mark Resolved',
+      delete: 'Delete'
+    },
+    status: {
+      pending: 'Pending',
+      reviewed: 'Reviewed',
+      resolved: 'Resolved'
+    },
+    feedbackList: 'Feedback List',
+    noFeedback: 'No feedback yet',
+    confirmDelete: 'Are you sure you want to delete this feedback?',
+    confirmClear: 'Are you sure you want to clear all feedback? This action cannot be undone.'
   }
 }
 

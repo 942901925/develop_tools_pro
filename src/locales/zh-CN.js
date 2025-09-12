@@ -1316,6 +1316,65 @@ export default {
   // 页脚
   footer: {
     copyright: '© 2024 Develop Tools Pro. 为开发者打造的现代化工具集合.'
+  },
+  
+  // 反馈系统
+  feedback: {
+    title: '意见反馈',
+    openFeedback: '打开反馈',
+    type: '反馈类型',
+    rating: '评分',
+    content: '反馈内容',
+    placeholder: '请告诉我们您的想法、建议或遇到的问题...',
+    submit: '提交反馈',
+    submitting: '提交中...',
+    cancel: '取消',
+    success: '感谢您的反馈！',
+    types: {
+      suggestion: '建议',
+      bug: '问题',
+      feature: '功能',
+      other: '其他'
+    }
+  },
+  
+  // 反馈管理
+  feedbackAdmin: {
+    title: '反馈管理',
+    subtitle: '查看和管理用户反馈',
+    stats: {
+      total: '总反馈',
+      pending: '待处理',
+      reviewed: '已查看',
+      avgRating: '平均评分'
+    },
+    filters: {
+      allStatus: '所有状态',
+      allTypes: '所有类型',
+      pending: '待处理',
+      reviewed: '已查看',
+      resolved: '已解决',
+      suggestion: '建议',
+      bug: '问题',
+      feature: '功能',
+      other: '其他'
+    },
+    actions: {
+      export: '导出',
+      clear: '清空',
+      markReviewed: '标记已查看',
+      markResolved: '标记已解决',
+      delete: '删除'
+    },
+    status: {
+      pending: '待处理',
+      reviewed: '已查看',
+      resolved: '已解决'
+    },
+    feedbackList: '反馈列表',
+    noFeedback: '暂无反馈',
+    confirmDelete: '确定要删除这条反馈吗？',
+    confirmClear: '确定要清空所有反馈吗？此操作不可恢复。'
   }
 }
 
