@@ -1375,6 +1375,22 @@ export default {
     noFeedback: '暂无反馈',
     confirmDelete: '确定要删除这条反馈吗？',
     confirmClear: '确定要清空所有反馈吗？此操作不可恢复。'
+  },
+
+  // 分享功能
+  share: {
+    shareWebsite: '分享网站',
+    copyLink: '复制链接',
+    wechat: '微信',
+    qq: 'QQ',
+    weibo: '微博',
+    moments: '朋友圈',
+    qrCode: '二维码',
+    totalShares: '总分享次数',
+    copySuccess: '链接已复制到剪贴板！',
+    copyFailed: '复制失败，请手动复制',
+    momentsTip: '请手动分享到朋友圈',
+    qrTip: '扫描二维码访问网站'
   }
 }
 

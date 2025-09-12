@@ -1375,6 +1375,22 @@ export default {
     noFeedback: 'No feedback yet',
     confirmDelete: 'Are you sure you want to delete this feedback?',
     confirmClear: 'Are you sure you want to clear all feedback? This action cannot be undone.'
+  },
+
+  // Share Feature
+  share: {
+    shareWebsite: 'Share Website',
+    copyLink: 'Copy Link',
+    wechat: 'WeChat',
+    qq: 'QQ',
+    weibo: 'Weibo',
+    moments: 'Moments',
+    qrCode: 'QR Code',
+    totalShares: 'Total Shares',
+    copySuccess: 'Link copied to clipboard!',
+    copyFailed: 'Copy failed, please copy manually',
+    momentsTip: 'Please share to Moments manually',
+    qrTip: 'Scan QR code to visit website'
   }
 }
 
