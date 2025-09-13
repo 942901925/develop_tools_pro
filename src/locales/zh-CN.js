@@ -1381,16 +1381,32 @@ export default {
   share: {
     shareWebsite: '分享网站',
     copyLink: '复制链接',
+    copySuccess: '链接已复制到剪贴板！',
+    copyFailed: '复制失败，请手动复制',
+    socialMedia: '社交媒体',
+    // 国际平台
+    x: 'X',
+    facebook: 'Facebook',
+    linkedin: 'LinkedIn',
+    instagram: 'Instagram',
+    tiktok: 'TikTok',
+    reddit: 'Reddit',
+    discord: 'Discord',
+    telegram: 'Telegram',
+    // 国内平台
     wechat: '微信',
     qq: 'QQ',
     weibo: '微博',
     moments: '朋友圈',
+    // 其他功能
     qrCode: '二维码',
+    qrTip: '扫描二维码访问网站',
     totalShares: '总分享次数',
-    copySuccess: '链接已复制到剪贴板！',
-    copyFailed: '复制失败，请手动复制',
+    // 提示信息
     momentsTip: '请手动分享到朋友圈',
-    qrTip: '扫描二维码访问网站'
+    instagramTip: '链接已复制，请在Instagram中粘贴分享',
+    tiktokTip: '链接已复制，请在TikTok中粘贴分享',
+    discordTip: '链接已复制，请在Discord中粘贴分享'
   },
 
   // 地理位置检测

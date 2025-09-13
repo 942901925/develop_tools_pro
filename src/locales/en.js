@@ -1381,16 +1381,32 @@ export default {
   share: {
     shareWebsite: 'Share Website',
     copyLink: 'Copy Link',
+    copySuccess: 'Link copied to clipboard!',
+    copyFailed: 'Copy failed, please copy manually',
+    socialMedia: 'Social Media',
+    // International Platforms
+    x: 'X',
+    facebook: 'Facebook',
+    linkedin: 'LinkedIn',
+    instagram: 'Instagram',
+    tiktok: 'TikTok',
+    reddit: 'Reddit',
+    discord: 'Discord',
+    telegram: 'Telegram',
+    // Chinese Platforms
     wechat: 'WeChat',
     qq: 'QQ',
     weibo: 'Weibo',
     moments: 'Moments',
+    // Other Features
     qrCode: 'QR Code',
+    qrTip: 'Scan QR code to visit website',
     totalShares: 'Total Shares',
-    copySuccess: 'Link copied to clipboard!',
-    copyFailed: 'Copy failed, please copy manually',
+    // Tips
     momentsTip: 'Please share to Moments manually',
-    qrTip: 'Scan QR code to visit website'
+    instagramTip: 'Link copied, please paste in Instagram',
+    tiktokTip: 'Link copied, please paste in TikTok',
+    discordTip: 'Link copied, please paste in Discord'
   },
 
   // Geo Location Detection
