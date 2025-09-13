@@ -1399,6 +1399,55 @@ export default {
     autoSwitched: '已自动切换到',
     detectionFailed: '位置检测失败，使用默认语言',
     manualOverride: '您已手动设置语言偏好'
+  },
+
+  // 工具文档
+  toolDocs: {
+    documentation: '使用文档',
+    features: '功能特性',
+    usage: '使用说明',
+    examples: '使用示例',
+    tips: '使用技巧',
+    input: '输入',
+    output: '输出',
+    copy: '复制',
+    copied: '已复制到剪贴板',
+    content: '内容',
+    noDocumentation: '暂无文档',
+    noDocumentationDesc: '该工具的使用文档正在完善中，敬请期待。'
+  },
+
+  // SQL格式化工具
+  sqlFormatter: {
+    sqlInput: 'SQL输入',
+    format: '格式化',
+    minify: '压缩',
+    clear: '清空',
+    enterSqlStatement: '请输入SQL语句...',
+    copyResult: '复制结果',
+    sqlValidation: 'SQL验证',
+    sqlSyntaxCorrect: 'SQL语法正确',
+    sqlSyntaxError: 'SQL语法错误',
+    exampleSql: '示例SQL',
+    formatFailed: '格式化失败',
+    examples: {
+      selectQuery: {
+        name: '简单查询',
+        description: '基本的SELECT查询语句'
+      },
+      joinQuery: {
+        name: '连接查询',
+        description: '使用JOIN的查询语句'
+      },
+      complexQuery: {
+        name: '复杂查询',
+        description: '包含子查询和聚合函数的复杂语句'
+      },
+      insertStatement: {
+        name: '插入语句',
+        description: 'INSERT语句示例'
+      }
+    }
   }
 }
 

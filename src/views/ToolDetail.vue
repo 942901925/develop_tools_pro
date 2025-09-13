@@ -41,6 +41,11 @@
         <p class="text-gray-500 dark:text-gray-400">{{ t('toolDetail.underDevelopmentDesc') }}</p>
       </div>
     </div>
+
+    <!-- 工具文档区域 -->
+    <div class="mt-6">
+      <ToolDocumentation :tool-id="tool.id" />
+    </div>
     
     
     <!-- 返回按钮 -->
@@ -67,7 +72,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { 
@@ -80,7 +85,9 @@ import {
 import { getToolById } from '../data/tools.js'
 import logger from '../utils/logger.js'
 import { trackToolUsage, trackUserInteraction } from '../utils/analytics.js'
+import { generateToolSEO, updatePageSEO, generateToolSchema, addStructuredData } from '../utils/seo.js'
 import { copyTextWithFeedback } from '../utils/clipboard.js'
+import ToolDocumentation from '../components/ToolDocumentation.vue'
 
 const router = useRouter()
 const route = useRoute()
@@ -226,4 +233,26 @@ const copyToClipboard = async () => {
 const goBack = () => {
   router.push('/')
 }
+
+// 更新SEO信息
+const updateSEO = () => {
+  if (tool.value) {
+    const seoInfo = generateToolSEO(tool.value.id)
+    updatePageSEO(seoInfo)
+    
+    // 添加工具页面的结构化数据
+    const toolSchema = generateToolSchema(tool.value)
+    addStructuredData(toolSchema)
+  }
+}
+
+// 监听工具变化，更新SEO
+watch(tool, () => {
+  updateSEO()
+}, { immediate: true })
+
+// 组件挂载时更新SEO
+onMounted(() => {
+  updateSEO()
+})
 </script>

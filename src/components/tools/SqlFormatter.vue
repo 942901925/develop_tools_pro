@@ -175,12 +175,12 @@ const formatSql = () => {
       .replace(/\s*;\s*/g, ';\n') // 分号后换行
       .trim()
     
-    formattedCss.value = formatted
+    formattedSql.value = formatted
     error.value = ''
-    validateSql()
+    validateSql(formatted)
   } catch (e) {
     error.value = t('sqlFormatter.formatFailed') + ': ' + e.message
-    formattedCss.value = ''
+    formattedSql.value = ''
   }
 }
 
@@ -196,17 +196,17 @@ const minifySql = () => {
       .replace(/\s*;\s*/g, ';')
       .trim()
     
-    formattedCss.value = minified
+    formattedSql.value = minified
     error.value = ''
-    validateSql()
+    validateSql(minified)
   } catch (e) {
     error.value = '压缩失败: ' + e.message
-    formattedCss.value = ''
+    formattedSql.value = ''
   }
 }
 
-const validateSql = () => {
-  const sql = formattedCss.value
+const validateSql = (sql) => {
+  if (!sql) return
   const errors = []
   
   // 简单的SQL验证
@@ -242,14 +242,14 @@ const loadExample = (example) => {
 
 const clearInput = () => {
   inputSql.value = ''
-  formattedCss.value = ''
+  formattedSql.value = ''
   error.value = ''
   validationResult.value = null
 }
 
 const copyResult = async () => {
   try {
-    await navigator.clipboard.writeText(formattedCss.value)
+    await navigator.clipboard.writeText(formattedSql.value)
   } catch (e) {
     console.error('复制失败:', e)
   }

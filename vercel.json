@@ -17,7 +17,7 @@
       }
     },
     {
-      "src": "/(favicon.*|ads\\.txt|site\\.webmanifest)",
+      "src": "/(favicon.*|ads\\.txt|site\\.webmanifest|robots\\.txt|sitemap\\.xml)",
       "headers": {
         "cache-control": "public, max-age=86400"
       }

@@ -1399,6 +1399,55 @@ export default {
     autoSwitched: 'Auto-switched to',
     detectionFailed: 'Location detection failed, using default language',
     manualOverride: 'You have manually set language preference'
+  },
+
+  // Tool Documentation
+  toolDocs: {
+    documentation: 'Documentation',
+    features: 'Features',
+    usage: 'Usage Instructions',
+    examples: 'Examples',
+    tips: 'Tips',
+    input: 'Input',
+    output: 'Output',
+    copy: 'Copy',
+    copied: 'Copied to clipboard',
+    content: 'Content',
+    noDocumentation: 'No Documentation',
+    noDocumentationDesc: 'Documentation for this tool is being prepared. Please stay tuned.'
+  },
+
+  // SQL Formatter Tool
+  sqlFormatter: {
+    sqlInput: 'SQL Input',
+    format: 'Format',
+    minify: 'Minify',
+    clear: 'Clear',
+    enterSqlStatement: 'Enter SQL statement...',
+    copyResult: 'Copy Result',
+    sqlValidation: 'SQL Validation',
+    sqlSyntaxCorrect: 'SQL syntax is correct',
+    sqlSyntaxError: 'SQL syntax error',
+    exampleSql: 'Example SQL',
+    formatFailed: 'Format failed',
+    examples: {
+      selectQuery: {
+        name: 'Simple Query',
+        description: 'Basic SELECT query statement'
+      },
+      joinQuery: {
+        name: 'Join Query',
+        description: 'Query statement using JOIN'
+      },
+      complexQuery: {
+        name: 'Complex Query',
+        description: 'Complex statement with subqueries and aggregate functions'
+      },
+      insertStatement: {
+        name: 'Insert Statement',
+        description: 'INSERT statement example'
+      }
+    }
   }
 }
 
