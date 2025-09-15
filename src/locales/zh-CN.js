@@ -65,6 +65,11 @@ export default {
       tools: '30+ 开发工具',
       instant: '即开即用',
       frontend: '纯前端'
+    },
+    tabs: {
+      all: '全部',
+      workplace: '职场工具',
+      development: '开发工具'
     }
   },
   
