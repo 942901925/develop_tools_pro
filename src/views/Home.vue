@@ -33,6 +33,31 @@
       </div>
     </div>
     
+    <!-- 选项卡切换 -->
+    <div class="flex justify-center mb-8">
+      <div class="bg-gray-800/30 backdrop-blur-sm rounded-2xl p-2 border border-gray-700/50">
+        <div class="flex space-x-2">
+          <button
+            v-for="tab in tabs"
+            :key="tab.id"
+            @click="handleTabChange(tab.id)"
+            :class="[
+              'px-6 py-3 rounded-xl font-medium transition-all duration-300 flex items-center space-x-2',
+              selectedTab === tab.id 
+                ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg shadow-purple-500/25' 
+                : 'text-gray-300 hover:text-white hover:bg-gray-700/50'
+            ]"
+          >
+            <component :is="getIconComponent(tab.icon)" class="w-5 h-5" />
+            <span>{{ tab.name }}</span>
+            <span class="px-2 py-0.5 bg-white/20 rounded-full text-xs font-mono">
+              {{ tab.count }}
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    
     <!-- 分类筛选 -->
     <div class="flex flex-wrap justify-center gap-4 px-4">
       <button
@@ -131,7 +156,7 @@ import {
   Shield, Link, Hash, GitCompare, BarChart3,
   Key, Lock, Users, Image, RefreshCw, QrCode,
   Fingerprint, ShieldCheck, AlertTriangle, Globe, Monitor,
-  Server, Palette, Database, Droplets, Ruler, Binary, Code2
+  Server, Palette, Database, Droplets, Ruler, Binary, Code2, Grid3X3
 } from 'lucide-vue-next'
 import { tools, getLocalizedCategories, getToolsByCategory, searchTools } from '../data/tools.js'
 
@@ -146,22 +171,70 @@ const iconComponents = {
   Shield, Link, Hash, GitCompare, Search, BarChart3,
   Key, Lock, Users, Image, RefreshCw, QrCode,
   Fingerprint, ShieldCheck, AlertTriangle, Globe, Monitor,
-  Server, Palette, Database, Droplets, Ruler, Binary, Code2
+  Server, Palette, Database, Droplets, Ruler, Binary, Code2, Grid3X3
 }
 
 const router = useRouter()
 const { t: $t } = useI18n()
+const selectedTab = ref('all')
 const selectedCategory = ref('all')
 const searchQuery = ref('')
 
+// 选项卡定义
+const tabs = computed(() => [
+  {
+    id: 'all',
+    name: $t('home.tabs.all'),
+    icon: 'Grid3X3',
+    count: tools.length
+  },
+  {
+    id: 'workplace',
+    name: $t('home.tabs.workplace'),
+    icon: 'Users',
+    count: tools.filter(t => t.category === '职场工具').length
+  },
+  {
+    id: 'development',
+    name: $t('home.tabs.development'),
+    icon: 'Code',
+    count: tools.filter(t => t.category !== '职场工具').length
+  }
+])
+
 // 获取本地化的分类列表
 const categories = computed(() => {
-  return getLocalizedCategories($t)
+  const allCategories = getLocalizedCategories($t)
+  
+  // 根据当前选项卡过滤分类
+  if (selectedTab.value === 'workplace') {
+    // 职场工具选项卡只显示职场工具分类
+    return allCategories.filter(cat => cat.id === 'workplace' || cat.id === 'all')
+  } else if (selectedTab.value === 'development') {
+    // 开发工具选项卡显示除职场工具外的所有分类
+    return allCategories.filter(cat => cat.id !== 'workplace')
+  } else {
+    // 全部选项卡显示所有分类
+    return allCategories
+  }
 })
 
 // 计算过滤后的工具列表
 const filteredTools = computed(() => {
-  let result = getToolsByCategory(selectedCategory.value)
+  let result = tools
+  
+  // 根据选项卡过滤
+  if (selectedTab.value === 'workplace') {
+    result = tools.filter(t => t.category === '职场工具')
+  } else if (selectedTab.value === 'development') {
+    result = tools.filter(t => t.category !== '职场工具')
+  }
+  // selectedTab.value === 'all' 时显示所有工具，不需要额外过滤
+  
+  // 根据分类进一步过滤
+  if (selectedCategory.value !== 'all') {
+    result = result.filter(t => t.category === selectedCategory.value)
+  }
   
   // 优先使用全局搜索，如果没有则使用本地搜索
   const activeSearchQuery = globalSearchQuery.value.trim() || searchQuery.value.trim()
@@ -176,6 +249,13 @@ const filteredTools = computed(() => {
 // 处理搜索
 const handleSearch = () => {
   // 搜索逻辑已在computed中处理
+}
+
+// 处理选项卡切换
+const handleTabChange = (tabId) => {
+  selectedTab.value = tabId
+  // 切换选项卡时重置分类选择
+  selectedCategory.value = 'all'
 }
 
 // 跳转到工具详情页

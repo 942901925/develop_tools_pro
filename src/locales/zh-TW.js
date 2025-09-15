@@ -59,6 +59,11 @@ export default {
       crypto: '加密解密',
       network: '網路工具',
       dev: '開發工具'
+    },
+    tabs: {
+      all: '全部',
+      workplace: '職場工具',
+      development: '開發工具'
     }
   },
   

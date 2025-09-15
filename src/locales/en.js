@@ -65,6 +65,11 @@ export default {
       tools: '30+ Dev Tools',
       instant: 'Ready to Use',
       frontend: 'Frontend Only'
+    },
+    tabs: {
+      all: 'All',
+      workplace: 'Workplace Tools',
+      development: 'Development Tools'
     }
   },
   

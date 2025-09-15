@@ -59,6 +59,11 @@ export default {
       crypto: 'Chiffrement/Déchiffrement',
       network: 'Outils réseau',
       dev: 'Outils de développement'
+    },
+    tabs: {
+      all: 'Tous',
+      workplace: 'Outils de travail',
+      development: 'Outils de développement'
     }
   },
   
