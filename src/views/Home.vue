@@ -21,13 +21,13 @@
         <!-- 特色标签 -->
         <div class="flex flex-wrap justify-center gap-3 mt-6">
           <span class="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full text-sm text-purple-300 border border-purple-500/30 backdrop-blur-sm">
-            ✨ 30+ 开发工具
+            ✨ {{ $t('home.features.tools') }}
           </span>
           <span class="px-4 py-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-full text-sm text-green-300 border border-green-500/30 backdrop-blur-sm">
-            🚀 即开即用
+            🚀 {{ $t('home.features.instant') }}
           </span>
           <span class="px-4 py-2 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-full text-sm text-orange-300 border border-orange-500/30 backdrop-blur-sm">
-            💻 纯前端
+            💻 {{ $t('home.features.frontend') }}
           </span>
         </div>
       </div>
@@ -93,10 +93,10 @@
           <!-- 内容区域 -->
           <div class="flex-1 flex flex-col">
             <h3 class="text-lg font-bold text-white group-hover:text-purple-200 transition-colors mb-3 line-clamp-1">
-              {{ $t(`tools.${tool.id}.name`) || tool.name }}
+              {{ $t(`toolNames.${tool.id}.name`) || tool.name }}
             </h3>
             <p class="text-sm text-gray-300 group-hover:text-gray-200 line-clamp-2 leading-relaxed flex-1">
-              {{ $t(`tools.${tool.id}.description`) || tool.description }}
+              {{ $t(`toolNames.${tool.id}.description`) || tool.description }}
             </p>
             
             <!-- 底部标签 -->

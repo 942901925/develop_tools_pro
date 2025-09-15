@@ -1,5 +1,17 @@
 // 工具数据配置
 export const tools = [
+  // 职场工具
+  {
+    id: 'salary-calculator',
+    name: '薪酬计算器',
+    description: '计算总包、时薪和涨幅',
+    category: '职场工具',
+    icon: 'Calculator',
+    color: 'green',
+    size: 'normal',
+    component: 'SalaryCalculator'
+  },
+  
   // JSON工具
   {
     id: 'json-formatter',
@@ -331,7 +343,8 @@ export const categories = [
   { id: '图像处理', name: '图像处理', count: tools.filter(t => t.category === '图像处理').length },
   { id: '加密解密', name: '加密解密', count: tools.filter(t => t.category === '加密解密').length },
   { id: '网络工具', name: '网络工具', count: tools.filter(t => t.category === '网络工具').length },
-  { id: '开发工具', name: '开发工具', count: tools.filter(t => t.category === '开发工具').length }
+  { id: '开发工具', name: '开发工具', count: tools.filter(t => t.category === '开发工具').length },
+  { id: '职场工具', name: '职场工具', count: tools.filter(t => t.category === '职场工具').length }
 ]
 
 // 获取本地化的分类列表
@@ -346,7 +359,8 @@ export const getLocalizedCategories = (t) => {
     { id: '图像处理', name: t('home.categories.image'), count: tools.filter(t => t.category === '图像处理').length },
     { id: '加密解密', name: t('home.categories.crypto'), count: tools.filter(t => t.category === '加密解密').length },
     { id: '网络工具', name: t('home.categories.network'), count: tools.filter(t => t.category === '网络工具').length },
-    { id: '开发工具', name: t('home.categories.dev'), count: tools.filter(t => t.category === '开发工具').length }
+    { id: '开发工具', name: t('home.categories.dev'), count: tools.filter(t => t.category === '开发工具').length },
+    { id: '职场工具', name: t('home.categories.workplace'), count: tools.filter(t => t.category === '职场工具').length }
   ]
 }
 

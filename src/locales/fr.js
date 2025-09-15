@@ -83,7 +83,8 @@ export default {
       '图像处理': 'Traitement d\'images',
       '加密解密': 'Chiffrement/Déchiffrement',
       '网络工具': 'Outils réseau',
-      '开发工具': 'Outils de développement'
+      '开发工具': 'Outils de développement',
+      '职场工具': 'Outils de travail'
     },
     
     // Outils JSON
@@ -222,6 +223,10 @@ export default {
     'code-highlighter': {
       name: 'Coloration syntaxique',
       description: 'Coloration syntaxique pour plusieurs langages'
+    },
+    'salary-calculator': {
+      name: 'Calculateur de salaire',
+      description: 'Calculer le package total, le taux horaire et l\'augmentation'
     }
   },
   

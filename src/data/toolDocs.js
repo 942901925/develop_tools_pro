@@ -2250,6 +2250,96 @@ export const toolDocs = {
         'Includes practical usage examples'
       ]
     }
+  },
+
+  // 薪酬计算器
+  'salary-calculator': {
+    'zh-CN': {
+      title: '薪酬计算器',
+      description: '专业的薪酬计算工具，帮助计算总包、时薪，并根据涨幅比例计算新薪酬，提供详细的薪酬分析。',
+      features: [
+        '计算总薪酬包（年收入）',
+        '计算时薪（可自定义工作小时）',
+        '根据涨幅比例计算新薪酬',
+        '提供详细的薪酬对比分析',
+        '支持多种发薪频率（12-16薪）',
+        '工作时间分析和福利分析'
+      ],
+      usage: [
+        '1. 输入月薪和发薪频率',
+        '2. 设置每日工作小时数',
+        '3. 输入涨幅比例（如20%、30%）',
+        '4. 点击计算按钮查看结果',
+        '5. 查看详细的薪酬对比分析'
+      ],
+      examples: [
+        {
+          title: '基础薪酬计算',
+          input: '月薪：15000元，发薪：13次，工作小时：8小时',
+          output: '总包：195000元，时薪：68.18元'
+        },
+        {
+          title: '涨幅计算',
+          input: '当前月薪：15000元，涨幅：20%',
+          output: '新月薪：18000元，新总包：234000元'
+        },
+        {
+          title: '时薪对比',
+          input: '月薪：20000元，工作小时：10小时',
+          output: '时薪：90.91元（相比8小时工作减少）'
+        }
+      ],
+      tips: [
+        '发薪频率包括基本工资和奖金',
+        '时薪计算基于每月22个工作日',
+        '涨幅计算适用于所有薪酬项目',
+        '建议根据实际工作强度调整工作小时',
+        '可以用于跳槽谈判和薪酬评估'
+      ]
+    },
+    'en': {
+      title: 'Salary Calculator',
+      description: 'Professional salary calculation tool to help calculate total package, hourly rate, and new salary based on raise percentage with detailed salary analysis.',
+      features: [
+        'Calculate total compensation package (annual income)',
+        'Calculate hourly rate (customizable work hours)',
+        'Calculate new salary based on raise percentage',
+        'Provide detailed salary comparison analysis',
+        'Support multiple pay frequencies (12-16 pays)',
+        'Work time analysis and benefit analysis'
+      ],
+      usage: [
+        '1. Enter monthly salary and pay frequency',
+        '2. Set daily work hours',
+        '3. Enter raise percentage (e.g., 20%, 30%)',
+        '4. Click calculate button to view results',
+        '5. View detailed salary comparison analysis'
+      ],
+      examples: [
+        {
+          title: 'Basic Salary Calculation',
+          input: 'Monthly: $5000, Pay frequency: 13 times, Work hours: 8 hours',
+          output: 'Total package: $65000, Hourly rate: $28.41'
+        },
+        {
+          title: 'Raise Calculation',
+          input: 'Current monthly: $5000, Raise: 20%',
+          output: 'New monthly: $6000, New total package: $78000'
+        },
+        {
+          title: 'Hourly Rate Comparison',
+          input: 'Monthly: $6000, Work hours: 10 hours',
+          output: 'Hourly rate: $27.27 (reduced compared to 8-hour work)'
+        }
+      ],
+      tips: [
+        'Pay frequency includes base salary and bonuses',
+        'Hourly rate calculation based on 22 working days per month',
+        'Raise calculation applies to all salary items',
+        'Adjust work hours based on actual work intensity',
+        'Can be used for job negotiation and salary evaluation'
+      ]
+    }
   }
 }
 

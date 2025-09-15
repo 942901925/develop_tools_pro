@@ -151,7 +151,8 @@ const getToolComponent = async (toolId) => {
       'qr-code-generator': () => import('../components/tools/QrCodeGenerator.vue'),
       'ip-lookup': () => import('../components/tools/IpLookup.vue'),
       'user-agent-parser': () => import('../components/tools/UserAgentParser.vue'),
-      'http-status-codes': () => import('../components/tools/HttpStatusCodes.vue')
+      'http-status-codes': () => import('../components/tools/HttpStatusCodes.vue'),
+      'salary-calculator': () => import('../components/tools/SalaryCalculator.vue')
     }
     
     const componentLoader = toolComponentMap[toolId]

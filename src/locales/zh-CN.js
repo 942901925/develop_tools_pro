@@ -58,7 +58,13 @@ export default {
       image: '图像处理',
       crypto: '加密解密',
       network: '网络工具',
-      dev: '开发工具'
+      dev: '开发工具',
+      workplace: '职场工具'
+    },
+    features: {
+      tools: '30+ 开发工具',
+      instant: '即开即用',
+      frontend: '纯前端'
     }
   },
   
@@ -83,7 +89,8 @@ export default {
       '图像处理': '图像处理',
       '加密解密': '加密解密',
       '网络工具': '网络工具',
-      '开发工具': '开发工具'
+      '开发工具': '开发工具',
+      '职场工具': '职场工具'
     },
     
     // JSON工具
@@ -1464,6 +1471,189 @@ export default {
         description: 'INSERT语句示例'
       }
     }
+  },
+
+  // 工具名称和描述
+  toolNames: {
+    'json-formatter': {
+      name: 'JSON格式化',
+      description: '格式化、压缩、验证JSON数据'
+    },
+    'json-yaml-converter': {
+      name: 'JSON转YAML',
+      description: 'JSON与YAML格式互转'
+    },
+    'json-schema-generator': {
+      name: 'JSON Schema生成',
+      description: '根据JSON数据生成Schema'
+    },
+    'timestamp-converter': {
+      name: '时间戳转换',
+      description: 'Unix时间戳与日期互转'
+    },
+    'time-calculator': {
+      name: '时间计算器',
+      description: '日期加减、时区转换'
+    },
+    'countdown-timer': {
+      name: '倒计时器',
+      description: '创建倒计时和定时器'
+    },
+    'base64-encoder': {
+      name: 'Base64编解码',
+      description: 'Base64编码和解码'
+    },
+    'url-encoder': {
+      name: 'URL编解码',
+      description: 'URL编码和解码'
+    },
+    'html-entities': {
+      name: 'HTML实体编解码',
+      description: 'HTML实体编码和解码'
+    },
+    'text-diff': {
+      name: '文本差异对比',
+      description: '比较两个文本的差异'
+    },
+    'regex-tester': {
+      name: '正则表达式测试',
+      description: '测试和调试正则表达式'
+    },
+    'text-statistics': {
+      name: '文本统计',
+      description: '分析文本统计信息'
+    },
+    'uuid-generator': {
+      name: 'UUID生成器',
+      description: '生成UUID标识符'
+    },
+    'password-generator': {
+      name: '随机密码生成',
+      description: '生成安全的随机密码'
+    },
+    'fake-data-generator': {
+      name: '假数据生成',
+      description: '生成测试用的假数据'
+    },
+    'image-compressor': {
+      name: '图片压缩',
+      description: '压缩图片文件大小'
+    },
+    'image-converter': {
+      name: '图片格式转换',
+      description: '转换图片格式'
+    },
+    'qr-code-generator': {
+      name: '二维码生成',
+      description: '生成二维码图片'
+    },
+    'hash-generator': {
+      name: 'MD5/SHA哈希',
+      description: '生成MD5、SHA等哈希值'
+    },
+    'aes-encryptor': {
+      name: 'AES加密解密',
+      description: 'AES加密和解密数据'
+    },
+    'password-strength': {
+      name: '密码强度检测',
+      description: '检测密码强度等级'
+    },
+    'ip-lookup': {
+      name: 'IP地址查询',
+      description: '查询IP地址信息'
+    },
+    'user-agent-parser': {
+      name: 'User-Agent解析',
+      description: '解析User-Agent字符串'
+    },
+    'http-status-codes': {
+      name: 'HTTP状态码查询',
+      description: '查询HTTP状态码含义'
+    },
+    'css-formatter': {
+      name: 'CSS美化',
+      description: '格式化和美化CSS代码'
+    },
+    'sql-formatter': {
+      name: 'SQL格式化',
+      description: '格式化和美化SQL语句'
+    },
+    'color-picker': {
+      name: '颜色选择器',
+      description: '选择颜色和获取颜色值'
+    },
+    'unit-converter': {
+      name: '单位转换器',
+      description: '转换各种单位'
+    },
+    'number-base-converter': {
+      name: '进制转换器',
+      description: '转换数字进制'
+    },
+    'code-highlighter': {
+      name: '代码高亮',
+      description: '语法高亮显示代码'
+    },
+    'salary-calculator': {
+      name: '薪酬计算器',
+      description: '计算总包、时薪和涨幅'
+    },
+    categories: {
+      '职场工具': '职场工具'
+    }
+  },
+
+  // 薪酬计算器
+  salaryCalculator: {
+    title: '薪酬计算器',
+    basicInfo: '基础薪酬信息',
+    monthlySalary: '月薪',
+    enterMonthlySalary: '请输入月薪',
+    currency: '元',
+    payFrequency: '发薪频率',
+    monthly: '月薪',
+    times: '次',
+    workHoursPerDay: '每日工作小时',
+    enterWorkHours: '请输入每日工作小时',
+    raiseCalculation: '涨幅计算',
+    raisePercentage: '涨幅比例',
+    enterRaisePercentage: '请输入涨幅比例',
+    calculate: '计算',
+    currentPackage: '当前薪酬包',
+    newPackage: '新薪酬包',
+    totalPackage: '总包',
+    hourlyRate: '时薪',
+    detailedComparison: '详细对比',
+    item: '项目',
+    current: '当前',
+    new: '新薪酬',
+    difference: '差额',
+    percentage: '涨幅',
+    salaryAnalysis: '薪酬分析',
+    workTimeAnalysis: '工作时间分析',
+    workDaysPerMonth: '每月工作天数',
+    days: '天',
+    totalWorkHoursPerMonth: '每月工作小时',
+    hours: '小时',
+    workHoursPerYear: '每年工作小时',
+    benefitAnalysis: '福利分析',
+    bonusPerMonth: '每月奖金',
+    bonusPerYear: '每年奖金',
+    bonusPercentage: '奖金比例',
+    enterBasicInfo: '请输入基础薪酬信息',
+    yuan: '元',
+    wan: '万',
+    salary: '薪',
+    yearEndBonus: '年终奖',
+    none: '无',
+    fixedAmount: '固定金额',
+    floatingCoefficient: '浮动系数',
+    enterFixedAmount: '请输入固定金额',
+    enterCoefficient: '请输入系数',
+    stockOptions: '股票期权',
+    has: '有',
+    enterStockAmount: '请输入股票期权金额'
   }
 }
 

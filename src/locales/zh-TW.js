@@ -83,7 +83,8 @@ export default {
       '圖像處理': '圖像處理',
       '加密解密': '加密解密',
       '網路工具': '網路工具',
-      '開發工具': '開發工具'
+      '開發工具': '開發工具',
+      '职场工具': '職場工具'
     },
     
     // JSON工具
@@ -222,6 +223,10 @@ export default {
     'code-highlighter': {
       name: '程式碼高亮',
       description: '多語言程式碼語法高亮'
+    },
+    'salary-calculator': {
+      name: '薪酬計算器',
+      description: '計算總包、時薪和漲幅'
     }
   },
   

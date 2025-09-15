@@ -58,7 +58,13 @@ export default {
       image: 'Image Processing',
       crypto: 'Encryption/Decryption',
       network: 'Network Tools',
-      dev: 'Development Tools'
+      dev: 'Development Tools',
+      workplace: 'Workplace Tools'
+    },
+    features: {
+      tools: '30+ Dev Tools',
+      instant: 'Ready to Use',
+      frontend: 'Frontend Only'
     }
   },
   
@@ -83,7 +89,8 @@ export default {
       '图像处理': 'Image Processing',
       '加密解密': 'Encryption/Decryption',
       '网络工具': 'Network Tools',
-      '开发工具': 'Development Tools'
+      '开发工具': 'Development Tools',
+      '职场工具': 'Workplace Tools'
     },
     
     // JSON Tools
@@ -1464,6 +1471,189 @@ export default {
         description: 'INSERT statement example'
       }
     }
+  },
+
+  // Salary Calculator
+  // 工具名称和描述
+  toolNames: {
+    'json-formatter': {
+      name: 'JSON Formatter',
+      description: 'Format, compress, and validate JSON data'
+    },
+    'json-yaml-converter': {
+      name: 'JSON to YAML',
+      description: 'Convert between JSON and YAML formats'
+    },
+    'json-schema-generator': {
+      name: 'JSON Schema Generator',
+      description: 'Generate Schema from JSON data'
+    },
+    'timestamp-converter': {
+      name: 'Timestamp Converter',
+      description: 'Convert Unix timestamp to date and vice versa'
+    },
+    'time-calculator': {
+      name: 'Time Calculator',
+      description: 'Date arithmetic and timezone conversion'
+    },
+    'countdown-timer': {
+      name: 'Countdown Timer',
+      description: 'Create countdown and timer'
+    },
+    'base64-encoder': {
+      name: 'Base64 Encoder',
+      description: 'Base64 encoding and decoding'
+    },
+    'url-encoder': {
+      name: 'URL Encoder',
+      description: 'URL encoding and decoding'
+    },
+    'html-entities': {
+      name: 'HTML Entities',
+      description: 'HTML entity encoding and decoding'
+    },
+    'text-diff': {
+      name: 'Text Diff',
+      description: 'Compare differences between two texts'
+    },
+    'regex-tester': {
+      name: 'Regex Tester',
+      description: 'Test and debug regular expressions'
+    },
+    'text-statistics': {
+      name: 'Text Statistics',
+      description: 'Analyze text statistics'
+    },
+    'uuid-generator': {
+      name: 'UUID Generator',
+      description: 'Generate UUID identifiers'
+    },
+    'password-generator': {
+      name: 'Password Generator',
+      description: 'Generate secure random passwords'
+    },
+    'fake-data-generator': {
+      name: 'Fake Data Generator',
+      description: 'Generate fake data for testing'
+    },
+    'image-compressor': {
+      name: 'Image Compressor',
+      description: 'Compress image file size'
+    },
+    'image-converter': {
+      name: 'Image Converter',
+      description: 'Convert image formats'
+    },
+    'qr-code-generator': {
+      name: 'QR Code Generator',
+      description: 'Generate QR code images'
+    },
+    'hash-generator': {
+      name: 'Hash Generator',
+      description: 'Generate MD5, SHA and other hash values'
+    },
+    'aes-encryptor': {
+      name: 'AES Encryptor',
+      description: 'AES encryption and decryption'
+    },
+    'password-strength': {
+      name: 'Password Strength',
+      description: 'Check password strength level'
+    },
+    'ip-lookup': {
+      name: 'IP Lookup',
+      description: 'Query IP address information'
+    },
+    'user-agent-parser': {
+      name: 'User-Agent Parser',
+      description: 'Parse User-Agent strings'
+    },
+    'http-status-codes': {
+      name: 'HTTP Status Codes',
+      description: 'Query HTTP status code meanings'
+    },
+    'css-formatter': {
+      name: 'CSS Formatter',
+      description: 'Format and beautify CSS code'
+    },
+    'sql-formatter': {
+      name: 'SQL Formatter',
+      description: 'Format and beautify SQL statements'
+    },
+    'color-picker': {
+      name: 'Color Picker',
+      description: 'Pick colors and get color values'
+    },
+    'unit-converter': {
+      name: 'Unit Converter',
+      description: 'Convert various units'
+    },
+    'number-base-converter': {
+      name: 'Number Base Converter',
+      description: 'Convert number bases'
+    },
+    'code-highlighter': {
+      name: 'Code Highlighter',
+      description: 'Syntax highlighting for code'
+    },
+    'salary-calculator': {
+      name: 'Salary Calculator',
+      description: 'Calculate total package, hourly rate and raise'
+    },
+    categories: {
+      '职场工具': 'Workplace Tools'
+    }
+  },
+
+  salaryCalculator: {
+    title: 'Salary Calculator',
+    basicInfo: 'Basic Salary Information',
+    monthlySalary: 'Monthly Salary',
+    enterMonthlySalary: 'Enter monthly salary',
+    currency: 'USD',
+    payFrequency: 'Pay Frequency',
+    monthly: 'Monthly',
+    times: 'times',
+    workHoursPerDay: 'Work Hours Per Day',
+    enterWorkHours: 'Enter work hours per day',
+    raiseCalculation: 'Raise Calculation',
+    raisePercentage: 'Raise Percentage',
+    enterRaisePercentage: 'Enter raise percentage',
+    calculate: 'Calculate',
+    currentPackage: 'Current Package',
+    newPackage: 'New Package',
+    totalPackage: 'Total Package',
+    hourlyRate: 'Hourly Rate',
+    detailedComparison: 'Detailed Comparison',
+    item: 'Item',
+    current: 'Current',
+    new: 'New',
+    difference: 'Difference',
+    percentage: 'Percentage',
+    salaryAnalysis: 'Salary Analysis',
+    workTimeAnalysis: 'Work Time Analysis',
+    workDaysPerMonth: 'Work Days Per Month',
+    days: 'days',
+    totalWorkHoursPerMonth: 'Total Work Hours Per Month',
+    hours: 'hours',
+    workHoursPerYear: 'Work Hours Per Year',
+    benefitAnalysis: 'Benefit Analysis',
+    bonusPerMonth: 'Bonus Per Month',
+    bonusPerYear: 'Bonus Per Year',
+    bonusPercentage: 'Bonus Percentage',
+    enterBasicInfo: 'Please enter basic salary information',
+    yuan: 'USD',
+    wan: 'K USD',
+    salary: ' pays',
+    yearEndBonus: 'Year End Bonus',
+    none: 'None',
+    fixedAmount: 'Fixed Amount',
+    floatingCoefficient: 'Floating Coefficient',
+    enterFixedAmount: 'Enter fixed amount',
+    enterCoefficient: 'Enter coefficient',
+    stockOptions: 'Stock Options',
+    has: 'Yes',
+    enterStockAmount: 'Enter stock options amount'
   }
 }
 
