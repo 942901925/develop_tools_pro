@@ -10,8 +10,8 @@
           <component :is="getIconComponent(tool.icon)" class="w-8 h-8" />
         </div>
         <div class="flex-1">
-          <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">{{ t(`tools.${tool.id}.name`) || tool.name }}</h1>
-          <p class="text-lg text-gray-600 dark:text-gray-300 mt-1">{{ t(`tools.${tool.id}.description`) || tool.description }}</p>
+          <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">{{ t(`toolNames.${tool.id}.name`) || tool.name }}</h1>
+          <p class="text-lg text-gray-600 dark:text-gray-300 mt-1">{{ t(`toolNames.${tool.id}.description`) || tool.description }}</p>
           <div class="flex items-center space-x-4 mt-3">
             <span class="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">
               {{ t(`tools.categories.${tool.category}`) || tool.category }}
