@@ -236,6 +236,30 @@ export default {
     'vacation-calculator': {
       name: '假期計算器',
       description: '智能優化假期安排，最大化休息時間'
+    },
+    'ocr-text-extraction': {
+      name: 'OCR文字提取',
+      description: '無需上傳伺服器，在瀏覽器中快速提取圖片中的文字'
+    },
+    'business-card-ocr': {
+      name: '名片資訊提取',
+      description: '智能識別名片圖片，自動提取並結構化聯絡人資訊'
+    },
+    'social-security-calculator': {
+      name: '社保公積金計算器',
+      description: '計算全國主要城市的社保公積金繳納明細和稅後收入'
+    },
+    'privacy-checker': {
+      name: '隱私洩露查詢',
+      description: '檢查信箱是否在資料洩露事件中被暴露，保護您的隱私安全'
+    },
+    'information-breakout': {
+      name: '資訊繭房突破器',
+      description: '生成多維度搜尋關鍵詞，幫助突破資訊繭房，獲得更全面的資訊視角'
+    },
+    'digital-cleanup': {
+      name: '數字足跡清理助手',
+      description: '提供20+主流平台的帳號註銷指南，幫助清理數字足跡，保護隱私安全'
     }
   },
   
@@ -344,6 +368,38 @@ export default {
   // 頁尾
   footer: {
     copyright: '© 2025 Develop Tools Pro. 為高效的工作人士打造的現代化工具集合.'
+  },
+
+  // 數字足跡清理助手
+  digitalCleanup: {
+    title: '數字足跡清理助手',
+    subtitle: '提供20+主流平台的帳號註銷指南，幫助清理數字足跡，保護隱私安全',
+    platformSelection: '選擇需要註銷的平台',
+    selectAll: '全選所有平台',
+    deselectAll: '取消全選',
+    generateGuide: '生成註銷指南',
+    resultTitle: '已選擇 {count} 個平台的註銷指南',
+    resultDescription: '點擊平台名稱查看詳細的註銷步驟和注意事項',
+    clickToToggle: '點擊展開/折疊指南',
+    expand: '展開',
+    collapse: '折疊',
+    expandAll: '展開全部',
+    collapseAll: '折疊全部',
+    officialLink: '官方註銷連結',
+    deletionSteps: '註銷步驟',
+    importantNotes: '注意事項',
+    tips: {
+      title: '使用提示',
+      description: '選擇您需要註銷的平台，系統將為您生成詳細的註銷指南和注意事項'
+    },
+    usageNote: {
+      title: '使用說明',
+      description: '請仔細閱讀每個平台的註銷步驟和注意事項，註銷操作不可逆，請謹慎操作'
+    },
+    emptyState: {
+      title: '開始清理',
+      description: '選擇您需要註銷的平台，我們將為您提供詳細的註銷指南'
+    }
   }
 }
 

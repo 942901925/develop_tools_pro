@@ -236,6 +236,30 @@ export default {
     'vacation-calculator': {
       name: 'Calculateur de vacances',
       description: 'Optimisation intelligente des arrangements de vacances pour maximiser le temps de repos'
+    },
+    'ocr-text-extraction': {
+      name: 'Extraction de texte OCR',
+      description: 'Extraction rapide de texte à partir d\'images dans le navigateur sans téléchargement sur serveur'
+    },
+    'business-card-ocr': {
+      name: 'Extraction d\'informations de carte de visite',
+      description: 'Reconnaissance intelligente d\'images de cartes de visite, extraction automatique et structuration des informations de contact'
+    },
+    'social-security-calculator': {
+      name: 'Calculateur de sécurité sociale',
+      description: 'Calcul des cotisations de sécurité sociale et de fonds de logement pour les principales villes de Chine et revenus après impôts'
+    },
+    'privacy-checker': {
+      name: 'Vérificateur de fuite de confidentialité',
+      description: 'Vérifier si votre email a été exposé dans des incidents de fuite de données, protéger votre confidentialité'
+    },
+    'information-breakout': {
+      name: 'Outil de percée de la bulle d\'information',
+      description: 'Génération de mots-clés de recherche multidimensionnels pour percer la bulle d\'information et obtenir des perspectives complètes'
+    },
+    'digital-cleanup': {
+      name: 'Assistant de nettoyage d\'empreinte numérique',
+      description: 'Fournit des guides de suppression de compte pour 20+ plateformes populaires, aidant à nettoyer l\'empreinte numérique et protéger la confidentialité'
     }
   },
   
@@ -288,6 +312,38 @@ export default {
   // Pied de page
   footer: {
     copyright: '© 2025 Develop Tools Pro. Une collection moderne d\'outils pour professionnels efficaces.'
+  },
+
+  // Assistant de nettoyage d'empreinte numérique
+  digitalCleanup: {
+    title: 'Assistant de nettoyage d\'empreinte numérique',
+    subtitle: 'Fournit des guides de suppression de compte pour 20+ plateformes populaires, aidant à nettoyer l\'empreinte numérique et protéger la confidentialité',
+    platformSelection: 'Sélectionnez les plateformes pour supprimer les comptes',
+    selectAll: 'Sélectionner toutes les plateformes',
+    deselectAll: 'Tout désélectionner',
+    generateGuide: 'Générer le guide de suppression',
+    resultTitle: 'Guides de suppression pour {count} plateformes sélectionnées',
+    resultDescription: 'Cliquez sur les noms des plateformes pour voir les étapes de suppression détaillées et les notes importantes',
+    clickToToggle: 'Cliquez pour développer/réduire le guide',
+    expand: 'Développer',
+    collapse: 'Réduire',
+    expandAll: 'Tout développer',
+    collapseAll: 'Tout réduire',
+    officialLink: 'Lien officiel de suppression',
+    deletionSteps: 'Étapes de suppression',
+    importantNotes: 'Notes importantes',
+    tips: {
+      title: 'Conseils d\'utilisation',
+      description: 'Sélectionnez les plateformes dont vous devez supprimer les comptes, et le système générera des guides de suppression détaillés et des notes importantes'
+    },
+    usageNote: {
+      title: 'Instructions d\'utilisation',
+      description: 'Veuillez lire attentivement les étapes de suppression et les notes importantes pour chaque plateforme. Les opérations de suppression sont irréversibles, procédez avec prudence'
+    },
+    emptyState: {
+      title: 'Commencer le nettoyage',
+      description: 'Sélectionnez les plateformes dont vous devez supprimer les comptes, et nous vous fournirons des guides de suppression détaillés'
+    }
   }
 }
 

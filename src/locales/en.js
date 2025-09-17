@@ -1629,6 +1629,10 @@ export default {
       name: 'Information Echo Chamber Breaker',
       description: 'Generate multi-dimensional search keywords to break through information echo chambers and gain comprehensive perspectives'
     },
+    'digital-cleanup': {
+      name: 'Digital Footprint Cleanup Assistant',
+      description: 'Provides account deletion guides for 20+ mainstream platforms to help clean up digital footprints and protect privacy'
+    },
     categories: {
       '职场工具': 'Workplace Tools'
     }
@@ -2026,6 +2030,38 @@ export default {
     },
     errors: {
       copyFailed: 'Copy failed, please copy manually'
+    }
+  },
+
+  // Digital Cleanup Assistant
+  digitalCleanup: {
+    title: 'Digital Footprint Cleanup Assistant',
+    subtitle: 'Provides account deletion guides for 20+ mainstream platforms to help clean up digital footprints and protect privacy',
+    platformSelection: 'Select platforms to delete accounts',
+    selectAll: 'Select all platforms',
+    deselectAll: 'Deselect all',
+    generateGuide: 'Generate Deletion Guide',
+    resultTitle: 'Deletion guides for {count} selected platforms',
+    resultDescription: 'Click on platform names to view detailed deletion steps and important notes',
+    clickToToggle: 'Click to expand/collapse guide',
+    expand: 'Expand',
+    collapse: 'Collapse',
+    expandAll: 'Expand All',
+    collapseAll: 'Collapse All',
+    officialLink: 'Official Deletion Link',
+    deletionSteps: 'Deletion Steps',
+    importantNotes: 'Important Notes',
+    tips: {
+      title: 'Usage Tips',
+      description: 'Select the platforms you need to delete accounts from, and the system will generate detailed deletion guides and important notes for you'
+    },
+    usageNote: {
+      title: 'Usage Instructions',
+      description: 'Please carefully read the deletion steps and important notes for each platform. Deletion operations are irreversible, please proceed with caution'
+    },
+    emptyState: {
+      title: 'Start Cleaning',
+      description: 'Select the platforms you need to delete accounts from, and we will provide you with detailed deletion guides'
     }
   }
 }

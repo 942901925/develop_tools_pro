@@ -158,7 +158,8 @@ const getToolComponent = async (toolId) => {
       'business-card-ocr': () => import('../components/tools/BusinessCardOCR.vue'),
       'social-security-calculator': () => import('../components/tools/SocialSecurityCalculator.vue'),
       'privacy-checker': () => import('../components/tools/PrivacyChecker.vue'),
-      'information-breakout': () => import('../components/tools/InformationBreakout.vue')
+      'information-breakout': () => import('../components/tools/InformationBreakout.vue'),
+      'digital-cleanup': () => import('../components/tools/DigitalCleanupAssistant.vue')
     }
     
     const componentLoader = toolComponentMap[toolId]

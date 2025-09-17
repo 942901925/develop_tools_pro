@@ -1628,6 +1628,10 @@ export default {
       name: '信息茧房突破器',
       description: '生成多维度搜索关键词，帮助突破信息茧房，获得更全面的信息视角'
     },
+    'digital-cleanup': {
+      name: '数字足迹清理助手',
+      description: '提供20+主流平台的账号注销指南，帮助清理数字足迹，保护隐私安全'
+    },
     categories: {
       '职场工具': '职场工具'
     }
@@ -2026,6 +2030,38 @@ export default {
     },
     errors: {
       copyFailed: '复制失败，请手动复制'
+    }
+  },
+
+  // 数字足迹清理助手
+  digitalCleanup: {
+    title: '数字足迹清理助手',
+    subtitle: '提供20+主流平台的账号注销指南，帮助清理数字足迹，保护隐私安全',
+    platformSelection: '选择需要注销的平台',
+    selectAll: '全选所有平台',
+    deselectAll: '取消全选',
+    generateGuide: '生成注销指南',
+    resultTitle: '已选择 {count} 个平台的注销指南',
+    resultDescription: '点击平台名称查看详细的注销步骤和注意事项',
+    clickToToggle: '点击展开/折叠指南',
+    expand: '展开',
+    collapse: '折叠',
+    expandAll: '展开全部',
+    collapseAll: '折叠全部',
+    officialLink: '官方注销链接',
+    deletionSteps: '注销步骤',
+    importantNotes: '注意事项',
+    tips: {
+      title: '使用提示',
+      description: '选择您需要注销的平台，系统将为您生成详细的注销指南和注意事项'
+    },
+    usageNote: {
+      title: '使用说明',
+      description: '请仔细阅读每个平台的注销步骤和注意事项，注销操作不可逆，请谨慎操作'
+    },
+    emptyState: {
+      title: '开始清理',
+      description: '选择您需要注销的平台，我们将为您提供详细的注销指南'
     }
   }
 }

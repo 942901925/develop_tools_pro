@@ -71,6 +71,16 @@ export const tools = [
     size: 'normal',
     component: 'InformationBreakout'
   },
+  {
+    id: 'digital-cleanup',
+    name: '数字足迹清理助手',
+    description: '提供20+主流平台的账号注销指南，帮助清理数字足迹，保护隐私安全',
+    category: '职场工具',
+    icon: 'Shield',
+    color: 'purple',
+    size: 'normal',
+    component: 'DigitalCleanupAssistant'
+  },
   
   // JSON工具
   {
