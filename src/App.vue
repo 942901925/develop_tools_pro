@@ -19,12 +19,19 @@
                 v-model="searchQuery"
                 type="text"
                 :placeholder="$t('nav.searchPlaceholder')"
-                class="w-full pl-10 pr-4 py-3 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 text-white placeholder-gray-300 focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 focus:bg-gray-800/70"
+                class="w-full pl-10 pr-12 py-3 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 text-white placeholder-gray-300 focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 focus:bg-gray-800/70"
                 @input="handleSearch"
                 @focus="showSearchResults = searchQuery.trim() !== ''"
                 @blur="setTimeout(() => showSearchResults = false, 200)"
               />
               <Search class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-300" />
+              <button
+                v-if="searchQuery"
+                @click="clearSearch"
+                class="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 hover:text-white transition-colors"
+              >
+                <X class="w-4 h-4" />
+              </button>
               
               <!-- 搜索结果下拉框 -->
               <div 
@@ -86,12 +93,19 @@
               v-model="searchQuery"
               type="text"
               :placeholder="$t('nav.searchPlaceholder')"
-              class="w-full pl-10 pr-4 py-3 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 text-white placeholder-gray-300 focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 focus:bg-gray-800/70"
+              class="w-full pl-10 pr-12 py-3 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 text-white placeholder-gray-300 focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 focus:bg-gray-800/70"
               @input="handleSearch"
               @focus="showSearchResults = searchQuery.trim() !== ''"
               @blur="setTimeout(() => showSearchResults = false, 200)"
             />
             <Search class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-300" />
+            <button
+              v-if="searchQuery"
+              @click="clearSearch"
+              class="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 hover:text-white transition-colors"
+            >
+              <X class="w-4 h-4" />
+            </button>
             
             <!-- 移动端搜索结果 -->
             <div 
@@ -202,6 +216,12 @@ const handleSearch = () => {
     searchResults.value = []
     showSearchResults.value = false
   }
+}
+
+const clearSearch = () => {
+  searchQuery.value = ''
+  searchResults.value = []
+  showSearchResults.value = false
 }
 
 const performSearch = async (query) => {

@@ -1612,6 +1612,14 @@ export default {
       name: 'OCR文字提取',
       description: '无需上传服务器，在浏览器中快速提取图片中的文字'
     },
+    'business-card-ocr': {
+      name: '名片信息提取',
+      description: '智能识别名片图片，自动提取并结构化联系人信息'
+    },
+    'social-security-calculator': {
+      name: '社保公积金计算器',
+      description: '计算全国主要城市的社保公积金缴纳明细和税后收入'
+    },
     categories: {
       '职场工具': '职场工具'
     }
@@ -1808,6 +1816,121 @@ export default {
       invalidFile: '文件格式不支持，请选择 JPG、PNG 或 WebP 格式的图片',
       extractionFailed: '识别失败，请重试或尝试另一张图片',
       copyFailed: '复制失败，请手动复制'
+    }
+  },
+
+  // 名片信息提取
+  businessCardOCR: {
+    title: '名片信息提取',
+    subtitle: '智能识别名片图片，自动提取并结构化联系人信息',
+    uploadSection: '上传名片',
+    resultSection: '提取结果',
+    dragDropText: '拖拽名片图片到此处或点击选择',
+    supportedFormats: '支持 JPG、PNG、WebP 格式',
+    selectFile: '选择文件',
+    removeFile: '移除文件',
+    language: '识别语言',
+    languages: {
+      chineseEnglish: '中文（简体）+英文',
+      chinese: '中文（简体）',
+      english: '英文'
+    },
+    extractInfo: '提取信息',
+    processing: '处理中...',
+    clear: '清空',
+    imagePreview: '图片预览',
+    status: '状态',
+    copyAll: '复制全部',
+    downloadVCard: '下载vCard',
+    rawText: '原始识别文本',
+    fields: {
+      name: '姓名',
+      company: '公司',
+      position: '职位',
+      phone: '电话',
+      email: '邮箱',
+      website: '网站',
+      address: '地址',
+      notes: '备注'
+    },
+    placeholders: {
+      name: '请输入姓名',
+      company: '请输入公司名称',
+      position: '请输入职位',
+      phone: '请输入电话号码',
+      email: '请输入邮箱地址',
+      website: '请输入网站地址',
+      address: '请输入地址',
+      notes: '请输入备注信息'
+    },
+    tips: {
+      title: '识别提示',
+      clearImage: '名片图片清晰度越高，识别效果越好',
+      standardFont: '标准印刷体识别效果最佳',
+      goodContrast: '文字与背景对比度要足够',
+      flatSurface: '确保名片平整，避免反光和阴影'
+    },
+    progress: {
+      starting: '开始处理...',
+      loadingCore: '加载核心引擎...',
+      initializing: '初始化中...',
+      loadingLanguage: '加载语言包...',
+      initializingApi: '初始化API...',
+      recognizing: '识别文字中...',
+      parsing: '解析信息中...',
+      completed: '识别完成',
+      failed: '识别失败'
+    },
+    success: {
+      extracted: '名片信息提取成功！',
+      copied: '已复制到剪贴板！',
+      downloaded: 'vCard文件已下载！'
+    },
+    errors: {
+      invalidFile: '文件格式不支持，请选择 JPG、PNG 或 WebP 格式的图片',
+      extractionFailed: '识别失败，请重试或尝试另一张图片',
+      copyFailed: '复制失败，请手动复制'
+    }
+  },
+
+  // 社保公积金计算器
+  socialSecurityCalculator: {
+    title: '社保公积金计算器',
+    subtitle: '计算全国主要城市的社保公积金缴纳明细和税后收入',
+    inputSection: '输入信息',
+    city: '选择城市',
+    selectCity: '请选择城市',
+    salary: '月薪',
+    enterSalary: '请输入月薪',
+    personalTotal: '个人缴纳总额',
+    companyTotal: '公司缴纳总额',
+    afterTaxIncome: '个人税后收入',
+    companyTotalCost: '公司总支出',
+    ofSalary: '占工资比例',
+    personalDetails: '个人缴纳明细',
+    companyDetails: '公司缴纳明细',
+    item: '项目',
+    rate: '比例',
+    amount: '金额',
+    total: '合计',
+    items: {
+      pension: '养老保险',
+      medical: '医疗保险',
+      unemployment: '失业保险',
+      workInjury: '工伤保险',
+      maternity: '生育保险',
+      housingFund: '住房公积金'
+    },
+    tips: {
+      title: '使用提示',
+      selectCity: '选择您所在的城市',
+      enterSalary: '输入您的月薪金额',
+      autoCalculate: '系统将自动计算各项明细',
+      referenceOnly: '计算结果仅供参考'
+    },
+    disclaimer: {
+      title: '免责声明',
+      content: '计算结果仅供参考，具体以当地政策为准。实际缴纳比例可能因政策调整而变化，请以当地社保局和公积金管理中心的最新政策为准。'
     }
   }
 }

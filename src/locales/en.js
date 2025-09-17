@@ -1613,6 +1613,14 @@ export default {
       name: 'OCR Text Extraction',
       description: 'Extract text from images quickly in browser without uploading to server'
     },
+    'business-card-ocr': {
+      name: 'Business Card Information Extraction',
+      description: 'Intelligently recognize business card images and automatically extract structured contact information'
+    },
+    'social-security-calculator': {
+      name: 'Social Security Calculator',
+      description: 'Calculate social security and housing fund contributions for major cities in China'
+    },
     categories: {
       '职场工具': 'Workplace Tools'
     }
@@ -1808,6 +1816,121 @@ export default {
       invalidFile: 'Unsupported file format, please select JPG, PNG or WebP image',
       extractionFailed: 'Recognition failed, please try again or use another image',
       copyFailed: 'Copy failed, please copy manually'
+    }
+  },
+
+  // Business Card OCR
+  businessCardOCR: {
+    title: 'Business Card Information Extraction',
+    subtitle: 'Intelligently recognize business card images and automatically extract structured contact information',
+    uploadSection: 'Upload Business Card',
+    resultSection: 'Extraction Result',
+    dragDropText: 'Drag business card image here or click to select',
+    supportedFormats: 'Supports JPG, PNG, WebP formats',
+    selectFile: 'Select File',
+    removeFile: 'Remove File',
+    language: 'Recognition Language',
+    languages: {
+      chineseEnglish: 'Chinese (Simplified) + English',
+      chinese: 'Chinese (Simplified)',
+      english: 'English'
+    },
+    extractInfo: 'Extract Information',
+    processing: 'Processing...',
+    clear: 'Clear',
+    imagePreview: 'Image Preview',
+    status: 'Status',
+    copyAll: 'Copy All',
+    downloadVCard: 'Download vCard',
+    rawText: 'Raw Recognized Text',
+    fields: {
+      name: 'Name',
+      company: 'Company',
+      position: 'Position',
+      phone: 'Phone',
+      email: 'Email',
+      website: 'Website',
+      address: 'Address',
+      notes: 'Notes'
+    },
+    placeholders: {
+      name: 'Enter name',
+      company: 'Enter company name',
+      position: 'Enter position',
+      phone: 'Enter phone number',
+      email: 'Enter email address',
+      website: 'Enter website address',
+      address: 'Enter address',
+      notes: 'Enter notes'
+    },
+    tips: {
+      title: 'Recognition Tips',
+      clearImage: 'Higher image clarity leads to better recognition results',
+      standardFont: 'Standard printed text has the best recognition effect',
+      goodContrast: 'Text and background should have sufficient contrast',
+      flatSurface: 'Ensure the business card is flat, avoid reflections and shadows'
+    },
+    progress: {
+      starting: 'Starting processing...',
+      loadingCore: 'Loading core engine...',
+      initializing: 'Initializing...',
+      loadingLanguage: 'Loading language pack...',
+      initializingApi: 'Initializing API...',
+      recognizing: 'Recognizing text...',
+      parsing: 'Parsing information...',
+      completed: 'Recognition completed',
+      failed: 'Recognition failed'
+    },
+    success: {
+      extracted: 'Business card information extracted successfully!',
+      copied: 'Copied to clipboard!',
+      downloaded: 'vCard file downloaded!'
+    },
+    errors: {
+      invalidFile: 'Unsupported file format, please select JPG, PNG or WebP image',
+      extractionFailed: 'Recognition failed, please try again or use another image',
+      copyFailed: 'Copy failed, please copy manually'
+    }
+  },
+
+  // Social Security Calculator
+  socialSecurityCalculator: {
+    title: 'Social Security Calculator',
+    subtitle: 'Calculate social security and housing fund contributions for major cities in China',
+    inputSection: 'Input Information',
+    city: 'Select City',
+    selectCity: 'Please select a city',
+    salary: 'Monthly Salary',
+    enterSalary: 'Enter monthly salary',
+    personalTotal: 'Personal Total',
+    companyTotal: 'Company Total',
+    afterTaxIncome: 'After-Tax Income',
+    companyTotalCost: 'Company Total Cost',
+    ofSalary: 'of salary',
+    personalDetails: 'Personal Contributions',
+    companyDetails: 'Company Contributions',
+    item: 'Item',
+    rate: 'Rate',
+    amount: 'Amount',
+    total: 'Total',
+    items: {
+      pension: 'Pension Insurance',
+      medical: 'Medical Insurance',
+      unemployment: 'Unemployment Insurance',
+      workInjury: 'Work Injury Insurance',
+      maternity: 'Maternity Insurance',
+      housingFund: 'Housing Fund'
+    },
+    tips: {
+      title: 'Usage Tips',
+      selectCity: 'Select your city',
+      enterSalary: 'Enter your monthly salary',
+      autoCalculate: 'System will automatically calculate all details',
+      referenceOnly: 'Results are for reference only'
+    },
+    disclaimer: {
+      title: 'Disclaimer',
+      content: 'Calculation results are for reference only. Please refer to local policies for actual rates. Contribution rates may change due to policy adjustments. Please check with local social security and housing fund management centers for the latest policies.'
     }
   }
 }

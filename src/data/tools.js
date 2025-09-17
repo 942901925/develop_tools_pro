@@ -31,6 +31,26 @@ export const tools = [
     size: 'normal',
     component: 'OCRTextExtraction'
   },
+  {
+    id: 'business-card-ocr',
+    name: '名片信息提取',
+    description: '智能识别名片图片，自动提取并结构化联系人信息',
+    category: '职场工具',
+    icon: 'CreditCard',
+    color: 'indigo',
+    size: 'normal',
+    component: 'BusinessCardOCR'
+  },
+  {
+    id: 'social-security-calculator',
+    name: '社保公积金计算器',
+    description: '计算全国主要城市的社保公积金缴纳明细和税后收入',
+    category: '职场工具',
+    icon: 'Shield',
+    color: 'teal',
+    size: 'normal',
+    component: 'SocialSecurityCalculator'
+  },
   
   // JSON工具
   {

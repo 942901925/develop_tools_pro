@@ -2438,6 +2438,110 @@ export const toolDocs = {
         'Use calendar export to sync with other applications'
       ]
     }
+  },
+
+  // 社保公积金计算器
+  'social-security-calculator': {
+    'zh-CN': {
+      title: '社保公积金计算器',
+      description: '专业的社保公积金计算工具，支持全国20个主要城市的社保公积金缴纳比例计算，提供详细的个人和公司缴纳明细分析。',
+      features: [
+        '支持全国20个主要城市的社保公积金数据',
+        '自动计算个人缴纳明细和总额',
+        '自动计算公司缴纳明细和总额',
+        '计算个人税后收入',
+        '计算公司总支出',
+        '可视化进度条显示各项占比',
+        '详细的表格展示缴纳明细',
+        '实时计算更新',
+        '响应式设计，支持移动端'
+      ],
+      usage: [
+        '1. 从下拉菜单中选择您所在的城市',
+        '2. 在工资输入框中输入您的月薪金额',
+        '3. 系统自动计算并显示各项明细',
+        '4. 查看总览卡片了解关键数据',
+        '5. 查看详细表格了解具体缴纳项目',
+        '6. 参考进度条了解各项占工资比例'
+      ],
+      examples: [
+        {
+          title: '北京地区计算示例',
+          input: '城市：北京，月薪：10000元',
+          output: '个人缴纳：¥2,220 (22.2%)，公司缴纳：¥3,900 (39.0%)，税后收入：¥7,780 (77.8%)，公司总支出：¥13,900 (139.0%)'
+        },
+        {
+          title: '上海地区计算示例',
+          input: '城市：上海，月薪：15000元',
+          output: '个人缴纳：¥3,375 (22.5%)，公司缴纳：¥4,650 (31.0%)，税后收入：¥11,625 (77.5%)，公司总支出：¥19,650 (131.0%)'
+        },
+        {
+          title: '深圳地区计算示例',
+          input: '城市：深圳，月薪：8000元',
+          output: '个人缴纳：¥1,784 (22.3%)，公司缴纳：¥2,008 (25.1%)，税后收入：¥6,216 (77.7%)，公司总支出：¥10,008 (125.1%)'
+        }
+      ],
+      tips: [
+        '不同城市的社保公积金比例不同，请选择正确的城市',
+        '计算结果仅供参考，具体以当地政策为准',
+        '实际缴纳比例可能因政策调整而变化',
+        '建议定期查看当地社保局和公积金管理中心的最新政策',
+        '个人缴纳部分会从工资中扣除，影响税后收入',
+        '公司总支出包括工资和公司缴纳的社保公积金部分',
+        '住房公积金比例在不同城市差异较大，影响总支出',
+        '工伤保险和生育保险通常由公司全额承担'
+      ]
+    },
+    'en': {
+      title: 'Social Security Calculator',
+      description: 'Professional social security and housing fund calculator supporting 20 major cities in China, providing detailed personal and company contribution analysis.',
+      features: [
+        'Support for 20 major cities social security and housing fund data',
+        'Automatic calculation of personal contribution details and total',
+        'Automatic calculation of company contribution details and total',
+        'Calculate personal after-tax income',
+        'Calculate company total expenditure',
+        'Visual progress bars showing contribution ratios',
+        'Detailed table display of contribution breakdown',
+        'Real-time calculation updates',
+        'Responsive design supporting mobile devices'
+      ],
+      usage: [
+        '1. Select your city from the dropdown menu',
+        '2. Enter your monthly salary in the salary input box',
+        '3. System automatically calculates and displays all details',
+        '4. View overview cards to understand key data',
+        '5. View detailed tables to understand specific contribution items',
+        '6. Reference progress bars to understand contribution ratios'
+      ],
+      examples: [
+        {
+          title: 'Beijing Calculation Example',
+          input: 'City: Beijing, Monthly Salary: ¥10,000',
+          output: 'Personal: ¥2,220 (22.2%), Company: ¥3,900 (39.0%), After-tax: ¥7,780 (77.8%), Company Total: ¥13,900 (139.0%)'
+        },
+        {
+          title: 'Shanghai Calculation Example',
+          input: 'City: Shanghai, Monthly Salary: ¥15,000',
+          output: 'Personal: ¥3,375 (22.5%), Company: ¥4,650 (31.0%), After-tax: ¥11,625 (77.5%), Company Total: ¥19,650 (131.0%)'
+        },
+        {
+          title: 'Shenzhen Calculation Example',
+          input: 'City: Shenzhen, Monthly Salary: ¥8,000',
+          output: 'Personal: ¥1,784 (22.3%), Company: ¥2,008 (25.1%), After-tax: ¥6,216 (77.7%), Company Total: ¥10,008 (125.1%)'
+        }
+      ],
+      tips: [
+        'Different cities have different social security and housing fund rates, please select the correct city',
+        'Calculation results are for reference only, please refer to local policies for actual rates',
+        'Actual contribution rates may change due to policy adjustments',
+        'Recommend checking with local social security and housing fund management centers for latest policies',
+        'Personal contributions are deducted from salary, affecting after-tax income',
+        'Company total expenditure includes salary and company social security contributions',
+        'Housing fund rates vary significantly between cities, affecting total expenditure',
+        'Work injury and maternity insurance are usually fully covered by the company'
+      ]
+    }
   }
 }
 
