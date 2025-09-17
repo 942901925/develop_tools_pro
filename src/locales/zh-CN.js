@@ -1608,6 +1608,10 @@ export default {
       name: '假期计算器',
       description: '智能优化假期安排，最大化休息时间'
     },
+    'ocr-text-extraction': {
+      name: 'OCR文字提取',
+      description: '无需上传服务器，在浏览器中快速提取图片中的文字'
+    },
     categories: {
       '职场工具': '职场工具'
     }
@@ -1752,6 +1756,58 @@ export default {
       holiday: '节假日',
       important: '重要日期',
       vacation: '假期安排'
+    }
+  },
+
+  // OCR文字提取
+  ocrTextExtraction: {
+    title: 'OCR文字提取',
+    subtitle: '无需上传服务器，在浏览器中快速提取图片中的文字',
+    uploadSection: '上传图片',
+    previewSection: '图片预览',
+    resultSection: '提取结果',
+    dragDropText: '拖拽图片到此处或点击选择',
+    supportedFormats: '支持 JPG、PNG、WebP 格式',
+    selectFile: '选择文件',
+    removeFile: '移除文件',
+    language: '识别语言',
+    languages: {
+      chineseEnglish: '中文（简体）+英文',
+      chinese: '中文（简体）',
+      english: '英文'
+    },
+    extractText: '提取文字',
+    processing: '处理中...',
+    clear: '清空',
+    noImagePreview: '暂无图片预览',
+    imagePreview: '图片预览',
+    status: '状态',
+    resultPlaceholder: '提取的文字将显示在这里...',
+    copyText: '一键复制',
+    tips: {
+      title: '识别提示',
+      clearImage: '图片清晰度越高，识别效果越好',
+      standardFont: '标准印刷体识别效果最佳',
+      goodContrast: '文字与背景对比度要足够'
+    },
+    progress: {
+      starting: '开始处理...',
+      loadingCore: '加载核心引擎...',
+      initializing: '初始化中...',
+      loadingLanguage: '加载语言包...',
+      initializingApi: '初始化API...',
+      recognizing: '识别文字中...',
+      completed: '识别完成',
+      failed: '识别失败'
+    },
+    success: {
+      extracted: '文字提取成功！',
+      copied: '已复制到剪贴板！'
+    },
+    errors: {
+      invalidFile: '文件格式不支持，请选择 JPG、PNG 或 WebP 格式的图片',
+      extractionFailed: '识别失败，请重试或尝试另一张图片',
+      copyFailed: '复制失败，请手动复制'
     }
   }
 }

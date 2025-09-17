@@ -1609,6 +1609,10 @@ export default {
       name: 'Vacation Calculator',
       description: 'Intelligently optimize vacation arrangements to maximize rest time'
     },
+    'ocr-text-extraction': {
+      name: 'OCR Text Extraction',
+      description: 'Extract text from images quickly in browser without uploading to server'
+    },
     categories: {
       '职场工具': 'Workplace Tools'
     }
@@ -1752,6 +1756,58 @@ export default {
       holiday: 'Holiday',
       important: 'Important Date',
       vacation: 'Vacation'
+    }
+  },
+
+  // OCR Text Extraction
+  ocrTextExtraction: {
+    title: 'OCR Text Extraction',
+    subtitle: 'Extract text from images quickly in browser without uploading to server',
+    uploadSection: 'Upload Image',
+    previewSection: 'Image Preview',
+    resultSection: 'Extraction Result',
+    dragDropText: 'Drag image here or click to select',
+    supportedFormats: 'Supports JPG, PNG, WebP formats',
+    selectFile: 'Select File',
+    removeFile: 'Remove File',
+    language: 'Recognition Language',
+    languages: {
+      chineseEnglish: 'Chinese (Simplified) + English',
+      chinese: 'Chinese (Simplified)',
+      english: 'English'
+    },
+    extractText: 'Extract Text',
+    processing: 'Processing...',
+    clear: 'Clear',
+    noImagePreview: 'No image preview',
+    imagePreview: 'Image Preview',
+    status: 'Status',
+    resultPlaceholder: 'Extracted text will be displayed here...',
+    copyText: 'Copy to Clipboard',
+    tips: {
+      title: 'Recognition Tips',
+      clearImage: 'Higher image clarity leads to better recognition results',
+      standardFont: 'Standard printed text has the best recognition effect',
+      goodContrast: 'Text and background should have sufficient contrast'
+    },
+    progress: {
+      starting: 'Starting processing...',
+      loadingCore: 'Loading core engine...',
+      initializing: 'Initializing...',
+      loadingLanguage: 'Loading language pack...',
+      initializingApi: 'Initializing API...',
+      recognizing: 'Recognizing text...',
+      completed: 'Recognition completed',
+      failed: 'Recognition failed'
+    },
+    success: {
+      extracted: 'Text extraction successful!',
+      copied: 'Copied to clipboard!'
+    },
+    errors: {
+      invalidFile: 'Unsupported file format, please select JPG, PNG or WebP image',
+      extractionFailed: 'Recognition failed, please try again or use another image',
+      copyFailed: 'Copy failed, please copy manually'
     }
   }
 }
