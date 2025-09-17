@@ -21,6 +21,16 @@ export const tools = [
     size: 'normal',
     component: 'VacationCalculator'
   },
+  {
+    id: 'ocr-text-extraction',
+    name: 'OCR文字提取',
+    description: '无需上传服务器，在浏览器中快速提取图片中的文字',
+    category: '职场工具',
+    icon: 'FileText',
+    color: 'purple',
+    size: 'normal',
+    component: 'OCRTextExtraction'
+  },
   
   // JSON工具
   {

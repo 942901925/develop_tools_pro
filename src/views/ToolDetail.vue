@@ -153,7 +153,8 @@ const getToolComponent = async (toolId) => {
       'user-agent-parser': () => import('../components/tools/UserAgentParser.vue'),
       'http-status-codes': () => import('../components/tools/HttpStatusCodes.vue'),
       'salary-calculator': () => import('../components/tools/SalaryCalculator.vue'),
-      'vacation-calculator': () => import('../components/tools/VacationCalculator.vue')
+      'vacation-calculator': () => import('../components/tools/VacationCalculator.vue'),
+      'ocr-text-extraction': () => import('../components/tools/OCRTextExtraction.vue')
     }
     
     const componentLoader = toolComponentMap[toolId]
