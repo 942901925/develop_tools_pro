@@ -232,6 +232,10 @@ export default {
     'salary-calculator': {
       name: 'Calculateur de salaire',
       description: 'Calculer le package total, le taux horaire et l\'augmentation'
+    },
+    'vacation-calculator': {
+      name: 'Calculateur de vacances',
+      description: 'Optimisation intelligente des arrangements de vacances pour maximiser le temps de repos'
     }
   },
   

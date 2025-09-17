@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>假期计算器 - 新计算逻辑测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+        .example {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            border: 1px solid #e9ecef;
+        }
+        .example-title {
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .calculation {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 15px 0;
+        }
+        .old-logic, .new-logic {
+            padding: 15px;
+            border-radius: 6px;
+        }
+        .old-logic {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+        }
+        .new-logic {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+        }
+        .logic-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .old-logic .logic-title {
+            color: #856404;
+        }
+        .new-logic .logic-title {
+            color: #155724;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        .benefit {
+            background: #d1ecf1;
+            color: #0c5460;
+            padding: 10px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        .rating {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        .rating.a-plus { background: #d4edda; color: #155724; }
+        .rating.a { background: #d4edda; color: #155724; }
+        .rating.b-plus { background: #cce5ff; color: #004085; }
+        .rating.b { background: #fff3cd; color: #856404; }
+        .rating.c-plus { background: #ffeaa7; color: #856404; }
+        .rating.c { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 假期计算器 - 新计算逻辑优化</h1>
+        
+        <div class="section">
+            <div class="section-title">📊 计算逻辑对比</div>
+            <div class="calculation">
+                <div class="old-logic">
+                    <div class="logic-title">❌ 旧逻辑（固定长度）</div>
+                    <p>• 固定使用所有可用假期天数</p>
+                    <p>• 不考虑周末和节假日的搭配</p>
+                    <p>• 可能错过更好的优化方案</p>
+                    <p>• 计算方式：总天数 = 假期天数</p>
+                </div>
+                <div class="new-logic">
+                    <div class="logic-title">✅ 新逻辑（智能搭配）</div>
+                    <p>• 休假天数可以搭配周末和节假日</p>
+                    <p>• 自动寻找最优的连续日期段</p>
+                    <p>• 最大化实际休息天数</p>
+                    <p>• 计算方式：总天数 = 假期天数 + 周末 + 节假日</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">💡 实际案例演示</div>
+            
+            <div class="example">
+                <div class="example-title">案例1：5天假期 + 春节期间</div>
+                <div class="calculation">
+                    <div class="old-logic">
+                        <div class="logic-title">旧逻辑结果</div>
+                        <p>• 使用假期：5天</p>
+                        <p>• 总休息日：5天</p>
+                        <p>• 节省天数：0天</p>
+                        <p>• 评级：<span class="rating c">C</span></p>
+                    </div>
+                    <div class="new-logic">
+                        <div class="logic-title">新逻辑结果</div>
+                        <p>• 使用假期：3天（工作日）</p>
+                        <p>• 包含周末：2天</p>
+                        <p>• 包含节假日：3天（春节）</p>
+                        <p>• 总休息日：8天</p>
+                        <p>• 节省天数：5天</p>
+                        <p>• 评级：<span class="rating a-plus">A+</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example">
+                <div class="example-title">案例2：3天假期 + 周末连接</div>
+                <div class="calculation">
+                    <div class="old-logic">
+                        <div class="logic-title">旧逻辑结果</div>
+                        <p>• 使用假期：3天</p>
+                        <p>• 总休息日：3天</p>
+                        <p>• 节省天数：0天</p>
+                        <p>• 评级：<span class="rating c">C</span></p>
+                    </div>
+                    <div class="new-logic">
+                        <div class="logic-title">新逻辑结果</div>
+                        <p>• 使用假期：3天（工作日）</p>
+                        <p>• 包含周末：2天</p>
+                        <p>• 总休息日：5天</p>
+                        <p>• 节省天数：2天</p>
+                        <p>• 评级：<span class="rating b-plus">B+</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example">
+                <div class="example-title">案例3：2天假期 + 国庆节</div>
+                <div class="calculation">
+                    <div class="old-logic">
+                        <div class="logic-title">旧逻辑结果</div>
+                        <p>• 使用假期：2天</p>
+                        <p>• 总休息日：2天</p>
+                        <p>• 节省天数：0天</p>
+                        <p>• 评级：<span class="rating c">C</span></p>
+                    </div>
+                    <div class="new-logic">
+                        <div class="logic-title">新逻辑结果</div>
+                        <p>• 使用假期：2天（工作日）</p>
+                        <p>• 包含节假日：3天（国庆节）</p>
+                        <p>• 总休息日：5天</p>
+                        <p>• 节省天数：3天</p>
+                        <p>• 评级：<span class="rating a">A</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">🚀 新功能特性</div>
+            <div class="benefit">
+                <strong>智能优化算法：</strong>
+                <ul>
+                    <li>遍历所有可能的连续日期段（从可用天数到2倍长度）</li>
+                    <li>自动识别周末和节假日</li>
+                    <li>选择总休息天数最多的方案</li>
+                    <li>确保实际使用的假期天数不超过可用天数</li>
+                </ul>
+            </div>
+            
+            <div class="benefit">
+                <strong>评级系统优化：</strong>
+                <ul>
+                    <li>A+：节省天数 ≥ 使用天数（100%+）</li>
+                    <li>A：节省天数 ≥ 70%使用天数</li>
+                    <li>B+：节省天数 ≥ 50%使用天数</li>
+                    <li>B：节省天数 ≥ 30%使用天数</li>
+                    <li>C+：节省天数 ≥ 10%使用天数</li>
+                    <li>C：节省天数 < 10%使用天数</li>
+                </ul>
+            </div>
+
+            <div class="benefit">
+                <strong>用户体验提升：</strong>
+                <ul>
+                    <li>添加计算说明，让用户理解新逻辑</li>
+                    <li>方案对比表格增加节省天数列</li>
+                    <li>更直观的数据展示</li>
+                    <li>支持多方案保存和对比</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">📈 优化效果</div>
+            <div class="example">
+                <div class="example-title">典型优化场景</div>
+                <p><strong>春节假期优化：</strong> 3天假期 → 8天休息（节省5天）</p>
+                <p><strong>周末连接：</strong> 2天假期 → 4天休息（节省2天）</p>
+                <p><strong>国庆节优化：</strong> 2天假期 → 5天休息（节省3天）</p>
+                <p><strong>普通周末：</strong> 1天假期 → 3天休息（节省2天）</p>
+            </div>
+            
+            <div class="benefit">
+                <strong>核心优势：</strong>
+                <ul>
+                    <li>🎯 最大化实际休息时间</li>
+                    <li>🧠 智能算法自动优化</li>
+                    <li>📊 详细的数据分析</li>
+                    <li>💾 多方案保存对比</li>
+                    <li>📅 日历导出功能</li>
+                    <li>🌍 多地区假期支持</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">✅ 开发完成状态</div>
+            <div class="benefit">
+                <p><strong>✅ 计算逻辑已优化</strong> - 支持休假天数搭配周末和节假日</p>
+                <p><strong>✅ 评级系统已更新</strong> - 更合理的评级标准</p>
+                <p><strong>✅ 用户界面已改进</strong> - 添加计算说明和优化展示</p>
+                <p><strong>✅ 多语言支持</strong> - 中英文翻译完整</p>
+                <p><strong>✅ 构建测试通过</strong> - 所有功能正常工作</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

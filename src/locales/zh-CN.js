@@ -1604,6 +1604,10 @@ export default {
       name: '薪酬计算器',
       description: '计算总包、时薪和涨幅'
     },
+    'vacation-calculator': {
+      name: '假期计算器',
+      description: '智能优化假期安排，最大化休息时间'
+    },
     categories: {
       '职场工具': '职场工具'
     }
@@ -1659,6 +1663,96 @@ export default {
     stockOptions: '股票期权',
     has: '有',
     enterStockAmount: '请输入股票期权金额'
+  },
+
+  // 假期计算器
+  vacationCalculator: {
+    title: '假期计算器',
+    availableDays: '可用假期天数',
+    enterAvailableDays: '请输入可用假期天数',
+    days: '天',
+    startDate: '起始日期',
+    endDate: '结束日期',
+    region: '所在地区',
+    regions: {
+      china: '中国',
+      usa: '美国',
+      japan: '日本',
+      uk: '英国',
+      germany: '德国'
+    },
+    importantDates: '个人重要日期',
+    dateDescription: '日期描述',
+    addImportantDate: '添加重要日期',
+    calculate: '计算最优方案',
+    usedDays: '实际使用',
+    totalRestDays: '总休息日',
+    savedDays: '节省天数',
+    optimalPlan: '最优方案',
+    planPeriod: '方案期间',
+    planRating: '方案评级',
+    savePlan: '保存方案',
+    exportCalendar: '导出日历',
+    calendarView: '日历视图',
+    planComparison: '方案对比',
+    planName: '方案名称',
+    period: '期间',
+    rating: '评级',
+    actions: '操作',
+    delete: '删除',
+    weekDays: {
+      mon: '周一',
+      tue: '周二',
+      wed: '周三',
+      thu: '周四',
+      fri: '周五',
+      sat: '周六',
+      sun: '周日'
+    },
+    holidays: {
+      newYear: '元旦',
+      springFestival: '春节',
+      qingming: '清明节',
+      laborDay: '劳动节',
+      dragonBoat: '端午节',
+      midAutumn: '中秋节',
+      nationalDay: '国庆节',
+      mlkDay: '马丁·路德·金纪念日',
+      presidentsDay: '总统日',
+      memorialDay: '阵亡将士纪念日',
+      juneteenth: '六月节',
+      independenceDay: '独立日',
+      columbusDay: '哥伦布日',
+      veteransDay: '退伍军人节',
+      thanksgiving: '感恩节',
+      christmas: '圣诞节',
+      comingOfAge: '成人节',
+      nationalFoundation: '建国纪念日',
+      emperorsBirthday: '天皇诞生日',
+      springEquinox: '春分节',
+      showaDay: '昭和日',
+      constitutionDay: '宪法纪念日',
+      greeneryDay: '绿之日',
+      childrensDay: '儿童节',
+      marineDay: '海之日',
+      mountainDay: '山之日',
+      respectForAged: '敬老日',
+      autumnEquinox: '秋分节',
+      sportsDay: '体育节',
+      cultureDay: '文化节',
+      laborThanksgiving: '勤劳感谢日'
+    },
+    vacationTitle: '假期安排',
+    vacationDescription: '通过假期计算器优化的假期安排',
+    calculationNote: '计算说明：休假天数可以搭配周末和节假日，实际休息天数会增加',
+    smartOptimization: '智能优化：自动寻找包含最多周末和节假日的连续日期段',
+    legend: {
+      workday: '工作日',
+      weekend: '周末',
+      holiday: '节假日',
+      important: '重要日期',
+      vacation: '假期安排'
+    }
   }
 }
 

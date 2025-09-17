@@ -2340,6 +2340,104 @@ export const toolDocs = {
         'Can be used for job negotiation and salary evaluation'
       ]
     }
+  },
+
+  // 假期计算器
+  'vacation-calculator': {
+    'zh-CN': {
+      title: '假期计算器',
+      description: '智能的假期安排优化工具，帮助您最大化利用假期时间，通过连接周末和节假日来节省假期天数。',
+      features: [
+        '智能优化假期安排，最大化休息时间',
+        '支持多地区公共假期数据（中国、美国、日本等）',
+        '自动识别周末和节假日，计算节省天数',
+        '个人重要日期标记和管理',
+        '日历可视化显示假期安排',
+        '多方案对比和保存',
+        '支持日历导出（ICS格式）',
+        '方案评级系统（A+到C级）'
+      ],
+      usage: [
+        '1. 输入可用假期天数和日期范围',
+        '2. 选择所在地区获取公共假期数据',
+        '3. 添加个人重要日期（可选）',
+        '4. 点击计算获取最优方案',
+        '5. 查看日历可视化和数据统计',
+        '6. 保存方案或导出日历'
+      ],
+      examples: [
+        {
+          title: '基础假期计算',
+          input: '可用假期：5天，日期范围：2024年1月1日-31日，地区：中国',
+          output: '最优方案：1月1-5日，包含元旦假期，节省1天假期'
+        },
+        {
+          title: '春节假期优化',
+          input: '可用假期：3天，日期范围：2024年2月1日-15日，地区：中国',
+          output: '最优方案：2月10-12日，连接春节假期，节省2天假期'
+        },
+        {
+          title: '周末连接优化',
+          input: '可用假期：2天，日期范围：2024年3月1日-31日，地区：美国',
+          output: '最优方案：3月15-16日，连接周末，节省2天假期'
+        }
+      ],
+      tips: [
+        '优先选择包含公共假期的日期段',
+        '尽量连接周末以最大化休息时间',
+        '考虑个人重要日期避免冲突',
+        '不同地区的假期政策不同，选择正确的地区',
+        '保存多个方案进行对比选择',
+        '使用日历导出功能同步到其他应用'
+      ]
+    },
+    'en': {
+      title: 'Vacation Calculator',
+      description: 'Intelligent vacation arrangement optimization tool to help you maximize vacation time by connecting weekends and holidays to save vacation days.',
+      features: [
+        'Intelligent vacation arrangement optimization to maximize rest time',
+        'Support for multi-region public holiday data (China, USA, Japan, etc.)',
+        'Automatically identify weekends and holidays to calculate saved days',
+        'Personal important date marking and management',
+        'Calendar visualization of vacation arrangements',
+        'Multi-plan comparison and saving',
+        'Support for calendar export (ICS format)',
+        'Plan rating system (A+ to C grade)'
+      ],
+      usage: [
+        '1. Enter available vacation days and date range',
+        '2. Select region to get public holiday data',
+        '3. Add personal important dates (optional)',
+        '4. Click calculate to get optimal plan',
+        '5. View calendar visualization and data statistics',
+        '6. Save plan or export calendar'
+      ],
+      examples: [
+        {
+          title: 'Basic Vacation Calculation',
+          input: 'Available days: 5, Date range: Jan 1-31, 2024, Region: China',
+          output: 'Optimal plan: Jan 1-5, includes New Year holiday, saves 1 day'
+        },
+        {
+          title: 'Spring Festival Optimization',
+          input: 'Available days: 3, Date range: Feb 1-15, 2024, Region: China',
+          output: 'Optimal plan: Feb 10-12, connects Spring Festival, saves 2 days'
+        },
+        {
+          title: 'Weekend Connection Optimization',
+          input: 'Available days: 2, Date range: Mar 1-31, 2024, Region: USA',
+          output: 'Optimal plan: Mar 15-16, connects weekend, saves 2 days'
+        }
+      ],
+      tips: [
+        'Prioritize date ranges that include public holidays',
+        'Try to connect weekends to maximize rest time',
+        'Consider personal important dates to avoid conflicts',
+        'Different regions have different holiday policies, choose the correct region',
+        'Save multiple plans for comparison and selection',
+        'Use calendar export to sync with other applications'
+      ]
+    }
   }
 }
 
