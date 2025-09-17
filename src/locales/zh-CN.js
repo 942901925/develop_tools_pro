@@ -1620,6 +1620,14 @@ export default {
       name: '社保公积金计算器',
       description: '计算全国主要城市的社保公积金缴纳明细和税后收入'
     },
+    'privacy-checker': {
+      name: '隐私泄露查询',
+      description: '检查邮箱是否在数据泄露事件中被暴露，保护您的隐私安全'
+    },
+    'information-breakout': {
+      name: '信息茧房突破器',
+      description: '生成多维度搜索关键词，帮助突破信息茧房，获得更全面的信息视角'
+    },
     categories: {
       '职场工具': '职场工具'
     }
@@ -1931,6 +1939,93 @@ export default {
     disclaimer: {
       title: '免责声明',
       content: '计算结果仅供参考，具体以当地政策为准。实际缴纳比例可能因政策调整而变化，请以当地社保局和公积金管理中心的最新政策为准。'
+    }
+  },
+
+  // 隐私泄露查询
+  privacyChecker: {
+    title: '隐私泄露查询',
+    subtitle: '检查您的邮箱是否在数据泄露事件中被暴露，保护您的隐私安全',
+    inputSection: '输入邮箱',
+    emailLabel: '邮箱地址',
+    emailPlaceholder: '请输入您的邮箱地址',
+    checkButton: '检查泄露',
+    checking: '检查中...',
+    privacyTitle: '隐私保护',
+    privacyDescription: '您的邮箱已在本地加密，我们不会传输和存储原始信息。只发送哈希值前缀到API进行查询。',
+    resultSection: '查询结果',
+    safeTitle: '邮箱安全',
+    safeDescription: '您的邮箱未在已知的数据泄露事件中被发现，目前是安全的。',
+    breachTitle: '发现泄露',
+    breachDescription: '您的邮箱在以下数据泄露事件中被发现：',
+    breachCount: '泄露次数：{count} 次',
+    technicalDetails: '技术详情',
+    hashPrefix: '哈希前缀',
+    apiUsed: '使用的API',
+    encryptionMethod: '加密方法',
+    recommendations: '安全建议',
+    safeRecommendation1: '继续保持良好的密码安全习惯',
+    safeRecommendation2: '定期更新密码，使用强密码',
+    safeRecommendation3: '启用两步验证保护账户安全',
+    breachRecommendation1: '立即更改该邮箱关联的所有账户密码',
+    breachRecommendation2: '启用两步验证，增强账户安全性',
+    breachRecommendation3: '检查是否有可疑的登录活动',
+    breachRecommendation4: '考虑使用密码管理器生成和管理密码',
+    tips: {
+      title: '使用提示',
+      enterEmail: '输入您要检查的邮箱地址',
+      clickCheck: '点击"检查泄露"按钮开始查询',
+      waitResult: '等待查询结果，通常需要几秒钟',
+      privacySafe: '您的邮箱信息在本地加密，保护隐私安全'
+    },
+    errorTitle: '查询失败',
+    errors: {
+      loadFailed: '加密库加载失败，请刷新页面重试',
+      checkFailed: '查询失败，请检查网络连接后重试'
+    }
+  },
+
+  // 信息茧房突破器
+  informationBreakout: {
+    title: '信息茧房突破器',
+    subtitle: '生成多维度搜索关键词，帮助突破信息茧房，获得更全面的信息视角',
+    inputSection: '输入关键词',
+    keywordLabel: '核心话题或关键词',
+    keywordPlaceholder: '请输入您要探索的核心话题或关键词',
+    generateButton: '生成关键词',
+    generating: '生成中...',
+    resultTitle: '"{keyword}" 的多维度搜索关键词',
+    resultDescription: '以下是从不同视角生成的关键词，帮助您获得更全面的信息',
+    copyButton: '复制整组',
+    copySingle: '复制单个',
+    perspectives: {
+      advantages: '优势视角',
+      disadvantages: '缺点视角',
+      international: '国际视角',
+      industry: '行业视角',
+      competitor: '竞品视角',
+      academic: '学术视角',
+      user: '用户视角',
+      future: '未来视角'
+    },
+    tips: {
+      title: '使用提示',
+      description: '输入核心话题后，系统会从多个视角生成相关搜索关键词，帮助您突破信息茧房'
+    },
+    usageNote: {
+      title: '使用说明',
+      description: '复制关键词后，请自行前往搜索引擎搜索，以获得更全面的信息视角'
+    },
+    emptyState: {
+      title: '开始探索',
+      description: '输入一个核心话题或关键词，我们将为您生成多维度搜索关键词'
+    },
+    success: {
+      copiedGroup: '已复制整组关键词！',
+      copiedSingle: '已复制关键词！'
+    },
+    errors: {
+      copyFailed: '复制失败，请手动复制'
     }
   }
 }

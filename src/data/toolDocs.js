@@ -2542,6 +2542,106 @@ export const toolDocs = {
         'Work injury and maternity insurance are usually fully covered by the company'
       ]
     }
+  },
+
+  // 隐私泄露查询
+  'privacy-checker': {
+    'zh-CN': {
+      title: '隐私泄露查询',
+      description: '专业的隐私安全检查工具，通过调用Have I Been Pwned API检查您的邮箱是否在数据泄露事件中被暴露，保护您的隐私安全。',
+      features: [
+        '使用SHA-1加密保护用户隐私',
+        '调用Have I Been Pwned API进行查询',
+        '只传输哈希值前缀，不泄露原始邮箱',
+        '显示详细的泄露次数和事件信息',
+        '提供安全建议和防护措施',
+        '实时查询状态提示',
+        '支持中英文界面',
+        '完全前端处理，保护隐私'
+      ],
+      usage: [
+        '1. 在邮箱输入框中输入您要检查的邮箱地址',
+        '2. 点击"检查泄露"按钮开始查询',
+        '3. 等待查询完成，系统会显示结果',
+        '4. 查看查询结果，了解邮箱安全状态',
+        '5. 根据建议采取相应的安全措施'
+      ],
+      examples: [
+        {
+          title: '安全邮箱示例',
+          input: '邮箱：user@example.com',
+          output: '结果：邮箱安全，未在已知数据泄露事件中发现'
+        },
+        {
+          title: '泄露邮箱示例',
+          input: '邮箱：test@gmail.com',
+          output: '结果：发现泄露，该邮箱在3次数据泄露事件中被发现'
+        },
+        {
+          title: '查询过程示例',
+          input: '输入邮箱 → 本地SHA-1加密 → 发送哈希前缀 → 匹配结果',
+          output: '完整的隐私保护查询流程'
+        }
+      ],
+      tips: [
+        '邮箱信息在本地加密，不会传输原始数据',
+        '只发送哈希值的前5个字符到API进行查询',
+        '查询结果基于Have I Been Pwned数据库',
+        '如果发现泄露，建议立即更改相关密码',
+        '定期检查邮箱安全状态，保护账户安全',
+        '使用强密码和两步验证增强安全性',
+        '考虑使用密码管理器管理密码',
+        '注意检查可疑的登录活动'
+      ]
+    },
+    'en': {
+      title: 'Privacy Breach Checker',
+      description: 'Professional privacy security check tool that uses Have I Been Pwned API to check if your email has been exposed in data breach incidents, protecting your privacy.',
+      features: [
+        'Uses SHA-1 encryption to protect user privacy',
+        'Calls Have I Been Pwned API for queries',
+        'Only transmits hash prefix, no original email leaked',
+        'Shows detailed breach count and incident information',
+        'Provides security recommendations and protection measures',
+        'Real-time query status prompts',
+        'Supports Chinese and English interfaces',
+        'Complete frontend processing, privacy protection'
+      ],
+      usage: [
+        '1. Enter the email address you want to check in the input box',
+        '2. Click the "Check Breach" button to start the query',
+        '3. Wait for the query to complete, the system will show results',
+        '4. View query results to understand email security status',
+        '5. Take appropriate security measures based on recommendations'
+      ],
+      examples: [
+        {
+          title: 'Safe Email Example',
+          input: 'Email: user@example.com',
+          output: 'Result: Email safe, not found in known data breach incidents'
+        },
+        {
+          title: 'Breached Email Example',
+          input: 'Email: test@gmail.com',
+          output: 'Result: Breach found, this email was found in 3 data breach incidents'
+        },
+        {
+          title: 'Query Process Example',
+          input: 'Enter email → Local SHA-1 encryption → Send hash prefix → Match results',
+          output: 'Complete privacy protection query process'
+        }
+      ],
+      tips: [
+        'Email information is encrypted locally, no original data transmitted',
+        'Only sends the first 5 characters of hash value to API for query',
+        'Query results based on Have I Been Pwned database',
+        'If breach is found, recommend changing related passwords immediately',
+        'Regularly check email security status to protect account security',
+        'Use strong passwords and two-factor authentication to enhance security',
+        'Consider using password manager to manage passwords',
+        'Pay attention to checking suspicious login activities'
+      ]
+    }
   }
 }
 
