@@ -1613,6 +1613,22 @@ export default {
       name: 'OCR Text Extraction',
       description: 'Extract text from images quickly in browser without uploading to server'
     },
+    'business-card-ocr': {
+      name: 'Business Card Information Extraction',
+      description: 'Intelligently recognize business card images and automatically extract structured contact information'
+    },
+    'social-security-calculator': {
+      name: 'Social Security Calculator',
+      description: 'Calculate social security and housing fund contributions for major cities in China'
+    },
+    'privacy-checker': {
+      name: 'Privacy Breach Checker',
+      description: 'Check if your email has been exposed in data breach incidents to protect your privacy'
+    },
+    'information-breakout': {
+      name: 'Information Echo Chamber Breaker',
+      description: 'Generate multi-dimensional search keywords to break through information echo chambers and gain comprehensive perspectives'
+    },
     categories: {
       '职场工具': 'Workplace Tools'
     }
@@ -1807,6 +1823,208 @@ export default {
     errors: {
       invalidFile: 'Unsupported file format, please select JPG, PNG or WebP image',
       extractionFailed: 'Recognition failed, please try again or use another image',
+      copyFailed: 'Copy failed, please copy manually'
+    }
+  },
+
+  // Business Card OCR
+  businessCardOCR: {
+    title: 'Business Card Information Extraction',
+    subtitle: 'Intelligently recognize business card images and automatically extract structured contact information',
+    uploadSection: 'Upload Business Card',
+    resultSection: 'Extraction Result',
+    dragDropText: 'Drag business card image here or click to select',
+    supportedFormats: 'Supports JPG, PNG, WebP formats',
+    selectFile: 'Select File',
+    removeFile: 'Remove File',
+    language: 'Recognition Language',
+    languages: {
+      chineseEnglish: 'Chinese (Simplified) + English',
+      chinese: 'Chinese (Simplified)',
+      english: 'English'
+    },
+    extractInfo: 'Extract Information',
+    processing: 'Processing...',
+    clear: 'Clear',
+    imagePreview: 'Image Preview',
+    status: 'Status',
+    copyAll: 'Copy All',
+    downloadVCard: 'Download vCard',
+    rawText: 'Raw Recognized Text',
+    fields: {
+      name: 'Name',
+      company: 'Company',
+      position: 'Position',
+      phone: 'Phone',
+      email: 'Email',
+      website: 'Website',
+      address: 'Address',
+      notes: 'Notes'
+    },
+    placeholders: {
+      name: 'Enter name',
+      company: 'Enter company name',
+      position: 'Enter position',
+      phone: 'Enter phone number',
+      email: 'Enter email address',
+      website: 'Enter website address',
+      address: 'Enter address',
+      notes: 'Enter notes'
+    },
+    tips: {
+      title: 'Recognition Tips',
+      clearImage: 'Higher image clarity leads to better recognition results',
+      standardFont: 'Standard printed text has the best recognition effect',
+      goodContrast: 'Text and background should have sufficient contrast',
+      flatSurface: 'Ensure the business card is flat, avoid reflections and shadows'
+    },
+    progress: {
+      starting: 'Starting processing...',
+      loadingCore: 'Loading core engine...',
+      initializing: 'Initializing...',
+      loadingLanguage: 'Loading language pack...',
+      initializingApi: 'Initializing API...',
+      recognizing: 'Recognizing text...',
+      parsing: 'Parsing information...',
+      completed: 'Recognition completed',
+      failed: 'Recognition failed'
+    },
+    success: {
+      extracted: 'Business card information extracted successfully!',
+      copied: 'Copied to clipboard!',
+      downloaded: 'vCard file downloaded!'
+    },
+    errors: {
+      invalidFile: 'Unsupported file format, please select JPG, PNG or WebP image',
+      extractionFailed: 'Recognition failed, please try again or use another image',
+      copyFailed: 'Copy failed, please copy manually'
+    }
+  },
+
+  // Social Security Calculator
+  socialSecurityCalculator: {
+    title: 'Social Security Calculator',
+    subtitle: 'Calculate social security and housing fund contributions for major cities in China',
+    inputSection: 'Input Information',
+    city: 'Select City',
+    selectCity: 'Please select a city',
+    salary: 'Monthly Salary',
+    enterSalary: 'Enter monthly salary',
+    personalTotal: 'Personal Total',
+    companyTotal: 'Company Total',
+    afterTaxIncome: 'After-Tax Income',
+    companyTotalCost: 'Company Total Cost',
+    ofSalary: 'of salary',
+    personalDetails: 'Personal Contributions',
+    companyDetails: 'Company Contributions',
+    item: 'Item',
+    rate: 'Rate',
+    amount: 'Amount',
+    total: 'Total',
+    items: {
+      pension: 'Pension Insurance',
+      medical: 'Medical Insurance',
+      unemployment: 'Unemployment Insurance',
+      workInjury: 'Work Injury Insurance',
+      maternity: 'Maternity Insurance',
+      housingFund: 'Housing Fund'
+    },
+    tips: {
+      title: 'Usage Tips',
+      selectCity: 'Select your city',
+      enterSalary: 'Enter your monthly salary',
+      autoCalculate: 'System will automatically calculate all details',
+      referenceOnly: 'Results are for reference only'
+    },
+    disclaimer: {
+      title: 'Disclaimer',
+      content: 'Calculation results are for reference only. Please refer to local policies for actual rates. Contribution rates may change due to policy adjustments. Please check with local social security and housing fund management centers for the latest policies.'
+    }
+  },
+
+  // Privacy Checker
+  privacyChecker: {
+    title: 'Privacy Breach Checker',
+    subtitle: 'Check if your email has been exposed in data breach incidents to protect your privacy',
+    inputSection: 'Enter Email',
+    emailLabel: 'Email Address',
+    emailPlaceholder: 'Enter your email address',
+    checkButton: 'Check Breach',
+    checking: 'Checking...',
+    privacyTitle: 'Privacy Protection',
+    privacyDescription: 'Your email is encrypted locally, we do not transmit or store original information. Only the hash prefix is sent to the API for querying.',
+    resultSection: 'Query Result',
+    safeTitle: 'Email Safe',
+    safeDescription: 'Your email has not been found in known data breach incidents and is currently safe.',
+    breachTitle: 'Breach Found',
+    breachDescription: 'Your email has been found in the following data breach incidents:',
+    breachCount: 'Breach count: {count} times',
+    technicalDetails: 'Technical Details',
+    hashPrefix: 'Hash Prefix',
+    apiUsed: 'API Used',
+    encryptionMethod: 'Encryption Method',
+    recommendations: 'Security Recommendations',
+    safeRecommendation1: 'Continue maintaining good password security habits',
+    safeRecommendation2: 'Regularly update passwords and use strong passwords',
+    safeRecommendation3: 'Enable two-factor authentication to protect account security',
+    breachRecommendation1: 'Immediately change passwords for all accounts associated with this email',
+    breachRecommendation2: 'Enable two-factor authentication to enhance account security',
+    breachRecommendation3: 'Check for suspicious login activities',
+    breachRecommendation4: 'Consider using a password manager to generate and manage passwords',
+    tips: {
+      title: 'Usage Tips',
+      enterEmail: 'Enter the email address you want to check',
+      clickCheck: 'Click the "Check Breach" button to start the query',
+      waitResult: 'Wait for the query result, usually takes a few seconds',
+      privacySafe: 'Your email information is encrypted locally to protect privacy'
+    },
+    errorTitle: 'Query Failed',
+    errors: {
+      loadFailed: 'Failed to load encryption library, please refresh the page and try again',
+      checkFailed: 'Query failed, please check your network connection and try again'
+    }
+  },
+
+  // Information Breakout
+  informationBreakout: {
+    title: 'Information Echo Chamber Breaker',
+    subtitle: 'Generate multi-dimensional search keywords to break through information echo chambers and gain comprehensive perspectives',
+    inputSection: 'Enter Keywords',
+    keywordLabel: 'Core Topic or Keywords',
+    keywordPlaceholder: 'Enter the core topic or keywords you want to explore',
+    generateButton: 'Generate Keywords',
+    generating: 'Generating...',
+    resultTitle: 'Multi-dimensional Search Keywords for "{keyword}"',
+    resultDescription: 'The following keywords are generated from different perspectives to help you gain comprehensive information',
+    copyButton: 'Copy Group',
+    copySingle: 'Copy Single',
+    perspectives: {
+      advantages: 'Advantages Perspective',
+      disadvantages: 'Disadvantages Perspective',
+      international: 'International Perspective',
+      industry: 'Industry Perspective',
+      competitor: 'Competitor Perspective',
+      academic: 'Academic Perspective',
+      user: 'User Perspective',
+      future: 'Future Perspective'
+    },
+    tips: {
+      title: 'Usage Tips',
+      description: 'After entering a core topic, the system will generate related search keywords from multiple perspectives to help you break through information echo chambers'
+    },
+    usageNote: {
+      title: 'Usage Instructions',
+      description: 'After copying keywords, please search on search engines yourself to obtain more comprehensive information perspectives'
+    },
+    emptyState: {
+      title: 'Start Exploring',
+      description: 'Enter a core topic or keyword, and we will generate multi-dimensional search keywords for you'
+    },
+    success: {
+      copiedGroup: 'Group keywords copied!',
+      copiedSingle: 'Keyword copied!'
+    },
+    errors: {
       copyFailed: 'Copy failed, please copy manually'
     }
   }

@@ -2438,6 +2438,210 @@ export const toolDocs = {
         'Use calendar export to sync with other applications'
       ]
     }
+  },
+
+  // 社保公积金计算器
+  'social-security-calculator': {
+    'zh-CN': {
+      title: '社保公积金计算器',
+      description: '专业的社保公积金计算工具，支持全国20个主要城市的社保公积金缴纳比例计算，提供详细的个人和公司缴纳明细分析。',
+      features: [
+        '支持全国20个主要城市的社保公积金数据',
+        '自动计算个人缴纳明细和总额',
+        '自动计算公司缴纳明细和总额',
+        '计算个人税后收入',
+        '计算公司总支出',
+        '可视化进度条显示各项占比',
+        '详细的表格展示缴纳明细',
+        '实时计算更新',
+        '响应式设计，支持移动端'
+      ],
+      usage: [
+        '1. 从下拉菜单中选择您所在的城市',
+        '2. 在工资输入框中输入您的月薪金额',
+        '3. 系统自动计算并显示各项明细',
+        '4. 查看总览卡片了解关键数据',
+        '5. 查看详细表格了解具体缴纳项目',
+        '6. 参考进度条了解各项占工资比例'
+      ],
+      examples: [
+        {
+          title: '北京地区计算示例',
+          input: '城市：北京，月薪：10000元',
+          output: '个人缴纳：¥2,220 (22.2%)，公司缴纳：¥3,900 (39.0%)，税后收入：¥7,780 (77.8%)，公司总支出：¥13,900 (139.0%)'
+        },
+        {
+          title: '上海地区计算示例',
+          input: '城市：上海，月薪：15000元',
+          output: '个人缴纳：¥3,375 (22.5%)，公司缴纳：¥4,650 (31.0%)，税后收入：¥11,625 (77.5%)，公司总支出：¥19,650 (131.0%)'
+        },
+        {
+          title: '深圳地区计算示例',
+          input: '城市：深圳，月薪：8000元',
+          output: '个人缴纳：¥1,784 (22.3%)，公司缴纳：¥2,008 (25.1%)，税后收入：¥6,216 (77.7%)，公司总支出：¥10,008 (125.1%)'
+        }
+      ],
+      tips: [
+        '不同城市的社保公积金比例不同，请选择正确的城市',
+        '计算结果仅供参考，具体以当地政策为准',
+        '实际缴纳比例可能因政策调整而变化',
+        '建议定期查看当地社保局和公积金管理中心的最新政策',
+        '个人缴纳部分会从工资中扣除，影响税后收入',
+        '公司总支出包括工资和公司缴纳的社保公积金部分',
+        '住房公积金比例在不同城市差异较大，影响总支出',
+        '工伤保险和生育保险通常由公司全额承担'
+      ]
+    },
+    'en': {
+      title: 'Social Security Calculator',
+      description: 'Professional social security and housing fund calculator supporting 20 major cities in China, providing detailed personal and company contribution analysis.',
+      features: [
+        'Support for 20 major cities social security and housing fund data',
+        'Automatic calculation of personal contribution details and total',
+        'Automatic calculation of company contribution details and total',
+        'Calculate personal after-tax income',
+        'Calculate company total expenditure',
+        'Visual progress bars showing contribution ratios',
+        'Detailed table display of contribution breakdown',
+        'Real-time calculation updates',
+        'Responsive design supporting mobile devices'
+      ],
+      usage: [
+        '1. Select your city from the dropdown menu',
+        '2. Enter your monthly salary in the salary input box',
+        '3. System automatically calculates and displays all details',
+        '4. View overview cards to understand key data',
+        '5. View detailed tables to understand specific contribution items',
+        '6. Reference progress bars to understand contribution ratios'
+      ],
+      examples: [
+        {
+          title: 'Beijing Calculation Example',
+          input: 'City: Beijing, Monthly Salary: ¥10,000',
+          output: 'Personal: ¥2,220 (22.2%), Company: ¥3,900 (39.0%), After-tax: ¥7,780 (77.8%), Company Total: ¥13,900 (139.0%)'
+        },
+        {
+          title: 'Shanghai Calculation Example',
+          input: 'City: Shanghai, Monthly Salary: ¥15,000',
+          output: 'Personal: ¥3,375 (22.5%), Company: ¥4,650 (31.0%), After-tax: ¥11,625 (77.5%), Company Total: ¥19,650 (131.0%)'
+        },
+        {
+          title: 'Shenzhen Calculation Example',
+          input: 'City: Shenzhen, Monthly Salary: ¥8,000',
+          output: 'Personal: ¥1,784 (22.3%), Company: ¥2,008 (25.1%), After-tax: ¥6,216 (77.7%), Company Total: ¥10,008 (125.1%)'
+        }
+      ],
+      tips: [
+        'Different cities have different social security and housing fund rates, please select the correct city',
+        'Calculation results are for reference only, please refer to local policies for actual rates',
+        'Actual contribution rates may change due to policy adjustments',
+        'Recommend checking with local social security and housing fund management centers for latest policies',
+        'Personal contributions are deducted from salary, affecting after-tax income',
+        'Company total expenditure includes salary and company social security contributions',
+        'Housing fund rates vary significantly between cities, affecting total expenditure',
+        'Work injury and maternity insurance are usually fully covered by the company'
+      ]
+    }
+  },
+
+  // 隐私泄露查询
+  'privacy-checker': {
+    'zh-CN': {
+      title: '隐私泄露查询',
+      description: '专业的隐私安全检查工具，通过调用Have I Been Pwned API检查您的邮箱是否在数据泄露事件中被暴露，保护您的隐私安全。',
+      features: [
+        '使用SHA-1加密保护用户隐私',
+        '调用Have I Been Pwned API进行查询',
+        '只传输哈希值前缀，不泄露原始邮箱',
+        '显示详细的泄露次数和事件信息',
+        '提供安全建议和防护措施',
+        '实时查询状态提示',
+        '支持中英文界面',
+        '完全前端处理，保护隐私'
+      ],
+      usage: [
+        '1. 在邮箱输入框中输入您要检查的邮箱地址',
+        '2. 点击"检查泄露"按钮开始查询',
+        '3. 等待查询完成，系统会显示结果',
+        '4. 查看查询结果，了解邮箱安全状态',
+        '5. 根据建议采取相应的安全措施'
+      ],
+      examples: [
+        {
+          title: '安全邮箱示例',
+          input: '邮箱：user@example.com',
+          output: '结果：邮箱安全，未在已知数据泄露事件中发现'
+        },
+        {
+          title: '泄露邮箱示例',
+          input: '邮箱：test@gmail.com',
+          output: '结果：发现泄露，该邮箱在3次数据泄露事件中被发现'
+        },
+        {
+          title: '查询过程示例',
+          input: '输入邮箱 → 本地SHA-1加密 → 发送哈希前缀 → 匹配结果',
+          output: '完整的隐私保护查询流程'
+        }
+      ],
+      tips: [
+        '邮箱信息在本地加密，不会传输原始数据',
+        '只发送哈希值的前5个字符到API进行查询',
+        '查询结果基于Have I Been Pwned数据库',
+        '如果发现泄露，建议立即更改相关密码',
+        '定期检查邮箱安全状态，保护账户安全',
+        '使用强密码和两步验证增强安全性',
+        '考虑使用密码管理器管理密码',
+        '注意检查可疑的登录活动'
+      ]
+    },
+    'en': {
+      title: 'Privacy Breach Checker',
+      description: 'Professional privacy security check tool that uses Have I Been Pwned API to check if your email has been exposed in data breach incidents, protecting your privacy.',
+      features: [
+        'Uses SHA-1 encryption to protect user privacy',
+        'Calls Have I Been Pwned API for queries',
+        'Only transmits hash prefix, no original email leaked',
+        'Shows detailed breach count and incident information',
+        'Provides security recommendations and protection measures',
+        'Real-time query status prompts',
+        'Supports Chinese and English interfaces',
+        'Complete frontend processing, privacy protection'
+      ],
+      usage: [
+        '1. Enter the email address you want to check in the input box',
+        '2. Click the "Check Breach" button to start the query',
+        '3. Wait for the query to complete, the system will show results',
+        '4. View query results to understand email security status',
+        '5. Take appropriate security measures based on recommendations'
+      ],
+      examples: [
+        {
+          title: 'Safe Email Example',
+          input: 'Email: user@example.com',
+          output: 'Result: Email safe, not found in known data breach incidents'
+        },
+        {
+          title: 'Breached Email Example',
+          input: 'Email: test@gmail.com',
+          output: 'Result: Breach found, this email was found in 3 data breach incidents'
+        },
+        {
+          title: 'Query Process Example',
+          input: 'Enter email → Local SHA-1 encryption → Send hash prefix → Match results',
+          output: 'Complete privacy protection query process'
+        }
+      ],
+      tips: [
+        'Email information is encrypted locally, no original data transmitted',
+        'Only sends the first 5 characters of hash value to API for query',
+        'Query results based on Have I Been Pwned database',
+        'If breach is found, recommend changing related passwords immediately',
+        'Regularly check email security status to protect account security',
+        'Use strong passwords and two-factor authentication to enhance security',
+        'Consider using password manager to manage passwords',
+        'Pay attention to checking suspicious login activities'
+      ]
+    }
   }
 }
 

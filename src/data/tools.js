@@ -31,6 +31,46 @@ export const tools = [
     size: 'normal',
     component: 'OCRTextExtraction'
   },
+  {
+    id: 'business-card-ocr',
+    name: '名片信息提取',
+    description: '智能识别名片图片，自动提取并结构化联系人信息',
+    category: '职场工具',
+    icon: 'CreditCard',
+    color: 'indigo',
+    size: 'normal',
+    component: 'BusinessCardOCR'
+  },
+  {
+    id: 'social-security-calculator',
+    name: '社保公积金计算器',
+    description: '计算全国主要城市的社保公积金缴纳明细和税后收入',
+    category: '职场工具',
+    icon: 'Shield',
+    color: 'teal',
+    size: 'normal',
+    component: 'SocialSecurityCalculator'
+  },
+  {
+    id: 'privacy-checker',
+    name: '隐私泄露查询',
+    description: '检查邮箱是否在数据泄露事件中被暴露，保护您的隐私安全',
+    category: '职场工具',
+    icon: 'ShieldCheck',
+    color: 'red',
+    size: 'normal',
+    component: 'PrivacyChecker'
+  },
+  {
+    id: 'information-breakout',
+    name: '信息茧房突破器',
+    description: '生成多维度搜索关键词，帮助突破信息茧房，获得更全面的信息视角',
+    category: '职场工具',
+    icon: 'Search',
+    color: 'orange',
+    size: 'normal',
+    component: 'InformationBreakout'
+  },
   
   // JSON工具
   {

@@ -83,10 +83,17 @@
           v-model="searchQuery"
           type="text"
           :placeholder="$t('nav.searchPlaceholder')"
-          class="w-full pl-10 pr-4 py-3 rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 text-white placeholder-gray-300 focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 focus:bg-gray-800/70"
+          class="w-full pl-10 pr-12 py-3 rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 text-white placeholder-gray-300 focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 focus:bg-gray-800/70"
           @input="handleSearch"
         />
         <Search class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-300" />
+        <button
+          v-if="searchQuery"
+          @click="clearSearch"
+          class="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 hover:text-white transition-colors"
+        >
+          <X class="w-5 h-5" />
+        </button>
       </div>
     </div>
     <!-- 工具网格 -->
@@ -151,12 +158,12 @@
 import { ref, computed, watch, inject } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { 
+import {
   Search, ArrowRight, Code, ArrowLeftRight, FileText, Clock, Calculator, Timer,
   Shield, Link, Hash, GitCompare, BarChart3,
   Key, Lock, Users, Image, RefreshCw, QrCode,
   Fingerprint, ShieldCheck, AlertTriangle, Globe, Monitor,
-  Server, Palette, Database, Droplets, Ruler, Binary, Code2, Grid3X3
+  Server, Palette, Database, Droplets, Ruler, Binary, Code2, Grid3X3, X
 } from 'lucide-vue-next'
 import { tools, getLocalizedCategories, getToolsByCategory, searchTools } from '../data/tools.js'
 
@@ -240,7 +247,12 @@ const filteredTools = computed(() => {
   const activeSearchQuery = globalSearchQuery.value.trim() || searchQuery.value.trim()
   
   if (activeSearchQuery) {
-    result = searchTools(activeSearchQuery)
+    // 如果有搜索词，在已过滤的结果中搜索
+    result = result.filter(tool => 
+      tool.name.toLowerCase().includes(activeSearchQuery.toLowerCase()) ||
+      tool.description.toLowerCase().includes(activeSearchQuery.toLowerCase()) ||
+      tool.category.toLowerCase().includes(activeSearchQuery.toLowerCase())
+    )
   }
   
   return result
@@ -248,7 +260,17 @@ const filteredTools = computed(() => {
 
 // 处理搜索
 const handleSearch = () => {
-  // 搜索逻辑已在computed中处理
+  // 搜索逻辑已在computed中处理，这里可以添加额外的搜索处理逻辑
+  // 比如防抖、搜索历史等
+}
+
+// 清空搜索
+const clearSearch = () => {
+  searchQuery.value = ''
+  // 同时清空全局搜索
+  if (globalSearchQuery.value) {
+    globalSearchQuery.value = ''
+  }
 }
 
 // 处理选项卡切换

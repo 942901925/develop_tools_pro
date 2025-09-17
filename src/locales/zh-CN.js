@@ -1612,6 +1612,22 @@ export default {
       name: 'OCR文字提取',
       description: '无需上传服务器，在浏览器中快速提取图片中的文字'
     },
+    'business-card-ocr': {
+      name: '名片信息提取',
+      description: '智能识别名片图片，自动提取并结构化联系人信息'
+    },
+    'social-security-calculator': {
+      name: '社保公积金计算器',
+      description: '计算全国主要城市的社保公积金缴纳明细和税后收入'
+    },
+    'privacy-checker': {
+      name: '隐私泄露查询',
+      description: '检查邮箱是否在数据泄露事件中被暴露，保护您的隐私安全'
+    },
+    'information-breakout': {
+      name: '信息茧房突破器',
+      description: '生成多维度搜索关键词，帮助突破信息茧房，获得更全面的信息视角'
+    },
     categories: {
       '职场工具': '职场工具'
     }
@@ -1807,6 +1823,208 @@ export default {
     errors: {
       invalidFile: '文件格式不支持，请选择 JPG、PNG 或 WebP 格式的图片',
       extractionFailed: '识别失败，请重试或尝试另一张图片',
+      copyFailed: '复制失败，请手动复制'
+    }
+  },
+
+  // 名片信息提取
+  businessCardOCR: {
+    title: '名片信息提取',
+    subtitle: '智能识别名片图片，自动提取并结构化联系人信息',
+    uploadSection: '上传名片',
+    resultSection: '提取结果',
+    dragDropText: '拖拽名片图片到此处或点击选择',
+    supportedFormats: '支持 JPG、PNG、WebP 格式',
+    selectFile: '选择文件',
+    removeFile: '移除文件',
+    language: '识别语言',
+    languages: {
+      chineseEnglish: '中文（简体）+英文',
+      chinese: '中文（简体）',
+      english: '英文'
+    },
+    extractInfo: '提取信息',
+    processing: '处理中...',
+    clear: '清空',
+    imagePreview: '图片预览',
+    status: '状态',
+    copyAll: '复制全部',
+    downloadVCard: '下载vCard',
+    rawText: '原始识别文本',
+    fields: {
+      name: '姓名',
+      company: '公司',
+      position: '职位',
+      phone: '电话',
+      email: '邮箱',
+      website: '网站',
+      address: '地址',
+      notes: '备注'
+    },
+    placeholders: {
+      name: '请输入姓名',
+      company: '请输入公司名称',
+      position: '请输入职位',
+      phone: '请输入电话号码',
+      email: '请输入邮箱地址',
+      website: '请输入网站地址',
+      address: '请输入地址',
+      notes: '请输入备注信息'
+    },
+    tips: {
+      title: '识别提示',
+      clearImage: '名片图片清晰度越高，识别效果越好',
+      standardFont: '标准印刷体识别效果最佳',
+      goodContrast: '文字与背景对比度要足够',
+      flatSurface: '确保名片平整，避免反光和阴影'
+    },
+    progress: {
+      starting: '开始处理...',
+      loadingCore: '加载核心引擎...',
+      initializing: '初始化中...',
+      loadingLanguage: '加载语言包...',
+      initializingApi: '初始化API...',
+      recognizing: '识别文字中...',
+      parsing: '解析信息中...',
+      completed: '识别完成',
+      failed: '识别失败'
+    },
+    success: {
+      extracted: '名片信息提取成功！',
+      copied: '已复制到剪贴板！',
+      downloaded: 'vCard文件已下载！'
+    },
+    errors: {
+      invalidFile: '文件格式不支持，请选择 JPG、PNG 或 WebP 格式的图片',
+      extractionFailed: '识别失败，请重试或尝试另一张图片',
+      copyFailed: '复制失败，请手动复制'
+    }
+  },
+
+  // 社保公积金计算器
+  socialSecurityCalculator: {
+    title: '社保公积金计算器',
+    subtitle: '计算全国主要城市的社保公积金缴纳明细和税后收入',
+    inputSection: '输入信息',
+    city: '选择城市',
+    selectCity: '请选择城市',
+    salary: '月薪',
+    enterSalary: '请输入月薪',
+    personalTotal: '个人缴纳总额',
+    companyTotal: '公司缴纳总额',
+    afterTaxIncome: '个人税后收入',
+    companyTotalCost: '公司总支出',
+    ofSalary: '占工资比例',
+    personalDetails: '个人缴纳明细',
+    companyDetails: '公司缴纳明细',
+    item: '项目',
+    rate: '比例',
+    amount: '金额',
+    total: '合计',
+    items: {
+      pension: '养老保险',
+      medical: '医疗保险',
+      unemployment: '失业保险',
+      workInjury: '工伤保险',
+      maternity: '生育保险',
+      housingFund: '住房公积金'
+    },
+    tips: {
+      title: '使用提示',
+      selectCity: '选择您所在的城市',
+      enterSalary: '输入您的月薪金额',
+      autoCalculate: '系统将自动计算各项明细',
+      referenceOnly: '计算结果仅供参考'
+    },
+    disclaimer: {
+      title: '免责声明',
+      content: '计算结果仅供参考，具体以当地政策为准。实际缴纳比例可能因政策调整而变化，请以当地社保局和公积金管理中心的最新政策为准。'
+    }
+  },
+
+  // 隐私泄露查询
+  privacyChecker: {
+    title: '隐私泄露查询',
+    subtitle: '检查您的邮箱是否在数据泄露事件中被暴露，保护您的隐私安全',
+    inputSection: '输入邮箱',
+    emailLabel: '邮箱地址',
+    emailPlaceholder: '请输入您的邮箱地址',
+    checkButton: '检查泄露',
+    checking: '检查中...',
+    privacyTitle: '隐私保护',
+    privacyDescription: '您的邮箱已在本地加密，我们不会传输和存储原始信息。只发送哈希值前缀到API进行查询。',
+    resultSection: '查询结果',
+    safeTitle: '邮箱安全',
+    safeDescription: '您的邮箱未在已知的数据泄露事件中被发现，目前是安全的。',
+    breachTitle: '发现泄露',
+    breachDescription: '您的邮箱在以下数据泄露事件中被发现：',
+    breachCount: '泄露次数：{count} 次',
+    technicalDetails: '技术详情',
+    hashPrefix: '哈希前缀',
+    apiUsed: '使用的API',
+    encryptionMethod: '加密方法',
+    recommendations: '安全建议',
+    safeRecommendation1: '继续保持良好的密码安全习惯',
+    safeRecommendation2: '定期更新密码，使用强密码',
+    safeRecommendation3: '启用两步验证保护账户安全',
+    breachRecommendation1: '立即更改该邮箱关联的所有账户密码',
+    breachRecommendation2: '启用两步验证，增强账户安全性',
+    breachRecommendation3: '检查是否有可疑的登录活动',
+    breachRecommendation4: '考虑使用密码管理器生成和管理密码',
+    tips: {
+      title: '使用提示',
+      enterEmail: '输入您要检查的邮箱地址',
+      clickCheck: '点击"检查泄露"按钮开始查询',
+      waitResult: '等待查询结果，通常需要几秒钟',
+      privacySafe: '您的邮箱信息在本地加密，保护隐私安全'
+    },
+    errorTitle: '查询失败',
+    errors: {
+      loadFailed: '加密库加载失败，请刷新页面重试',
+      checkFailed: '查询失败，请检查网络连接后重试'
+    }
+  },
+
+  // 信息茧房突破器
+  informationBreakout: {
+    title: '信息茧房突破器',
+    subtitle: '生成多维度搜索关键词，帮助突破信息茧房，获得更全面的信息视角',
+    inputSection: '输入关键词',
+    keywordLabel: '核心话题或关键词',
+    keywordPlaceholder: '请输入您要探索的核心话题或关键词',
+    generateButton: '生成关键词',
+    generating: '生成中...',
+    resultTitle: '"{keyword}" 的多维度搜索关键词',
+    resultDescription: '以下是从不同视角生成的关键词，帮助您获得更全面的信息',
+    copyButton: '复制整组',
+    copySingle: '复制单个',
+    perspectives: {
+      advantages: '优势视角',
+      disadvantages: '缺点视角',
+      international: '国际视角',
+      industry: '行业视角',
+      competitor: '竞品视角',
+      academic: '学术视角',
+      user: '用户视角',
+      future: '未来视角'
+    },
+    tips: {
+      title: '使用提示',
+      description: '输入核心话题后，系统会从多个视角生成相关搜索关键词，帮助您突破信息茧房'
+    },
+    usageNote: {
+      title: '使用说明',
+      description: '复制关键词后，请自行前往搜索引擎搜索，以获得更全面的信息视角'
+    },
+    emptyState: {
+      title: '开始探索',
+      description: '输入一个核心话题或关键词，我们将为您生成多维度搜索关键词'
+    },
+    success: {
+      copiedGroup: '已复制整组关键词！',
+      copiedSingle: '已复制关键词！'
+    },
+    errors: {
       copyFailed: '复制失败，请手动复制'
     }
   }
