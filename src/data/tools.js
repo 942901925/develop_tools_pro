@@ -11,6 +11,16 @@ export const tools = [
     size: 'normal',
     component: 'SalaryCalculator'
   },
+  {
+    id: 'vacation-calculator',
+    name: '假期计算器',
+    description: '智能优化假期安排，最大化休息时间',
+    category: '职场工具',
+    icon: 'Calendar',
+    color: 'blue',
+    size: 'normal',
+    component: 'VacationCalculator'
+  },
   
   // JSON工具
   {

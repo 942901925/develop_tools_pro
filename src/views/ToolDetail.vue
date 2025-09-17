@@ -152,7 +152,8 @@ const getToolComponent = async (toolId) => {
       'ip-lookup': () => import('../components/tools/IpLookup.vue'),
       'user-agent-parser': () => import('../components/tools/UserAgentParser.vue'),
       'http-status-codes': () => import('../components/tools/HttpStatusCodes.vue'),
-      'salary-calculator': () => import('../components/tools/SalaryCalculator.vue')
+      'salary-calculator': () => import('../components/tools/SalaryCalculator.vue'),
+      'vacation-calculator': () => import('../components/tools/VacationCalculator.vue')
     }
     
     const componentLoader = toolComponentMap[toolId]

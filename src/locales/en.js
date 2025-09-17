@@ -1605,6 +1605,10 @@ export default {
       name: 'Salary Calculator',
       description: 'Calculate total package, hourly rate and raise'
     },
+    'vacation-calculator': {
+      name: 'Vacation Calculator',
+      description: 'Intelligently optimize vacation arrangements to maximize rest time'
+    },
     categories: {
       '职场工具': 'Workplace Tools'
     }
@@ -1659,6 +1663,96 @@ export default {
     stockOptions: 'Stock Options',
     has: 'Yes',
     enterStockAmount: 'Enter stock options amount'
+  },
+
+  // Vacation Calculator
+  vacationCalculator: {
+    title: 'Vacation Calculator',
+    availableDays: 'Available Vacation Days',
+    enterAvailableDays: 'Enter available vacation days',
+    days: 'days',
+    startDate: 'Start Date',
+    endDate: 'End Date',
+    region: 'Region',
+    regions: {
+      china: 'China',
+      usa: 'United States',
+      japan: 'Japan',
+      uk: 'United Kingdom',
+      germany: 'Germany'
+    },
+    importantDates: 'Important Personal Dates',
+    dateDescription: 'Date description',
+    addImportantDate: 'Add Important Date',
+    calculate: 'Calculate Optimal Plan',
+    usedDays: 'Days Used',
+    totalRestDays: 'Total Rest Days',
+    savedDays: 'Days Saved',
+    optimalPlan: 'Optimal Plan',
+    planPeriod: 'Plan Period',
+    planRating: 'Plan Rating',
+    savePlan: 'Save Plan',
+    exportCalendar: 'Export Calendar',
+    calendarView: 'Calendar View',
+    planComparison: 'Plan Comparison',
+    planName: 'Plan Name',
+    period: 'Period',
+    rating: 'Rating',
+    actions: 'Actions',
+    delete: 'Delete',
+    weekDays: {
+      mon: 'Mon',
+      tue: 'Tue',
+      wed: 'Wed',
+      thu: 'Thu',
+      fri: 'Fri',
+      sat: 'Sat',
+      sun: 'Sun'
+    },
+    holidays: {
+      newYear: 'New Year\'s Day',
+      springFestival: 'Spring Festival',
+      qingming: 'Qingming Festival',
+      laborDay: 'Labor Day',
+      dragonBoat: 'Dragon Boat Festival',
+      midAutumn: 'Mid-Autumn Festival',
+      nationalDay: 'National Day',
+      mlkDay: 'Martin Luther King Jr. Day',
+      presidentsDay: 'Presidents\' Day',
+      memorialDay: 'Memorial Day',
+      juneteenth: 'Juneteenth',
+      independenceDay: 'Independence Day',
+      columbusDay: 'Columbus Day',
+      veteransDay: 'Veterans Day',
+      thanksgiving: 'Thanksgiving',
+      christmas: 'Christmas',
+      comingOfAge: 'Coming of Age Day',
+      nationalFoundation: 'National Foundation Day',
+      emperorsBirthday: 'Emperor\'s Birthday',
+      springEquinox: 'Spring Equinox Day',
+      showaDay: 'Showa Day',
+      constitutionDay: 'Constitution Day',
+      greeneryDay: 'Greenery Day',
+      childrensDay: 'Children\'s Day',
+      marineDay: 'Marine Day',
+      mountainDay: 'Mountain Day',
+      respectForAged: 'Respect for the Aged Day',
+      autumnEquinox: 'Autumn Equinox Day',
+      sportsDay: 'Sports Day',
+      cultureDay: 'Culture Day',
+      laborThanksgiving: 'Labor Thanksgiving Day'
+    },
+    vacationTitle: 'Vacation Arrangement',
+    vacationDescription: 'Vacation arrangement optimized by vacation calculator',
+    calculationNote: 'Calculation Note: Vacation days can be combined with weekends and holidays to increase actual rest days',
+    smartOptimization: 'Smart Optimization: Automatically find consecutive date ranges with the most weekends and holidays',
+    legend: {
+      workday: 'Workday',
+      weekend: 'Weekend',
+      holiday: 'Holiday',
+      important: 'Important Date',
+      vacation: 'Vacation'
+    }
   }
 }
 

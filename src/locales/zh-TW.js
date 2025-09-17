@@ -232,6 +232,10 @@ export default {
     'salary-calculator': {
       name: '薪酬計算器',
       description: '計算總包、時薪和漲幅'
+    },
+    'vacation-calculator': {
+      name: '假期計算器',
+      description: '智能優化假期安排，最大化休息時間'
     }
   },
   
