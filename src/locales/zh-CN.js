@@ -1632,6 +1632,10 @@ export default {
       name: '数字足迹清理助手',
       description: '提供20+主流平台的账号注销指南，帮助清理数字足迹，保护隐私安全'
     },
+    'markdown-beautifier': {
+      name: 'Markdown格式化与美化工具',
+      description: '专业的Markdown格式化工具，支持语法高亮、实时预览和多种格式化规则'
+    },
     categories: {
       '职场工具': '职场工具'
     }
@@ -2062,6 +2066,56 @@ export default {
     emptyState: {
       title: '开始清理',
       description: '选择您需要注销的平台，我们将为您提供详细的注销指南'
+    }
+  },
+
+  // Markdown格式化与美化工具
+  markdownBeautifier: {
+    title: 'Markdown格式化与美化工具',
+    subtitle: '专业的Markdown格式化工具，支持语法高亮、实时预览和多种格式化规则',
+    configuration: '格式化配置',
+    preset: '预设配置',
+    presets: {
+      strict: '严格模式',
+      loose: '宽松模式',
+      custom: '自定义'
+    },
+    listIndent: '列表缩进',
+    indentOptions: {
+      two: '2个空格',
+      four: '4个空格'
+    },
+    headerSpacing: '标题格式',
+    forceHeaderSpacing: '强制标题后添加空格',
+    listMarker: '列表符号',
+    markerOptions: {
+      asterisk: '星号 (*)',
+      dash: '短横线 (-)',
+      plus: '加号 (+)'
+    },
+    codeBlockLanguage: '代码块语言',
+    requireCodeBlockLanguage: '要求代码块指定语言',
+    trailingWhitespace: '行尾空格',
+    removeTrailingWhitespace: '移除行尾空格',
+    formatButton: '格式化',
+    clearButton: '清空',
+    copyButton: '复制结果',
+    editor: '编辑器',
+    editorPlaceholder: '在此输入Markdown内容...',
+    preview: '实时预览',
+    noPreview: '暂无预览内容',
+    formattedResult: '格式化结果',
+    tips: {
+      title: '使用提示',
+      description: '选择格式化配置后，点击格式化按钮即可对Markdown内容进行标准化处理'
+    },
+    success: {
+      formatted: '格式化完成！',
+      cleared: '内容已清空！',
+      copied: '已复制到剪贴板！'
+    },
+    errors: {
+      copyFailed: '复制失败，请手动复制'
     }
   }
 }
