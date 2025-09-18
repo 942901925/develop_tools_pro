@@ -160,7 +160,8 @@ const getToolComponent = async (toolId) => {
       'privacy-checker': () => import('../components/tools/PrivacyChecker.vue'),
       'information-breakout': () => import('../components/tools/InformationBreakout.vue'),
       'digital-cleanup': () => import('../components/tools/DigitalCleanupAssistant.vue'),
-      'markdown-beautifier': () => import('../components/dev/MarkdownBeautifier.vue')
+      'markdown-beautifier': () => import('../components/dev/MarkdownBeautifier.vue'),
+      'api-mock-generator': () => import('../components/dev/ApiMockGenerator.vue')
     }
     
     const componentLoader = toolComponentMap[toolId]

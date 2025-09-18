@@ -1636,6 +1636,10 @@ export default {
       name: 'Markdown格式化与美化工具',
       description: '专业的Markdown格式化工具，支持语法高亮、实时预览和多种格式化规则'
     },
+    'api-mock-generator': {
+      name: 'API接口Mock生成器',
+      description: '快速生成API接口Mock数据，支持多种数据类型和网络延迟模拟'
+    },
     categories: {
       '职场工具': '职场工具'
     }
@@ -2115,6 +2119,68 @@ export default {
       copied: '已复制到剪贴板！'
     },
     errors: {
+      copyFailed: '复制失败，请手动复制'
+    }
+  },
+
+  // API接口Mock生成器
+  apiMockGenerator: {
+    title: 'API接口Mock生成器',
+    subtitle: '快速生成API接口Mock数据，支持多种数据类型和网络延迟模拟',
+    apiEndpoint: 'API端点配置',
+    endpointLabel: 'API端点',
+    endpointPlaceholder: '例如：/api/users',
+    httpMethod: 'HTTP方法',
+    fieldDefinition: '字段定义',
+    addField: '添加字段',
+    noFields: '暂无字段，点击"添加字段"开始定义',
+    fieldName: '字段名',
+    fieldNamePlaceholder: '例如：username',
+    fieldType: '字段类型',
+    fieldDescription: '字段描述',
+    fieldDescriptionPlaceholder: '例如：用户名',
+    removeField: '删除字段',
+    networkDelay: '网络延迟配置',
+    delayLabel: '延迟时间',
+    generateMock: '生成Mock数据',
+    generating: '生成中...',
+    clearAll: '清空所有',
+    loadSample: '加载示例',
+    mockResult: 'Mock结果',
+    generatedJson: '生成的JSON数据',
+    copyJson: '复制JSON',
+    curlCommand: 'cURL命令',
+    copyCurl: '复制cURL',
+    javascriptCode: 'JavaScript代码',
+    copyJs: '复制JS',
+    types: {
+      string: '字符串',
+      number: '数字',
+      boolean: '布尔值',
+      array: '数组',
+      object: '对象',
+      email: '邮箱',
+      url: '网址',
+      date: '日期',
+      uuid: 'UUID',
+      phone: '电话',
+      name: '姓名',
+      address: '地址',
+      company: '公司',
+      lorem: '文本'
+    },
+    tips: {
+      title: '使用提示',
+      description: '定义字段结构后，点击生成按钮即可创建逼真的Mock数据，支持多种数据类型和网络延迟模拟'
+    },
+    success: {
+      generated: 'Mock数据生成成功！',
+      cleared: '所有内容已清空！',
+      sampleLoaded: '示例数据已加载！',
+      copied: '已复制到剪贴板！'
+    },
+    errors: {
+      generationFailed: '生成失败，请重试',
       copyFailed: '复制失败，请手动复制'
     }
   }

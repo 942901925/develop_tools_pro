@@ -1637,6 +1637,10 @@ export default {
       name: 'Markdown Formatter & Beautifier',
       description: 'Professional Markdown formatting tool with syntax highlighting, real-time preview, and multiple formatting rules'
     },
+    'api-mock-generator': {
+      name: 'API Mock Generator',
+      description: 'Quickly generate API mock data with multiple data types and network delay simulation'
+    },
     categories: {
       '职场工具': 'Workplace Tools'
     }
@@ -2115,6 +2119,68 @@ export default {
       copied: 'Copied to clipboard!'
     },
     errors: {
+      copyFailed: 'Copy failed, please copy manually'
+    }
+  },
+
+  // API Mock Generator
+  apiMockGenerator: {
+    title: 'API Mock Generator',
+    subtitle: 'Quickly generate API mock data with multiple data types and network delay simulation',
+    apiEndpoint: 'API Endpoint Configuration',
+    endpointLabel: 'API Endpoint',
+    endpointPlaceholder: 'e.g.: /api/users',
+    httpMethod: 'HTTP Method',
+    fieldDefinition: 'Field Definition',
+    addField: 'Add Field',
+    noFields: 'No fields yet, click "Add Field" to start defining',
+    fieldName: 'Field Name',
+    fieldNamePlaceholder: 'e.g.: username',
+    fieldType: 'Field Type',
+    fieldDescription: 'Field Description',
+    fieldDescriptionPlaceholder: 'e.g.: Username',
+    removeField: 'Remove Field',
+    networkDelay: 'Network Delay Configuration',
+    delayLabel: 'Delay Time',
+    generateMock: 'Generate Mock Data',
+    generating: 'Generating...',
+    clearAll: 'Clear All',
+    loadSample: 'Load Sample',
+    mockResult: 'Mock Result',
+    generatedJson: 'Generated JSON Data',
+    copyJson: 'Copy JSON',
+    curlCommand: 'cURL Command',
+    copyCurl: 'Copy cURL',
+    javascriptCode: 'JavaScript Code',
+    copyJs: 'Copy JS',
+    types: {
+      string: 'String',
+      number: 'Number',
+      boolean: 'Boolean',
+      array: 'Array',
+      object: 'Object',
+      email: 'Email',
+      url: 'URL',
+      date: 'Date',
+      uuid: 'UUID',
+      phone: 'Phone',
+      name: 'Name',
+      address: 'Address',
+      company: 'Company',
+      lorem: 'Text'
+    },
+    tips: {
+      title: 'Usage Tips',
+      description: 'Define field structure and click generate button to create realistic mock data with multiple data types and network delay simulation'
+    },
+    success: {
+      generated: 'Mock data generated successfully!',
+      cleared: 'All content cleared!',
+      sampleLoaded: 'Sample data loaded!',
+      copied: 'Copied to clipboard!'
+    },
+    errors: {
+      generationFailed: 'Generation failed, please try again',
       copyFailed: 'Copy failed, please copy manually'
     }
   }
