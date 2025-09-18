@@ -159,7 +159,8 @@ const getToolComponent = async (toolId) => {
       'social-security-calculator': () => import('../components/tools/SocialSecurityCalculator.vue'),
       'privacy-checker': () => import('../components/tools/PrivacyChecker.vue'),
       'information-breakout': () => import('../components/tools/InformationBreakout.vue'),
-      'digital-cleanup': () => import('../components/tools/DigitalCleanupAssistant.vue')
+      'digital-cleanup': () => import('../components/tools/DigitalCleanupAssistant.vue'),
+      'markdown-beautifier': () => import('../components/dev/MarkdownBeautifier.vue')
     }
     
     const componentLoader = toolComponentMap[toolId]

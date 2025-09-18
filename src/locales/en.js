@@ -1633,6 +1633,10 @@ export default {
       name: 'Digital Footprint Cleanup Assistant',
       description: 'Provides account deletion guides for 20+ mainstream platforms to help clean up digital footprints and protect privacy'
     },
+    'markdown-beautifier': {
+      name: 'Markdown Formatter & Beautifier',
+      description: 'Professional Markdown formatting tool with syntax highlighting, real-time preview, and multiple formatting rules'
+    },
     categories: {
       '职场工具': 'Workplace Tools'
     }
@@ -2062,6 +2066,56 @@ export default {
     emptyState: {
       title: 'Start Cleaning',
       description: 'Select the platforms you need to delete accounts from, and we will provide you with detailed deletion guides'
+    }
+  },
+
+  // Markdown Beautifier
+  markdownBeautifier: {
+    title: 'Markdown Formatter & Beautifier',
+    subtitle: 'Professional Markdown formatting tool with syntax highlighting, real-time preview, and multiple formatting rules',
+    configuration: 'Formatting Configuration',
+    preset: 'Preset Configuration',
+    presets: {
+      strict: 'Strict Mode',
+      loose: 'Loose Mode',
+      custom: 'Custom'
+    },
+    listIndent: 'List Indentation',
+    indentOptions: {
+      two: '2 spaces',
+      four: '4 spaces'
+    },
+    headerSpacing: 'Header Formatting',
+    forceHeaderSpacing: 'Force space after header',
+    listMarker: 'List Marker',
+    markerOptions: {
+      asterisk: 'Asterisk (*)',
+      dash: 'Dash (-)',
+      plus: 'Plus (+)'
+    },
+    codeBlockLanguage: 'Code Block Language',
+    requireCodeBlockLanguage: 'Require code block language',
+    trailingWhitespace: 'Trailing Whitespace',
+    removeTrailingWhitespace: 'Remove trailing whitespace',
+    formatButton: 'Format',
+    clearButton: 'Clear',
+    copyButton: 'Copy Result',
+    editor: 'Editor',
+    editorPlaceholder: 'Enter Markdown content here...',
+    preview: 'Live Preview',
+    noPreview: 'No preview content',
+    formattedResult: 'Formatted Result',
+    tips: {
+      title: 'Usage Tips',
+      description: 'Select formatting configuration and click format button to standardize your Markdown content'
+    },
+    success: {
+      formatted: 'Formatting completed!',
+      cleared: 'Content cleared!',
+      copied: 'Copied to clipboard!'
+    },
+    errors: {
+      copyFailed: 'Copy failed, please copy manually'
     }
   }
 }

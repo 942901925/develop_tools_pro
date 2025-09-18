@@ -81,6 +81,16 @@ export const tools = [
     size: 'normal',
     component: 'DigitalCleanupAssistant'
   },
+  {
+    id: 'markdown-beautifier',
+    name: 'Markdown格式化与美化工具',
+    description: '专业的Markdown格式化工具，支持语法高亮、实时预览和多种格式化规则',
+    category: '开发工具',
+    icon: 'FileText',
+    color: 'blue',
+    size: 'normal',
+    component: 'MarkdownBeautifier'
+  },
   
   // JSON工具
   {
