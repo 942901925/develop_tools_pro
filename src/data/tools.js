@@ -91,6 +91,16 @@ export const tools = [
     size: 'normal',
     component: 'MarkdownBeautifier'
   },
+  {
+    id: 'api-mock-generator',
+    name: 'API接口Mock生成器',
+    description: '快速生成API接口Mock数据，支持多种数据类型和网络延迟模拟',
+    category: '开发工具',
+    icon: 'Server',
+    color: 'purple',
+    size: 'normal',
+    component: 'ApiMockGenerator'
+  },
   
   // JSON工具
   {

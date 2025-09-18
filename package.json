@@ -12,6 +12,7 @@
     "setup-analytics": "node setup-analytics.js"
   },
   "dependencies": {
+    "@faker-js/faker": "^9.9.0",
     "crypto-js": "^4.2.0",
     "dayjs": "^1.11.10",
     "highlight.js": "^11.9.0",
